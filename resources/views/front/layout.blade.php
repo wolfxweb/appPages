@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" @if($rtl == 1) dir="rtl" @endif>
+<html lang="pt-BR" @if($rtl == 1) dir="rtl" @endif>
 <head>
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
