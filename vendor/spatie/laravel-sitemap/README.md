@@ -5,8 +5,8 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-sitemap.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-sitemap)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-![Test Status](https://img.shields.io/github/workflow/status/spatie/laravel-sitemap/run-tests?label=tests)
-![Code Style Status](https://img.shields.io/github/workflow/status/spatie/laravel-sitemap/Check%20&%20fix%20styling?label=code%20style)
+[![Test Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-sitemap/run-tests.yml?label=tests)](https://github.com/spatie/laravel-sitemap/actions/workflows/run-tests.yml)
+[![Code Style Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-sitemap/php-cs-fixer.yml?label=code%20style)](https://github.com/spatie/laravel-sitemap/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-sitemap.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-sitemap)
 
 This package can generate a sitemap without you having to add urls to it manually. This works by crawling your entire site.
@@ -389,6 +389,44 @@ use Spatie\Sitemap\Tags\Url;
 Sitemap::create()
     // here we add an image to a URL
     ->add(Url::create('https://example.com')->addImage('https://example.com/images/home.jpg', 'Home page image'))
+    ->writeToFile($sitemapPath);
+```
+
+#### Adding videos to links
+
+As well as images, videos can be wrapped by URL tags. See https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps
+
+You can set required attributes like so:
+
+```php
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+
+Sitemap::create()
+    ->add(
+        Url::create('https://example.com')
+            ->addVideo('https://example.com/images/thumbnail.jpg', 'Video title', 'Video Description', 'https://example.com/videos/source.mp4', 'https://example.com/video/123')
+    )
+    ->writeToFile($sitemapPath);
+```
+
+If you want to pass the optional parameters like `family_friendly`, `live`, or `platform`:
+
+```php
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use Spatie\Sitemap\Tags\Video;
+
+
+$options = ['family_friendly' => Video::OPTION_YES, 'live' => Video::OPTION_NO];
+$allowOptions = ['platform' => Video::OPTION_PLATFORM_MOBILE];
+$denyOptions = ['restriction' => 'CA'];
+
+Sitemap::create()
+    ->add(
+        Url::create('https://example.com')
+            ->addVideo('https://example.com/images/thumbnail.jpg', 'Video title', 'Video Description', 'https://example.com/videos/source.mp4', 'https://example.com/video/123', $options, $allowOptions, $denyOptions)
+    )
     ->writeToFile($sitemapPath);
 ```
 
