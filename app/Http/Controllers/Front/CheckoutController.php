@@ -33,17 +33,21 @@ class CheckoutController extends Controller
     public function checkout(CheckoutRequest $request)
     {
         $offline_payment_gateways = OfflineGateway::all()->pluck('name')->toArray();
+        /*
         $currentLang = session()->has('lang') ?
             (Language::where('code', session()->get('lang'))->first())
             : (Language::where('is_default', 1)->first());
+            */
+        
+       $currentLang = Language::where('is_default', 1)->first();
         $bs = $currentLang->basic_setting;
         $be = $currentLang->basic_extended;
         $request['status'] = 1;
         $request['mode'] = 'online';
         $request['receipt_name'] = null;
         Session::put('paymentFor', 'membership');
-        $title = "You are purchasing a membership";
-        $description = "Congratulation you are going to join our membership.Please make a payment for confirming your membership now!";
+        $title = "Assinatura realizada com sucesso.";
+        $description = "Parabéns, você vai se juntar à nossa associação. Faça um pagamento para confirmar sua associação agora!";
         if ($request->package_type == "trial") {
             $package = Package::find($request['package_id']);
             $request['price'] = 0.00;
