@@ -20,6 +20,7 @@ class BasicController extends Controller
 {
     public function themeVersion()
     {
+        //tabela user_basic_settings
         $data = BasicSetting::where('user_id',Auth::id())->first();
 
         return view('user.settings.themes', ['data' => $data]);

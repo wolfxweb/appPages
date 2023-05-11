@@ -126,6 +126,7 @@
                                         @endforeach
                                     </ul>
                                 @endif
+                                <!--
                                 @if (!empty($userLangs))
                                     <div class="lang-dropdown">
                                         <div class="lang"><img src="{{asset('assets/front/img/profile1/theme3/lang.png')}}" alt="lang"></div>
@@ -139,6 +140,7 @@
                                         </form>
                                     </div>
                                 @endif
+                                -->
                                 <div class="navbar-toggler">
                                     <span></span><span></span><span></span>
                                 </div>

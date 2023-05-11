@@ -120,7 +120,8 @@ class LanguageController extends Controller
 
         $data['la'] = Language::where('user_id', Auth::user()->id)->where('id', $id)->firstOrFail();
         $data['keywords'] = json_decode($data['la']->keywords, true);
-        return view('user.language.edit-keyword', $data);
+   //     dd($data);
+      return view('user.language.edit-keyword', $data);
 
     }
 

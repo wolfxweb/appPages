@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" @if($userCurrentLang->rtl == 1) dir="rtl" @endif>
+<html lang="pt-BR" @if($userCurrentLang->rtl == 1) dir="rtl" @endif>
 
 <head>
     <meta charset="UTF-8">

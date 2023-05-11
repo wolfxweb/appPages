@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" @if($userCurrentLang->rtl == 1) dir="rtl" @endif>
+<html lang="pt-BR" @if($userCurrentLang->rtl == 1) dir="rtl" @endif>
     <head>
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
@@ -70,6 +70,7 @@
                             <span></span>
                         </div>
                     </div>
+                    <!--
                     <div class="col-6">
                         @if (!empty($userLangs))
                         <div class="lang-dropdown float-right">
@@ -85,6 +86,7 @@
                         </div>
                         @endif
                     </div>
+                -->
                 </div>
             </div>
         </header><!--====== End Header ======-->

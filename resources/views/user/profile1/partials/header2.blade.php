@@ -47,6 +47,7 @@
                             @endif
                         </ul>
                     </nav>
+                    <!--
                     @if (!empty($userLangs))
                     <div class="language-selector transparent-style d-flex">
                         <form action="{{route('changeUserLanguage', getParam())}}" id="userLangForm">
@@ -59,6 +60,7 @@
                         </form>
                     </div>
                     @endif
+                -->
                     <div class="navbar-toggler d-lg-none">
                         <span></span>
                         <span></span>

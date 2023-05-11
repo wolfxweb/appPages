@@ -131,7 +131,7 @@
                             </ul>
                         </div>
                     </div>
-
+<!--
                     @if (!empty($userLangs))
                     <div class="language-selector bordered-style  d-flex">
                         <form action="{{route('changeUserLanguage', getParam())}}" id="userLangForm">
@@ -144,6 +144,7 @@
                         </form>
                     </div>
                     @endif
+                -->
                 </header>
                 <!--====== End Header Section ======-->
 

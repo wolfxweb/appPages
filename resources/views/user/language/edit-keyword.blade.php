@@ -62,6 +62,9 @@
                   {{ csrf_field() }}
 
                   <div class="row">
+                    @php
+                      //dd($keywords);
+                    @endphp
                       @foreach ($keywords as $key => $val)
                         <div class="col-md-4 mt-2">
                             <div class="form-group">

@@ -64,6 +64,7 @@
                         </div>
                     @endauth
                 </div>
+                <!--
                 <div class="nav-push-item language">
                     <div class="navbar-btn">
                         @if(!empty($currentLang))
@@ -76,6 +77,7 @@
                         @endif
                     </div>
                 </div>
+            -->
     
                 <!-- Navbar Toggler -->
                 <div class="navbar-toggler">

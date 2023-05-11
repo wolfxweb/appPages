@@ -268,10 +268,11 @@ class CheckoutController extends Controller
 
             $deLang = User\Language::firstOrFail();
             $langCount = User\Language::where('user_id', $user->id)->where('is_default', 1)->count();
+           
             if ($langCount == 0) {
                 User\Language::create([
-                    'name' => 'English',
-                    'code' => 'en',
+                    'name' => 'Português',
+                    'code' => 'pt-BR',
                     'is_default' => 1,
                     'rtl' => 0,
                     'user_id' => $user->id,
