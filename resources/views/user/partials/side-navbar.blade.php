@@ -34,18 +34,18 @@ $permissions = json_decode($permissions, true);
                             @if(!is_null($package))
                             <li>
                                 <a href="{{route('user-profile-update')}}">
-                                <span class="link-collapse">Edit Profile</span>
+                                <span class="link-collapse">Editar perfil</span>
                                 </a>
                             </li>
                             @endif
                             <li>
                                 <a href="{{route('user.changePass')}}">
-                                <span class="link-collapse">Change Password</span>
+                                <span class="link-collapse">Alterar senha</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route('user-logout')}}">
-                                <span class="link-collapse">Logout</span>
+                                <span class="link-collapse">Sair</span>
                                 </a>
                             </li>
                         </ul>
@@ -57,7 +57,7 @@ $permissions = json_decode($permissions, true);
                     <div class="col-12">
                         <form action="">
                             <div class="form-group py-0">
-                                <input name="term" type="text" class="form-control sidebar-search ltr" value="" placeholder="Search Menu Here...">
+                                <input name="term" type="text" class="form-control sidebar-search ltr" value="" placeholder="Localizar  menu">
                             </div>
                         </form>
                     </div>
@@ -67,7 +67,7 @@ $permissions = json_decode($permissions, true);
                 @endif">
                 <a href="{{route('user-dashboard')}}">
                     <i class="la flaticon-paint-palette"></i>
-                    <p>Dashboard</p>
+                    <p>Painel adminstrativo</p>
                 </a>
                 </li>
                 <li class="nav-item
@@ -75,7 +75,7 @@ $permissions = json_decode($permissions, true);
                 @endif">
                 <a href="{{route('user-profile')}}">
                     <i class="far fa-user-circle"></i>
-                    <p>Edit Profile</p>
+                    <p>Editar perfil</p>
                 </a>
                 </li>
                 
@@ -86,7 +86,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a data-toggle="collapse" href="#domains">
                         <i class="fas fa-link"></i>
-                        <p>Domains & URLs</p>
+                        <p>Dominios e URL</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -99,7 +99,7 @@ $permissions = json_decode($permissions, true);
                                     @if(request()->path() == 'user/domains') active
                                     @endif">
                                     <a href="{{route('user-domains')}}">
-                                    <span class="sub-item">Custom Domain</span>
+                                    <span class="sub-item">Dominios personalizado</span>
                                     </a>
                                 </li>
                             @endif
@@ -108,7 +108,7 @@ $permissions = json_decode($permissions, true);
                                     @if(request()->path() == 'user/subdomain') active
                                     @endif">
                                     <a href="{{route('user-subdomain')}}">
-                                    <span class="sub-item">Subdomain & Path URL</span>
+                                    <span class="sub-item">Subdomínio e URL</span>
                                     </a>
                                 </li>
                             @else
@@ -116,7 +116,7 @@ $permissions = json_decode($permissions, true);
                                     @if(request()->path() == 'user/subdomain') active
                                     @endif">
                                     <a href="{{route('user-subdomain')}}">
-                                    <span class="sub-item">Path Based URL</span>
+                                    <span class="sub-item">Path Base URL</span>
                                     </a>
                                 </li>
                             @endif
@@ -138,7 +138,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a data-toggle="collapse" href="#basic">
                         <i class="la flaticon-settings"></i>
-                        <p>Settings</p>
+                        <p>Configurações</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -154,7 +154,7 @@ $permissions = json_decode($permissions, true);
                         <ul class="nav nav-collapse">
                             <li class="@if(request()->path() == 'user/theme/version') active @endif">
                                 <a href="{{route('user.theme.version')}}">
-                                    <span class="sub-item">Themes</span>
+                                    <span class="sub-item">Temas</span>
                                 </a>
                             </li>
                             <li class="@if(request()->path() == 'user/favicon') active @endif">
@@ -193,7 +193,7 @@ $permissions = json_decode($permissions, true);
 
                             <li class="@if(request()->path() == 'user/basic_settings/seo') active @endif">
                                 <a href="{{route('admin.basic_settings.seo', ['language' => $default->code])}}">
-                                <span class="sub-item">SEO Information</span>
+                                <span class="sub-item">SEO Informações</span>
                                 </a>
                             </li>
                         </ul>
@@ -205,7 +205,7 @@ $permissions = json_decode($permissions, true);
                 <li class="nav-item @if(request()->path() == 'user/home-page-text/edit') active @endif">
                     <a href="{{route('user.home.page.text.edit', ['language' => $default->code])}}">
                         <i class="fas fa-home"></i>
-                        <p>Home Sections</p>
+                        <p>Home seções</p>
                     </a>
                 </li>
 
@@ -214,7 +214,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a href="{{route('user.preference.index')}}">
                         <i class="fas fa-toggle-on"></i>
-                        <p>Preference</p>
+                        <p>Preferências</p>
                     </a>
                 </li>
                 @endif
@@ -228,7 +228,7 @@ $permissions = json_decode($permissions, true);
                         @endif">
                         <a href="{{route('user.skill.index').'?language='.$default->code}}">
                             <i class="fas fa-pencil-ruler"></i>
-                            <p>Skills</p>
+                            <p>Habilidades</p>
                         </a>
                     </li>
                     @endif
@@ -240,7 +240,7 @@ $permissions = json_decode($permissions, true);
                 @endif">
                 <a href="{{route('user.services.index').'?language='.$default->code}}">
                     <i class="fas fa-hands"></i>
-                    <p>Services</p>
+                    <p>Serviços</p>
                 </a>
                 </li>
                 @endif
@@ -254,7 +254,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a data-toggle="collapse" href="#experience">
                         <i class="fas fa-user-cog"></i>
-                        <p>Experiences</p>
+                        <p>Habilidades</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -269,7 +269,7 @@ $permissions = json_decode($permissions, true);
                                 @elseif(request()->is('user/job-experience/*/edit')) active
                                 @endif">
                                 <a href="{{route('user.job.experiences.index').'?language='.$default->code}}">
-                                <span class="sub-item">Job Experiences</span>
+                                <span class="sub-item">Experiências</span>
                                 </a>
                             </li>
                             <li class="
@@ -277,7 +277,7 @@ $permissions = json_decode($permissions, true);
                                 @elseif(request()->is('user/experience/*/edit')) active
                                 @endif">
                                 <a href="{{route('user.experience.index')."?language=".$default->code}}">
-                                <span class="sub-item">Educations</span>
+                                <span class="sub-item">Formação</span>
                                 </a>
                             </li>
                         </ul>
@@ -292,7 +292,7 @@ $permissions = json_decode($permissions, true);
                 @endif">
                     <a href="{{route('user.achievement.index')}}">
                         <i class="fas fa-trophy"></i>
-                        <p>Achievements</p>
+                        <p>Conquistas</p>
                     </a>
                 </li>
                 @endif
@@ -305,7 +305,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a data-toggle="collapse" href="#portfolio">
                         <i class="fas fa-chalkboard-teacher"></i>
-                        <p>Portfolio</p>
+                        <p>Portfólio</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -316,7 +316,7 @@ $permissions = json_decode($permissions, true);
                         <ul class="nav nav-collapse">
                             <li class="@if(request()->path() == 'user/portfolio-categories') active @endif">
                                 <a href="{{route('user.portfolio.category.index')."?language=".$default->code}}">
-                                <span class="sub-item">Category</span>
+                                <span class="sub-item">Categorias</span>
                                 </a>
                             </li>
                             <li class="
@@ -324,7 +324,7 @@ $permissions = json_decode($permissions, true);
                                 @elseif(request()->is('user/portfolio/*/edit')) active
                                 @endif">
                                 <a href="{{route('user.portfolio.index')."?language=".$default->code}}">
-                                <span class="sub-item">Portfolios</span>
+                                <span class="sub-item">Portfólios</span>
                                 </a>
                             </li>
                         </ul>
@@ -339,7 +339,7 @@ $permissions = json_decode($permissions, true);
                 @endif">
                 <a href="{{route('user.testimonials.index')."?language=".$default->code}}">
                     <i class="far fa-comment"></i>
-                    <p>Testimonial</p>
+                    <p>Testemunhos</p>
                 </a>
                 </li>
                 @endif
@@ -363,7 +363,7 @@ $permissions = json_decode($permissions, true);
                         <ul class="nav nav-collapse">
                             <li class="@if(request()->path() == 'user/blog-categories') active @endif">
                                 <a href="{{route('user.blog.category.index')."?language=".$default->code}}">
-                                <span class="sub-item">Category</span>
+                                <span class="sub-item">Categorias</span>
                                 </a>
                             </li>
                             <li class="
@@ -399,12 +399,12 @@ $permissions = json_decode($permissions, true);
                             <li class="@if(request()->routeIs('user.qrcode')) active
                             @endif">
                                 <a href="{{route('user.qrcode')}}">
-                                    <span class="sub-item">Generate QR Code</span>
+                                    <span class="sub-item">Gerador de  QR Code</span>
                                 </a>
                             </li>
                             <li class="@if(request()->routeIs('user.qrcode.index')) active @endif">
                                 <a href="{{route('user.qrcode.index')}}">
-                                <span class="sub-item">Saved QR Codes</span>
+                                <span class="sub-item">Salvou QR Codes</span>
                                 </a>
                             </li>
                         </ul>
@@ -429,7 +429,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a data-toggle="collapse" href="#vcard">
                         <i class="far fa-address-card"></i>
-                        <p>vCards Management</p>
+                        <p>Gerenciametos vCards</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -461,7 +461,7 @@ $permissions = json_decode($permissions, true);
                             </li>
                             <li class="@if(request()->path() == 'user/vcard/create') active @endif">
                                 <a href="{{route('user.vcard.create')}}">
-                                <span class="sub-item">Add vCard</span>
+                                <span class="sub-item">Adicioanr vCard</span>
                                 </a>
                             </li>
                         </ul>
@@ -481,7 +481,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a href="{{route('user.cv')}}">
                         <i class="far fa-file"></i>
-                        <p>CVs Management</p>
+                        <p>Gerenciamento CVs</p>
                     </a>
                 </li>
                 @endif
@@ -493,7 +493,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a data-toggle="collapse" href="#follow">
                         <i class="fas fa-user-friends"></i>
-                        <p>Follower/Following</p>
+                        <p>Seguidor/Seguindo</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -503,7 +503,7 @@ $permissions = json_decode($permissions, true);
                         <ul class="nav nav-collapse">
                             <li class="@if(request()->path() == 'user/follower-list') active @endif">
                                 <a href="{{route('user.follower.list')}}">
-                                <span class="sub-item">Follower</span>
+                                <span class="sub-item">Seguidor</span>
                                 </a>
                             </li>
                             <li class="
@@ -511,7 +511,7 @@ $permissions = json_decode($permissions, true);
                                 @elseif(request()->is('user/following-list')) active
                                 @endif">
                                 <a href="{{route('user.following.list')}}">
-                                <span class="sub-item">Following</span>
+                                <span class="sub-item">Seguindo</span>
                                 </a>
                             </li>
                         </ul>
@@ -521,6 +521,7 @@ $permissions = json_decode($permissions, true);
 
                 @if (!is_null($package))
                 {{-- Language Management Page --}}
+                <!--
                 <li class="nav-item
                     @if(request()->path() == 'user/languages') active
                     @elseif(request()->is('user/language/*/edit')) active
@@ -531,6 +532,7 @@ $permissions = json_decode($permissions, true);
                         <p>Language Management</p>
                     </a>
                 </li>
+            -->
                 @endif
 
                 <li class="nav-item
@@ -539,7 +541,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a href="{{route('user.plan.extend.index')}}">
                         <i class="fas fa-file-invoice-dollar"></i>
-                        <p>Buy Plan</p>
+                        <p>Planos</p>
                     </a>
                 </li>
                 <li class="nav-item
@@ -547,7 +549,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a href="{{route('user.payment-log.index')}}">
                         <i class="fas fa-list-ol"></i>
-                        <p>Payment Logs</p>
+                        <p>Histórico pagamentos</p>
                     </a>
                 </li>
                 @if(!is_null($package))
@@ -565,7 +567,7 @@ $permissions = json_decode($permissions, true);
                     @endif">
                     <a href="{{route('user.changePass')}}">
                         <i class="fas fa-key"></i>
-                        <p>Change Password</p>
+                        <p>Alterar senha</p>
                     </a>
                 </li>
             </ul>
