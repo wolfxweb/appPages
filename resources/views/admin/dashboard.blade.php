@@ -10,7 +10,7 @@
 
 @section('content')
   <div class="mt-2 mb-4">
-    <h2 class="text-white pb-2">Welcome back, {{Auth::guard('admin')->user()->first_name}} {{Auth::guard('admin')->user()->last_name}}!</h2>
+    <h2 class="text-white pb-2">Seja Bem Vindo, {{Auth::guard('admin')->user()->first_name}} {{Auth::guard('admin')->user()->last_name}}!</h2>
   </div>
   <div class="row">
 		@if (empty($admin->role) || (!empty($permissions) && in_array('Registered Users', $permissions)))

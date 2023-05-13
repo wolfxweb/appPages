@@ -12,7 +12,7 @@
 
 @section('content')
     <div class="mt-2 mb-4">
-        <h2 class="pb-2">Welcome back, {{Auth::guard('web')->user()->first_name}} {{Auth::guard('web')->user()->last_name}}!</h2>
+        <h2 class="pb-2">Seja Bem Vindo , {{Auth::guard('web')->user()->first_name}} {{Auth::guard('web')->user()->last_name}}!</h2>
     </div>
     @if (is_null($package))
         @php
@@ -25,16 +25,16 @@
 
         @if ($pendingPackage)
             <div class="alert alert-warning">
-                You have requested a package which needs an action (Approval / Rejection) by Admin. You will be notified via mail once an action is taken.
+                Você solicitou um pacote que precisa de uma ação (Aprovação/Rejeição) por parte do Admin. Você será notificado por e-mail assim que uma ação for tomada.
             </div>
             <div class="alert alert-warning">
-                <strong>Pending Package: </strong> {{$pendingPackage->title}} 
+                <strong>Plano: </strong> {{$pendingPackage->title}} 
                 <span class="badge badge-secondary">{{$pendingPackage->term}}</span>
-                <span class="badge badge-warning">Decision Pending</span>
+                <span class="badge badge-warning">Decisão pendente</span>
             </div>
         @else
             <div class="alert alert-warning">
-                Your membership is expired. Please purchase a new package / extend the current package.
+                Sua associação expirou. Adquira um novo pacote/estenda o pacote atual.
             </div>
         @endif
     @else
@@ -43,32 +43,32 @@
                 <div class="alert border-left border-primary text-dark">
                     @if($package_count >= 2)
                         @if ($next_membership->status == 0)
-                            <strong class="text-danger">You have requested a package which needs an action (Approval / Rejection) by Admin. You will be notified via mail once an action is taken.</strong><br>
+                            <strong class="text-danger">Você solicitou um pacote que precisa de uma ação (Aprovação/Rejeição) por parte do Admin. Você será notificado por e-mail assim que uma ação for tomada. </strong><br>
                         @elseif ($next_membership->status == 1)
-                            <strong class="text-danger">You have another package to activate after the current package expires. You cannot purchase / extend any package, until the next package is activated</strong><br>
+                            <strong class="text-danger">Você tem outro pacote para ativar depois que o pacote atual expirar. Você não pode comprar / estender nenhum pacote, até que o próximo pacote seja ativado </strong><br>
                         @endif
                     @endif
 
-                    <strong>Current Package: </strong> {{$current_package->title}} 
+                    <strong>Plano Atual: </strong> {{$current_package->title}} 
                     <span class="badge badge-secondary">{{$current_package->term}}</span>
                     @if ($current_membership->is_trial == 1)
-                        (Expire Date: {{Carbon\Carbon::parse($current_membership->expire_date)->format('M-d-Y')}})
+                        (Data expiração plano: {{Carbon\Carbon::parse($current_membership->expire_date)->format('M-d-Y')}})
                         <span class="badge badge-primary">Trial</span>
                     @else
-                        (Expire Date: {{$current_package->term === 'lifetime' ? "Lifetime" : Carbon\Carbon::parse($current_membership->expire_date)->format('M-d-Y')}})
+                        (Data expiração plano: {{$current_package->term === 'lifetime' ? "Lifetime" : Carbon\Carbon::parse($current_membership->expire_date)->format('M-d-Y')}})
                     @endif
 
                     @if($package_count >= 2)
                         <div>
-                            <strong>Next Package To Activate: </strong> {{$next_package->title}} <span class="badge badge-secondary">{{$next_package->term}}</span>
+                            <strong>Próximo pacote para ativar: </strong> {{$next_package->title}} <span class="badge badge-secondary">{{$next_package->term}}</span>
                             @if ($current_package->term != 'lifetime' && $current_membership->is_trial != 1) 
                                 (
-                                Activation Date: 
+                                Data ativação: 
                                 {{Carbon\Carbon::parse($next_membership->start_date)->format('M-d-Y')}}, 
-                                Expire Date: {{$next_package->term === 'lifetime' ?  "Lifetime" : Carbon\Carbon::parse($next_membership->expire_date)->format('M-d-Y')}})
+                                Data expiração: {{$next_package->term === 'lifetime' ?  "Lifetime" : Carbon\Carbon::parse($next_membership->expire_date)->format('M-d-Y')}})
                             @endif   
                             @if ($next_membership->status == 0)
-                                <span class="badge badge-warning">Decision Pending</span>
+                                <span class="badge badge-warning">Decisão Pendente</span>
                             @endif
                         </div>
                     @endif
@@ -89,7 +89,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Skills</p>
+                                <p class="card-category">Habilidades</p>
                                 <h4 class="card-title">{{$skills}}</h4>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Portfolios</p>
+                                <p class="card-category">Portiólios</p>
                                 <h4 class="card-title">{{$portfolios}}</h4>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Services</p>
+                                <p class="card-category">Serviços</p>
                                 <h4 class="card-title">{{$services}}</h4>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Testimonials</p>
+                                <p class="card-category">Depoimentos</p>
                                 <h4 class="card-title">{{$testimonials}}</h4>
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Job Experiences</p>
+                                <p class="card-category">Experiências</p>
                                 <h4 class="card-title">{{$job_experiences}}</h4>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Achievements</p>
+                                <p class="card-category">Conquistas</p>
                                 <h4 class="card-title">{{$achievements}}</h4>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Followers</p>
+                                <p class="card-category">Seguidores</p>
                                 <h4 class="card-title">{{$followers}}</h4>
                             </div>
                         </div>
@@ -257,7 +257,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Followings</p>
+                                <p class="card-category">Seguidores</p>
                                 <h4 class="card-title">{{$followings}}</h4>
                             </div>
                         </div>
@@ -275,26 +275,26 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-head-row">
-                                <h4 class="card-title">Recent Payment Logs</h4>
+                                <h4 class="card-title">Registro de pagamento</h4>
                             </div>
                             <p class="card-category">
-                                10 latest payment logs
+                                10 ultimos pagamentos
                             </p>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     @if (count($memberships) == 0)
-                                    <h3 class="text-center">NO PAYMENT LOG FOUND</h3>
+                                    <h3 class="text-center">Nenhum pagamento encontrado.</h3>
                                     @else
                                     <div class="table-responsive">
                                         <table class="table table-striped mt-3">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Transaction Id</th>
-                                                    <th scope="col">Amount</th>
-                                                    <th scope="col">Payment Status</th>
-                                                    <th scope="col">Actions</th>
+                                                    <th scope="col">Transação Id</th>
+                                                    <th scope="col">Valor</th>
+                                                    <th scope="col">Pagamento Status</th>
+                                                    <th scope="col">Ações</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -313,17 +313,17 @@
                                                     </td>
                                                     <td>
                                                         @if ($membership->status == 1)
-                                                        <h3 class="d-inline-block badge badge-success">Success</h3>
+                                                        <h3 class="d-inline-block badge badge-success">Sucesso</h3>
                                                         @elseif ($membership->status == 0)
-                                                        <h3 class="d-inline-block badge badge-warning">Pending</h3>
+                                                        <h3 class="d-inline-block badge badge-warning">Pendente</h3>
                                                         @elseif ($membership->status == 2)
-                                                        <h3 class="d-inline-block badge badge-danger">Rejected</h3>
+                                                        <h3 class="d-inline-block badge badge-danger">Rejeitado</h3>
                                                         @endif
                                                     </td>
                                                     <td>
                                                         @if (!empty($membership->name !== "anonymous"))
                                                         <a class="btn btn-sm btn-info" href="#" data-toggle="modal"
-                                                            data-target="#detailsModal{{$membership->id}}">Detail</a>
+                                                            data-target="#detailsModal{{$membership->id}}">Detalhes</a>
                                                         @else
                                                         -
                                                         @endif
@@ -334,8 +334,8 @@
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Owner
-                                                                    Details
+                                                                <h5 class="modal-title" id="exampleModalLabel">Outros Detalhes
+                                                                    
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -343,53 +343,51 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <h3 class="text-warning">Member details</h3>
-                                                                <label>Name</label>
+                                                                <h3 class="text-warning">Assinante detalhes</h3>
+                                                                <label>Nome</label>
                                                                 <p>{{$membership->user->first_name.' '.$membership->user->last_name}}</p>
                                                                 <label>Email</label>
                                                                 <p>{{$membership->user->email}}</p>
-                                                                <label>Phone</label>
+                                                                <label>Telefone</label>
                                                                 <p>{{$membership->user->phone_number}}</p>
-                                                                <h3 class="text-warning">Payment details</h3>
+                                                                <h3 class="text-warning">Pagamento detalhes</h3>
                                                                 <p><strong
-                                                                    >Cost: </strong> {{$membership->price == 0 ? "Free" : $membership->price}}
+                                                                    >Valor: </strong> {{$membership->price == 0 ? "Free" : $membership->price}}
                                                                 </p>
                                                                 <p><strong
-                                                                    >Currency: </strong> {{$membership->currency}}
+                                                                    >Moeda: </strong> {{$membership->currency}}
                                                                 </p>
                                                                 <p><strong
                                                                     >Method: </strong> {{$membership->payment_method}}
                                                                 </p>
                                                                 <h3 class="text-warning">Package Details</h3>
                                                                 <p><strong
-                                                                    >Title: </strong>{{$membership->package->title}}
+                                                                    >Titulo: </strong>{{$membership->package->title}}
                                                                 </p>
-                                                                <p><strong>Term: </strong> {{$membership->package->term}}
+                                                                <p><strong>Termos: </strong> {{$membership->package->term}}
                                                                 </p>
-                                                                <p><strong>Start
-                                                                    Date: </strong>
+                                                                <p><strong>Data inicio: </strong>
                                                                     @if (\Illuminate\Support\Carbon::parse($membership->start_date)->format('Y') == '9999')
-                                                                        <span class="badge badge-danger">Never Activated</span>
+                                                                        <span class="badge badge-danger">Nunca ativado</span>
                                                                     @else
                                                                         {{\Illuminate\Support\Carbon::parse($membership->start_date)->format('M-d-Y')}} 
                                                                     @endif
                                                                 </p>
-                                                                <p><strong>Expire
-                                                                    Date: </strong>
+                                                                <p><strong>Data expiração: </strong>
                                                                     
                                                                     @if (\Illuminate\Support\Carbon::parse($membership->start_date)->format('Y') == '9999')
                                                                         -
                                                                     @else
                                                                         @if ($membership->modified == 1)
                                                                             {{\Illuminate\Support\Carbon::parse($membership->expire_date)->addDay()->format('M-d-Y')}}
-                                                                            <span class="badge badge-primary btn-xs">modified by Admin</span>
+                                                                            <span class="badge badge-primary btn-xs">modificado pelo adminstrador</span>
                                                                         @else
                                                                             {{$membership->package->term == 'lifetime' ? 'Lifetime' : \Illuminate\Support\Carbon::parse($membership->expire_date)->format('M-d-Y')}}
                                                                         @endif
                                                                     @endif
                                                                 </p>
                                                                 <p>
-                                                                    <strong >Purchase Type: </strong>
+                                                                    <strong >Plano selecionado: </strong>
                                                                     @if($membership->is_trial == 1)
                                                                     Trial
                                                                     @else
@@ -399,7 +397,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                                Close
+                                                                Fechar
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -424,10 +422,10 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-head-row">
-                                <h4 class="card-title">Latest Followings</h4>
+                                <h4 class="card-title">Novos seguidores</h4>
                             </div>
                             <p class="card-category">
-                                10 latest followings
+                                10 ultimos seguidores
                             </p>
                         </div>
                         <div class="card-body">
@@ -437,9 +435,9 @@
                                         <table class="table table-striped mt-3">
                                             <thead>
                                             <tr>
-                                                <th scope="col">Image</th>
-                                                <th scope="col">User name</th>
-                                                <th scope="col">Actions</th>
+                                                <th scope="col">Imagem</th>
+                                                <th scope="col">Nome usuáro</th>
+                                                <th scope="col">Ações</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -452,10 +450,10 @@
                                                           <span class="btn-label">
                                                             <i class="fas fa-eye"></i>
                                                           </span>
-                                                            View
+                                                            Visualição
                                                         </a>
                                                         <a class="btn btn-danger btn-sm" href="{{route('user.unfollow', $user->id)}}">
-                                                          Unfollow
+                                                          Deixar de seguir
                                                         </a>
                                                     </td>
                                                 </tr>
