@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">{{ __('Home Page Version') }}</h4>
+    <h4 class="page-title">{{ __('Templates') }}</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('user-dashboard')}}">
@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">{{ __('Home Page Version') }}</a>
+        <a href="#">{{ __('Template Modelos') }}</a>
       </li>
     </ul>
   </div>
@@ -24,7 +24,7 @@
         <div class="card-header">
           <div class="row">
             <div class="col-lg-4">
-              <div class="card-title">{{ __('Home Settings') }}</div>
+              <div class="card-title">{{ __('Templates configuração') }}</div>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
                 @csrf
 
                 <div class="form-group">
-                    <label class="form-label">Theme *</label>
+                    <label class="form-label">Templates *</label>
                     <div class="row">
                       @php
                           $profile = file_exists('resources/views/user/profile');
@@ -49,7 +49,7 @@
                                   <img src="{{asset('assets/front/img/user/themes/light_theme.png')}}" alt="title" class="imagecheck-image">
                               </figure>
                           </label>
-                          <h5 class="text-center">Light Theme</h5>
+                          <h5 class="text-center">Light</h5>
                       </div>
                       <div class="col-6 col-sm-4 mb-2">
                           <label class="imagecheck mb-2">
@@ -58,7 +58,7 @@
                                   <img src="{{asset('assets/front/img/user/themes/dark_theme.png')}}" alt="title" class="imagecheck-image">
                               </figure>
                           </label>
-                          <h5 class="text-center">Dark Theme</h5>
+                          <h5 class="text-center">Dark</h5>
                       </div>
                       @endif
                       <div class="col-6 col-sm-4 mb-2">
@@ -68,7 +68,7 @@
                                   <img src="{{asset('assets/front/img/user/themes/theme1.jpg')}}" alt="title" class="imagecheck-image">
                               </figure>
                           </label>
-                          <h5 class="text-center">Theme 1</h5>
+                          <h5 class="text-center">Modelo  1</h5>
                       </div>
                       <div class="col-6 col-sm-4 mb-2">
                           <label class="imagecheck mb-2">
@@ -77,7 +77,7 @@
                                   <img src="{{asset('assets/front/img/user/themes/theme2.jpg')}}" alt="title" class="imagecheck-image">
                               </figure>
                           </label>
-                          <h5 class="text-center">Theme 2</h5>
+                          <h5 class="text-center">Modelo 2</h5>
                       </div>
                       <div class="col-6 col-sm-4 mb-2">
                           <label class="imagecheck mb-2">
@@ -86,7 +86,7 @@
                                   <img src="{{asset('assets/front/img/user/themes/theme3.jpg')}}" alt="title" class="imagecheck-image">
                               </figure>
                           </label>
-                          <h5 class="text-center">Theme 3</h5>
+                          <h5 class="text-center">Modelo 3</h5>
                       </div>
                       <div class="col-6 col-sm-4 mb-2">
                           <label class="imagecheck mb-2">
@@ -95,7 +95,7 @@
                                   <img src="{{asset('assets/front/img/user/themes/theme4.jpg')}}" alt="title" class="imagecheck-image">
                               </figure>
                           </label>
-                          <h5 class="text-center">Theme 4</h5>
+                          <h5 class="text-center">Modelo 4</h5>
                       </div>
                       <div class="col-6 col-sm-4 mb-2">
                           <label class="imagecheck mb-2">
@@ -104,7 +104,7 @@
                                   <img src="{{asset('assets/front/img/user/themes/theme5.jpg')}}" alt="title" class="imagecheck-image">
                               </figure>
                           </label>
-                          <h5 class="text-center">Theme 5</h5>
+                          <h5 class="text-center">Modelo 5</h5>
                       </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
           <div class="row">
             <div class="col-12 text-center">
               <button type="submit" id="submitBtn" class="btn btn-success">
-                {{ __('Update') }}
+                {{ __('Atualizar') }}
               </button>
             </div>
           </div>

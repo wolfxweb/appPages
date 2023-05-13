@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<title>{{$bs->website_title}} - User Dashboard</title>
+	<title>{{$bs->website_title}} - Painel Usuário</title>
 	<link rel="icon" href="{{!empty($userBs->favicon) ? asset('assets/front/img/user/'.$userBs->favicon) : ''}}">
 	@includeif('user.partials.styles')
     @php

@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Basic Settings</a>
+        <a href="#">Configuraçãoes</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
@@ -27,7 +27,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Update Preloader</div>
+          <div class="card-title">Atualizar Preloader</div>
         </div>
         <div class="card-body pt-5 pb-4">
           <div class="row">
@@ -44,7 +44,7 @@
                         <img src="{{isset($basic_setting->preloader) ? asset('assets/front/img/user/'.$basic_setting->preloader) :  asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
                       </div>
                       <input type="file" name="file" id="image" class="form-control">
-                      <p class="text-warning">Only JPG, JPEG, PNG, GIF images are allowed</p>
+                      <p class="text-warning">Apenas JPG, JPEG, PNG, GIF imagens são permitidas</p>
                       @if ($errors->has('file'))
                       <p id="errfile" class="mb-0 text-danger em">{{$errors->first('file')}}</p>
                       @endif
@@ -56,7 +56,7 @@
                   <div class="form">
                     <div class="form-group from-show-notify row">
                       <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="submit" class="btn btn-success">Atualizar</button>
                       </div>
                     </div>
                   </div>

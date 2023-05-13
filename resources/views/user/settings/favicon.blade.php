@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Basic Settings</a>
+        <a href="#">Comfigurações </a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
@@ -27,7 +27,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Update Favicon</div>
+          <div class="card-title">Atualizar Favicon</div>
         </div>
         <div class="card-body pt-5 pb-4">
           <div class="row">
@@ -55,7 +55,7 @@
                   <div class="form">
                     <div class="form-group from-show-notify row">
                       <div class="col-12 text-center">
-                        <button type="submit"  class="btn btn-success">Update</button>
+                        <button type="submit"  class="btn btn-success">Atualizar</button>
                       </div>
                     </div>
                   </div>

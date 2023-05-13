@@ -3,7 +3,7 @@
 @section('content')
 @if (!empty($features) && is_array($features) && in_array('Subdomain', $features))
 <div class="page-header">
-    <h4 class="page-title">Subdomain & Path URL</h4>
+    <h4 class="page-title">Subomínio & Path URL</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('user-dashboard')}}">
@@ -14,19 +14,19 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Domains & URLs</a>
+            <a href="#">Dominíos & URLs</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Subdomain & Path URL</a>
+            <a href="#">Subdomínio & Path URL</a>
         </li>
     </ul>
 </div>
 @else
 <div class="page-header">
-    <h4 class="page-title">Path Based URL</h4>
+    <h4 class="page-title">URL Base</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('user-dashboard')}}">
@@ -37,7 +37,7 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Path Based URL</a>
+            <a href="#">URL Base</a>
         </li>
     </ul>
 </div>
@@ -51,7 +51,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="card-title d-inline-block">Subdomain</div>
+                            <div class="card-title d-inline-block">Subdomínio</div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Subdomain</th>
+                                            <th scope="col">Subdomínio</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -90,7 +90,7 @@
     <div class="{{cPackageHasSubdomain(Auth::user()) ? 'col-md-6' : 'col-md-12'}}">
         <div class="card">
             <div class="card-header card-title">
-                Path Based URL
+              URL Base
             </div>
             <div class="card-body">
                 <div class="table-responsive">

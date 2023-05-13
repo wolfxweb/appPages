@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Basic Settings</a>
+        <a href="#">Configurações</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
@@ -28,14 +28,14 @@
       <div class="card">
         <form id="socialForm" action="{{route('user.social.store')}}" method="post">
           <div class="card-header">
-            <div class="card-title">Add Social Link</div>
+            <div class="card-title">Adicionar Social Link</div>
           </div>
           <div class="card-body pt-5 pb-5">
             <div class="row">
               <div class="col-lg-6 offset-lg-3">
                 @csrf
                 <div class="form-group">
-                  <label for="">Social Icon **</label>
+                  <label for="">Selecione o icone **</label>
                   <div class="btn-group d-block">
                       <button type="button" class="btn btn-primary iconpicker-component"><i
                               class="fa fa-fw fa-heart"></i></button>
@@ -49,7 +49,7 @@
                     <p class="mb-0 text-danger">{{$errors->first('icon')}}</p>
                   @endif
                   <div class="mt-2">
-                    <small>NB: click on the dropdown icon to select a social link icon.</small>
+                    <small>NB: clique no ícone suspenso para selecionar um ícone de link social.</small>
                   </div>
                 </div>
                 <div class="form-group">
@@ -60,10 +60,10 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="">Serial Number **</label>
+                  <label for="">Numero serial **</label>
                   <input type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
                   <p id="errserial_number" class="mb-0 text-danger em"></p>
-                  <p class="text-warning"><small>The higher the serial number is, the later the social link will be shown.</small></p>
+                  <p class="text-warning"><small>Quanto maior o número de série, mais tarde o link social será exibido.</small></p>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@
 
                 </div>
                 <div class="col-12 text-center">
-                  <button type="submit" id="displayNotif" class="btn btn-success">Submit</button>
+                  <button type="submit" id="displayNotif" class="btn btn-success">Enviar</button>
                 </div>
               </div>
             </div>
@@ -85,23 +85,23 @@
 
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Social Links</div>
+          <div class="card-title">Links Cadastrados</div>
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col-lg-12">
               @if (count($socials) == 0)
-                <h2 class="text-center">NO LINK ADDED</h2>
+                <h2 class="text-center">Nenhum linck cadastrado.</h2>
               @else
                 <div class="table-responsive">
                   <table class="table table-striped mt-3">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Icon</th>
+                            <th scope="col">Icone</th>
                             <th scope="col">URL</th>
-                            <th scope="col">Serial Number</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">Numero serial</th>
+                            <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,7 +116,7 @@
                                 <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                Edit
+                                Editar
                             </a>
                             <form class="d-inline-block deleteform" action="{{route('user.social.delete')}}" method="post">
                               @csrf
@@ -125,7 +125,7 @@
                                 <span class="btn-label">
                                   <i class="fas fa-trash"></i>
                                 </span>
-                                Delete
+                                Excluir
                               </button>
                             </form>
                           </td>

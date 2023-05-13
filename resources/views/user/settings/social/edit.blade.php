@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Basic Settings</a>
+        <a href="#">Configurações</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
@@ -28,7 +28,7 @@
       <div class="card">
         <form id="socialForm" action="{{route('user.social.update')}}" method="post">
           <div class="card-header">
-            <div class="card-title d-inline-block">Edit Social Link</div>
+            <div class="card-title d-inline-block">Editar Social Link</div>
             <a class="btn btn-info btn-sm float-right d-inline-block" href="{{route('user.social.index')}}">
                 <span class="btn-label">
                     <i class="fas fa-backward"></i>
@@ -42,7 +42,7 @@
                 @csrf
                 <input type="hidden" name="socialid" value="{{$social->id}}">
                 <div class="form-group">
-                  <label for="">Social Icon **</label>
+                  <label for="">Selecione o icone **</label>
                   <div class="btn-group d-block">
                       <button type="button" class="btn btn-primary iconpicker-component"><i class="{{$social->icon}}"></i></button>
                       <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
@@ -55,7 +55,7 @@
                     <p class="mb-0 text-danger">{{$errors->first('icon')}}</p>
                   @endif
                   <div class="mt-2">
-                    <small>NB: click on the dropdown icon to select a social link icon.</small>
+                    <small>NB: clique no ícone suspenso para selecionar um ícone de link social.</small>
                   </div>
                 </div>
                 <div class="form-group">
@@ -66,12 +66,12 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <label for="">Serial Number **</label>
+                  <label for="">Numero serial **</label>
                   <input type="number" class="form-control ltr" name="serial_number" value="{{$social->serial_number}}" placeholder="Enter Serial Number">
                   @if ($errors->has('serial_number'))
                     <p class="mb-0 text-danger">{{$errors->first('serial_number')}}</p>
                   @endif
-                  <p class="text-warning"><small>The higher the serial number is, the later the social link will be shown.</small></p>
+                  <p class="text-warning"><small>Quanto maior o número de série, mais tarde o link social será exibido.</small></p>
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@
 
                 </div>
                 <div class="col-12 text-center">
-                  <button type="submit" id="displayNotif" class="btn btn-success">Update</button>
+                  <button type="submit" id="displayNotif" class="btn btn-success">Atualizar</button>
                 </div>
               </div>
             </div>
