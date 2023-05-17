@@ -20,7 +20,7 @@
 @endphp
 @section('content')
     <div class="page-header">
-        <h4 class="page-title">Preference</h4>
+        <h4 class="page-title">Preferência</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="{{route('user-dashboard')}}">
@@ -31,13 +31,13 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">User</a>
+                <a href="#">Preferência</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Preference</a>
+                <a href="#">Uauário</a>
             </li>
         </ul>
     </div>
@@ -46,7 +46,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title d-inline-block">Preference</div>
+                    <div class="card-title d-inline-block">Preferência</div>
                 </div>
                 <div class="card-body">
                     <div class="row justify-content-center">
@@ -62,7 +62,7 @@
                                                     <input type="checkbox" name="permissions[]" value="Follow/Unfollow"
                                                         class="selectgroup-input"
                                                         @if(is_array($preferences) && in_array('Follow/Unfollow', $preferences)) checked @endif>
-                                                    <span class="selectgroup-button">Follow/Unfollow</span>
+                                                    <span class="selectgroup-button">Segiur/Deixar de seguir</span>
                                                 </label>
                                             @endif
                                             @if(in_array('Blog', $permissions))
@@ -78,7 +78,7 @@
                                                     <input type="checkbox" name="permissions[]" value="Portfolio"
                                                         class="selectgroup-input"
                                                         @if(is_array($preferences) && in_array('Portfolio', $preferences)) checked @endif>
-                                                    <span class="selectgroup-button">Portfolio</span>
+                                                    <span class="selectgroup-button">Portfólio</span>
                                                 </label>
                                             @endif
                                             @if(in_array('Achievements', $permissions))
@@ -86,7 +86,7 @@
                                                     <input type="checkbox" name="permissions[]" value="Achievements"
                                                         class="selectgroup-input"
                                                         @if(is_array($preferences) && in_array('Achievements', $preferences)) checked @endif>
-                                                    <span class="selectgroup-button">Achievements</span>
+                                                    <span class="selectgroup-button">Conquistas</span>
                                                 </label>
                                             @endif
                                             @if(in_array('Skill', $permissions))
@@ -94,7 +94,7 @@
                                                     <input type="checkbox" name="permissions[]" value="Skill"
                                                         class="selectgroup-input"
                                                         @if(is_array($preferences) && in_array('Skill', $preferences)) checked @endif>
-                                                    <span class="selectgroup-button">Skill</span>
+                                                    <span class="selectgroup-button">Habilidades</span>
                                                 </label>
                                             @endif
                                             @if(in_array('Service', $permissions))
@@ -102,7 +102,7 @@
                                                     <input type="checkbox" name="permissions[]" value="Service"
                                                         class="selectgroup-input"
                                                         @if(is_array($preferences) && in_array('Service', $preferences)) checked @endif>
-                                                    <span class="selectgroup-button">Service</span>
+                                                    <span class="selectgroup-button">Serviços</span>
                                                 </label>
                                             @endif
                                             @if(in_array('Experience', $permissions))
@@ -110,7 +110,7 @@
                                                     <input type="checkbox" name="permissions[]" value="Experience"
                                                         class="selectgroup-input"
                                                         @if(is_array($preferences) && in_array('Experience', $preferences)) checked @endif>
-                                                    <span class="selectgroup-button">Experience</span>
+                                                    <span class="selectgroup-button">Experiência</span>
                                                 </label>
                                             @endif
                                             @if(in_array('Testimonial', $permissions))
@@ -118,7 +118,7 @@
                                                     <input type="checkbox" name="permissions[]" value="Testimonial"
                                                         class="selectgroup-input"
                                                         @if(is_array($preferences) && in_array('Testimonial', $preferences)) checked @endif>
-                                                    <span class="selectgroup-button">Testimonial</span>
+                                                    <span class="selectgroup-button">Depoimentos</span>
                                                 </label>
                                             @endif
                                         @endif
@@ -126,19 +126,19 @@
                                             <input type="checkbox" name="permissions[]" value="Contact"
                                                    class="selectgroup-input"
                                                    @if(is_array($preferences) && in_array('Contact', $preferences)) checked @endif>
-                                            <span class="selectgroup-button">Contact</span>
+                                            <span class="selectgroup-button">Contato</span>
                                         </label>
                                         <label class="selectgroup-item">
                                             <input type="checkbox" name="permissions[]" value="Footer Mail"
                                                    class="selectgroup-input"
                                                    @if(is_array($preferences) && in_array('Footer Mail', $preferences)) checked @endif>
-                                            <span class="selectgroup-button">Footer Mail</span>
+                                            <span class="selectgroup-button">E-mail</span>
                                         </label>
                                         <label class="selectgroup-item">
                                             <input type="checkbox" name="permissions[]" value="Profile Listing"
                                                    class="selectgroup-input"
                                                    @if(is_array($preferences) && in_array('Profile Listing', $preferences)) checked @endif>
-                                            <span class="selectgroup-button">Profile Listing</span>
+                                            <span class="selectgroup-button">Lista de perfis</span>
                                         </label>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@
                     <div class="form">
                         <div class="form-group from-show-notify row">
                             <div class="col-12 text-center">
-                                <button type="submit" id="permissionBtn" class="btn btn-success">Update</button>
+                                <button type="submit" id="permissionBtn" class="btn btn-success">Atualizar</button>
                             </div>
                         </div>
                     </div>

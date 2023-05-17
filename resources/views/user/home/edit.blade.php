@@ -18,7 +18,7 @@ $userDefaultLang = \App\Models\User\Language::where([
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Home Sections</h4>
+    <h4 class="page-title">Seções da página</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('user-dashboard')}}">
@@ -29,7 +29,7 @@ $userDefaultLang = \App\Models\User\Language::where([
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Home Sections</a>
+        <a href="#">Seções página</a>
       </li>
     </ul>
   </div>
@@ -41,6 +41,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                 <div class="col-lg-6">
                     <div class="card-title d-inline-block">Home Sections</div>
                 </div>
+                <!--
                 <div class="col-lg-3 offset-lg-3">
                     @if(!is_null($userDefaultLang))
                         @if (!empty($userLanguages))
@@ -53,6 +54,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                         @endif
                     @endif
                </div>
+            -->
             </div>
         </div>
         <div class="card-body">
@@ -66,12 +68,12 @@ $userDefaultLang = \App\Models\User\Language::where([
                     <div class="col-lg-12">
                         <div class="form-group">
                             <br>
-                            <h3 class="text-warning">Hero Section</h3>
+                            <h3 class="text-warning">Topo página</h3>
                             <hr class="border-top">
                         </div>
                         <div class="form-group">
                             <div class="col-12 mb-2">
-                                <label for="logo"><strong>Hero Section Image</strong></label>
+                                <label for="logo"><strong>Imagem</strong></label>
                             </div>
                             <div class="showHeroImage mb-3">
                                 <img src="{{$home_setting->hero_image ? asset('assets/front/img/user/home_settings/'.$home_setting->hero_image) : asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
@@ -90,7 +92,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                 <div class="row">
                     <div class="col-lg-6 pr-0">
                       <div class="form-group">
-                          <label for="">First Name</label>
+                          <label for="">Primeiro nome</label>
                           <input type="hidden" name="types[]" value="first_name">
                           <input type="text" class="form-control" name="first_name" placeholder="" value="{{$home_setting->first_name}}">
                           <p id="errfirst_name" class="mb-0 text-danger em"></p>
@@ -98,7 +100,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                     </div>
                     <div class="col-lg-6 pr-0">
                       <div class="form-group">
-                          <label for="">Last Name</label>
+                          <label for="">Segundo nome</label>
                           <input type="hidden" name="types[]" value="last_name">
                           <input type="text" class="form-control" name="last_name" placeholder="" value="{{$home_setting->last_name}}">
                           <p id="errlast_name" class="mb-0 text-danger em"></p>
@@ -108,10 +110,10 @@ $userDefaultLang = \App\Models\User\Language::where([
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="">Designation **</label>
+                            <label for="">Atibuição **</label>
                             <input type="hidden" name="types[]" value="designation">
-                            <input type="text" class="form-control" name="designation" placeholder="Enter designations" value="{{$home_setting->designation}}" data-role="tagsinput">
-                            <p class="text-warning mb-0">use comma (,) to add multiple designations</p>
+                            <input type="text" class="form-control" name="designation" placeholder="" value="{{$home_setting->designation}}" data-role="tagsinput">
+                            <p class="text-warning mb-0">use vírgula (,) para adicionar multiplas atribuições</p>
                             <p id="errdesignation" class="mb-0 text-danger em"></p>
                         </div>
                     </div>
@@ -120,12 +122,12 @@ $userDefaultLang = \App\Models\User\Language::where([
                       <div class="col-lg-12">
                           <div class="form-group">
                               <br>
-                              <h3 class="text-warning">About Section</h3>
+                              <h3 class="text-warning">Sobre</h3>
                               <hr class="border-top">
                           </div>
                           <div class="form-group">
                               <div class="col-12 mb-2">
-                                  <label for="logo"><strong>About Section Image</strong></label>
+                                  <label for="logo"><strong>Sobre Imagem</strong></label>
                               </div>
                               <div class="col-md-12 showAboutImage mb-3">
                                   <img src="{{$home_setting->about_image ? asset('assets/front/img/user/home_settings/'.$home_setting->about_image) : asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
@@ -139,7 +141,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                   <div class="row">
                       <div class="col-lg-6 pr-0">
                         <div class="form-group">
-                            <label for="">About Section Title</label>
+                            <label for="">Sobre Titulo</label>
                             <input type="hidden" name="types[]" value="about_title">
                             <input type="text" class="form-control" name="about_title" placeholder="" value="{{$home_setting->about_title}}">
                             <p id="errabout_title" class="mb-0 text-danger em"></p>
@@ -147,7 +149,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                       </div>
                       <div class="col-lg-6 pl-0">
                         <div class="form-group">
-                            <label for="">About Section Subtitle</label>
+                            <label for="">Subtítulo</label>
                             <input type="hidden" name="types[]" value="about_subtitle">
                             <input type="text" class="form-control" name="about_subtitle" placeholder="" value="{{$home_setting->about_subtitle}}">
                             <p id="errabout_subtitle" class="mb-0 text-danger em"></p>
@@ -155,7 +157,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                       </div>
                   </div>
                   <div class="form-group">
-                      <label for="">About Section Content</label>
+                      <label for="">Sobre conteúdo</label>
                       <input type="hidden" name="types[]" value="about_content">
                       <textarea class="form-control" name="about_content" rows="5">{{$home_setting->about_content}}</textarea>
                       <p id="errabout_content" class="mb-0 text-danger em"></p>
@@ -167,12 +169,12 @@ $userDefaultLang = \App\Models\User\Language::where([
                         <div class="col-12">
                             <div class="form-group">
                                 <br>
-                                <h3 class="text-warning">Skills Section</h3>
+                                <h3 class="text-warning">Habilidades</h3>
                                 <hr class="border-top">
                             </div>
                             <div class="form-group">
                                 <div class="col-12 mb-2">
-                                    <label for="logo"><strong>Skills Image</strong></label>
+                                    <label for="logo"><strong>Hibilidades Imagens</strong></label>
                                 </div>
                                 <div class="col-md-12 showSkillsImage mb-3">
                                     <img src="{{$home_setting->skills_image ? asset('assets/front/img/user/home_settings/'.$home_setting->skills_image) : asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
@@ -184,7 +186,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                             <div class="row">
                                 <div class="col-lg-6 pr-0">
                                     <div class="form-group">
-                                        <label for="">Skills Section Title</label>
+                                        <label for="">Habilidades titulo</label>
                                         <input type="hidden" name="types[]" value="skills_title">
                                         <input type="text" class="form-control" name="skills_title" placeholder="" value="{{$home_setting->skills_title}}">
                                         <p id="errskills_title" class="mb-0 text-danger em"></p>
@@ -192,7 +194,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                                 </div>
                                 <div class="col-lg-6 pl-0">
                                     <div class="form-group">
-                                        <label for="">Skills Section Subtitle</label>
+                                        <label for="">Habilidade subtítulo</label>
                                         <input type="hidden" name="types[]" value="skills_subtitle">
                                         <input type="text" class="form-control" name="skills_subtitle" placeholder="" value="{{$home_setting->skills_subtitle}}">
                                         <p id="errskills_subtitle" class="mb-0 text-danger em"></p>
@@ -200,7 +202,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="">Skills Section Content</label>
+                                <label for="">Habilidade conteúdo</label>
                                 <input type="hidden" name="types[]" value="skills_content">
                                 <textarea class="form-control" name="skills_content" rows="5" placeholder="" >{{ $home_setting->skills_content }}</textarea>
                                 <p id="errskills_content" class="mb-0 text-danger em"></p>
@@ -216,13 +218,13 @@ $userDefaultLang = \App\Models\User\Language::where([
                       <div class="col-12">
                           <div class="form-group">
                               <br>
-                              <h3 class="text-warning">Service Section</h3>
+                              <h3 class="text-warning">Serviços</h3>
                               <hr class="border-top">
                           </div>
                           <div class="row">
                               <div class="col-lg-6 pr-0">
                                 <div class="form-group">
-                                    <label for="">Service Section Title</label>
+                                    <label for="">Seviço titulo</label>
                                     <input type="hidden" name="types[]" value="service_title">
                                     <input type="text" class="form-control" name="service_title" placeholder="" value="{{$home_setting->service_title}}">
                                     <p id="errservice_title" class="mb-0 text-danger em"></p>
@@ -230,7 +232,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                               </div>
                               <div class="col-lg-6 pl-0">
                                 <div class="form-group">
-                                    <label for="">Service Section Subtitle</label>
+                                    <label for="">Serviço subtítulo</label>
                                     <input type="hidden" name="types[]" value="service_subtitle">
                                     <input type="text" class="form-control" name="service_subtitle" placeholder="" value="{{$home_setting->service_subtitle}}">
                                     <p id="errservice_subtitle" class="mb-0 text-danger em"></p>
@@ -247,13 +249,13 @@ $userDefaultLang = \App\Models\User\Language::where([
                       <div class="col-12">
                           <div class="form-group">
                               <br>
-                              <h3 class="text-warning">Experience Section</h3>
+                              <h3 class="text-warning">Experiência</h3>
                               <hr class="border-top">
                           </div>
                           <div class="row">
                               <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Experience Section Title</label>
+                                    <label for="">Experiência Título</label>
                                     <input type="hidden" name="types[]" value="experience_title">
                                     <input type="text" class="form-control" name="experience_title" placeholder="" value="{{$home_setting->experience_title}}">
                                     <p id="errexperience_title" class="mb-0 text-danger em"></p>
@@ -261,7 +263,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                               </div>
                               <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Experience Section Subtitle</label>
+                                    <label for="">Experiência Subtítulo</label>
                                     <input type="hidden" name="types[]" value="experience_subtitle">
                                     <input type="text" class="form-control" name="experience_subtitle" placeholder="" value="{{$home_setting->experience_subtitle}}">
                                     <p id="errexperience_subtitle" class="mb-0 text-danger em"></p>
@@ -283,7 +285,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                             </div>
                             <div class="form-group">
                                 <div class="col-12 mb-2">
-                                    <label for="logo"><strong>Achievements Image</strong></label>
+                                    <label for="logo"><strong>Conquistas</strong></label>
                                 </div>
                                 <div class="col-md-12 showAchievementImage mb-3">
                                     <img src="{{$home_setting->achievement_image ? asset('assets/front/img/user/home_settings/'.$home_setting->achievement_image) : asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
@@ -295,7 +297,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                             <div class="row">
                                 <div class="col-lg-6 pr-0">
                                     <div class="form-group">
-                                        <label for="">Achievement Section Title</label>
+                                        <label for="">Conquistas Título</label>
                                         <input type="hidden" name="types[]" value="achievement_title">
                                         <input type="text" class="form-control" name="achievement_title" placeholder="" value="{{$home_setting->achievement_title}}">
                                         <p id="errachievement_title" class="mb-0 text-danger em"></p>
@@ -303,7 +305,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                                 </div>
                                 <div class="col-lg-6 pl-0">
                                     <div class="form-group">
-                                        <label for="">Achievement Section Subtitle</label>
+                                        <label for="">Conquistas Subtítulo</label>
                                         <input type="hidden" name="types[]" value="achievement_subtitle">
                                         <input type="text" class="form-control" name="achievement_subtitle" placeholder="" value="{{$home_setting->achievement_subtitle}}">
                                         <p id="errachievement_subtitle" class="mb-0 text-danger em"></p>
@@ -321,13 +323,13 @@ $userDefaultLang = \App\Models\User\Language::where([
                       <div class="col-12">
                           <div class="form-group">
                               <br>
-                              <h3 class="text-warning">Portfolio Section</h3>
+                              <h3 class="text-warning">Portifólio</h3>
                               <hr class="border-top">
                           </div>
                           <div class="row">
                               <div class="col-lg-6 pr-0">
                                 <div class="form-group">
-                                    <label for="">Portfolio Section Title</label>
+                                    <label for="">Portifólio Titulo</label>
                                     <input type="hidden" name="types[]" value="portfolio_title">
                                     <input type="text" class="form-control" name="portfolio_title" placeholder="" value="{{$home_setting->portfolio_title}}">
                                     <p id="errportfolio_title" class="mb-0 text-danger em"></p>
@@ -335,7 +337,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                               </div>
                               <div class="col-lg-6 pl-0">
                                 <div class="form-group">
-                                    <label for="">Portfolio Section Subtitle</label>
+                                    <label for="">Portifólio Subtítulo</label>
                                     <input type="hidden" name="types[]" value="portfolio_subtitle">
                                     <input type="text" class="form-control" name="portfolio_subtitle" placeholder="" value="{{$home_setting->portfolio_subtitle}}">
                                     <p id="errportfolio_subtitle" class="mb-0 text-danger em"></p>
@@ -351,13 +353,13 @@ $userDefaultLang = \App\Models\User\Language::where([
                       <div class="col-12">
                           <div class="form-group">
                               <br>
-                              <h3 class="text-warning">Testimonial Section</h3>
+                              <h3 class="text-warning">Depoimentos</h3>
                               <hr class="border-top">
                           </div>
                           <div class="row">
                               <div class="col-lg-6 pr-0">
                                 <div class="form-group">
-                                    <label for="">Testimonial Section Title</label>
+                                    <label for="">Depoimentos Titulo</label>
                                     <input type="hidden" name="types[]" value="testimonial_title">
                                     <input type="text" class="form-control" name="testimonial_title" placeholder="" value="{{$home_setting->testimonial_title}}">
                                     <p id="errtestimonial_title" class="mb-0 text-danger em"></p>
@@ -365,7 +367,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                               </div>
                               <div class="col-lg-6 pl-0">
                                 <div class="form-group">
-                                    <label for="">Testimonial Section Subtitle</label>
+                                    <label for="">Depoimentos Subtítulo</label>
                                     <input type="hidden" name="types[]" value="testimonial_subtitle">
                                     <input type="text" class="form-control" name="testimonial_subtitle" placeholder="" value="{{$home_setting->testimonial_subtitle}}">
                                     <p id="errtestimonial_subtitle" class="mb-0 text-danger em"></p>
@@ -381,13 +383,13 @@ $userDefaultLang = \App\Models\User\Language::where([
                       <div class="col-12">
                           <div class="form-group">
                               <br>
-                              <h3 class="text-warning">Blog Section</h3>
+                              <h3 class="text-warning">Blog </h3>
                               <hr class="border-top">
                           </div>
                           <div class="row">
                               <div class="col-lg-6 pr-0">
                                 <div class="form-group">
-                                    <label for="">Blog Section Title</label>
+                                    <label for="">Blog Titulo</label>
                                     <input type="hidden" name="types[]" value="blog_title">
                                     <input type="text" class="form-control" name="blog_title" placeholder="Enter blog keyword" value="{{$home_setting->blog_title}}">
                                     <p id="errblog_title" class="mb-0 text-danger em"></p>
@@ -395,7 +397,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                               </div>
                               <div class="col-lg-6 pl-0">
                                 <div class="form-group">
-                                    <label for="">Blog Section Subtitle</label>
+                                    <label for="">Blog Subtítulo</label>
                                     <input type="hidden" name="types[]" value="blog_subtitle">
                                     <input type="text" class="form-control" name="blog_subtitle" placeholder="Enter blog title" value="{{$home_setting->blog_subtitle}}">
                                     <p id="errblog_subtitle" class="mb-0 text-danger em"></p>
@@ -411,13 +413,13 @@ $userDefaultLang = \App\Models\User\Language::where([
                       <div class="col-12">
                           <div class="form-group">
                               <br>
-                              <h3 class="text-warning">Contact Section</h3>
+                              <h3 class="text-warning">Contato</h3>
                               <hr class="border-top">
                           </div>
                           <div class="row">
                               <div class="col-lg-6 pr-0">
                                 <div class="form-group">
-                                    <label for="">Contact Section Title</label>
+                                    <label for="">Contato Titulo</label>
                                     <input type="hidden" name="types[]" value="contact_title">
                                     <input type="text" class="form-control" name="contact_title" placeholder="Enter get in touch keyword" value="{{$home_setting->contact_title}}">
                                     <p id="errcontact_title" class="mb-0 text-danger em"></p>
@@ -425,7 +427,7 @@ $userDefaultLang = \App\Models\User\Language::where([
                               </div>
                               <div class="col-lg-6 pl-0">
                                 <div class="form-group">
-                                    <label for="">Contact Section Subtitle</label>
+                                    <label for="">Contato Subtítulo</label>
                                     <input type="hidden" name="types[]" value="contact_subtitle">
                                     <input type="text" class="form-control" name="contact_subtitle" placeholder="Enter get in touch title" value="{{$home_setting->contact_subtitle}}">
                                     <p id="errcontact_subtitle" class="mb-0 text-danger em"></p>
@@ -443,7 +445,7 @@ $userDefaultLang = \App\Models\User\Language::where([
           <div class="form">
             <div class="form-group from-show-notify row">
               <div class="col-12 text-center">
-                <button type="submit" id="submitBtn" class="btn btn-success">Update</button>
+                <button type="submit" id="submitBtn" class="btn btn-success">Ataulizarß</button>
               </div>
             </div>
           </div>
