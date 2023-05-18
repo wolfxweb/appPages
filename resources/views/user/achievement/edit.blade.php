@@ -17,38 +17,17 @@
 @endif
 
 @section('content')
-  <div class="page-header">
-    <h4 class="page-title">Edit Achievement</h4>
-    <ul class="breadcrumbs">
-      <li class="nav-home">
-        <a href="{{route('user-dashboard')}}">
-          <i class="flaticon-home"></i>
-        </a>
-      </li>
-      <li class="separator">
-        <i class="flaticon-right-arrow"></i>
-      </li>
-      <li class="nav-item">
-        <a href="#">Achievement Page</a>
-      </li>
-      <li class="separator">
-        <i class="flaticon-right-arrow"></i>
-      </li>
-      <li class="nav-item">
-        <a href="#">Edit Achievement</a>
-      </li>
-    </ul>
-  </div>
+@include('user.achievement.header')
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <div class="card-title d-inline-block">Edit Achievement</div>
+          <div class="card-title d-inline-block">Edição conquista</div>
           <a class="btn btn-info btn-sm float-right d-inline-block" href="{{route('user.achievement.index') . '?language=' . $achievement->language->code}}">
             <span class="btn-label">
               <i class="fas fa-backward"></i>
             </span>
-            Back
+            Voltar
           </a>
         </div>
         <div class="card-body pt-5 pb-5">
@@ -59,22 +38,22 @@
                 <input type="hidden" name="achievement_id" value="{{$achievement->id}}">
 
                 <div class="form-group">
-                  <label for="">Title **</label>
+                  <label for="">Titulo **</label>
                   <input type="text" class="form-control" name="title" value="{{$achievement->title}}" placeholder="Enter title">
                   <p id="errtitle" class="mb-0 text-danger em"></p>
                 </div>
                 <div class="form-group">
-                    <label for="count">Count**</label>
+                    <label for="count">Duração **</label>
                     <input id="count" type="number" class="form-control ltr"
                             name="count" value="{{$achievement->count}}"
                             placeholder="Enter achievement count">
                     <p id="errcount" class="mb-0 text-danger em"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">Serial Number **</label>
+                  <label for="">Numero serial **</label>
                   <input type="number" class="form-control ltr" name="serial_number" value="{{$achievement->serial_number}}" placeholder="Enter Serial Number">
                   <p id="errserial_number" class="mb-0 text-danger em"></p>
-                  <p class="text-warning"><small>The higher the serial number is, the later the Achievement will be shown.</small></p>
+                  <p class="text-warning"><small>Quanto maior o número de série, mais tarde a Conquista será exibida.</small></p>
                 </div>
               </form>
             </div>
@@ -84,7 +63,7 @@
           <div class="form">
             <div class="form-group from-show-notify row">
               <div class="col-12 text-center">
-                <button type="submit" id="submitBtn" class="btn btn-success">Update</button>
+                <button type="submit" id="submitBtn" class="btn btn-success">Atualizar</button>
               </div>
             </div>
           </div>
