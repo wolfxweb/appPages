@@ -222,7 +222,7 @@ class ServiceController extends Controller
             @unlink(public_path('assets/front/img/user/services/' . $service->image));
         }
         $service->delete();
-        Session::flash('success', 'Service deleted successfully!');
+        Session::flash('success', 'Excluido com sucesso!');
         return back();
     }
 
