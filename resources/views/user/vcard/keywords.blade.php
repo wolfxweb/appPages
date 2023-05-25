@@ -1,7 +1,7 @@
 @extends('user.layout')
 @section('content')
     <div class="page-header">
-        <h4 class="page-title">Translate Keywords</h4>
+        <h4 class="page-title">Rótulos</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="{{route('user-dashboard')}}">
@@ -20,12 +20,7 @@
             <li class="nav-item">
                 <a href="#">{{$vcard->vcard_name}}</a>
             </li>
-            <li class="separator">
-                <i class="flaticon-right-arrow"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">Translate Keywords</a>
-            </li>
+     
         </ul>
     </div>
     <div class="row">
@@ -35,10 +30,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">
-                            <div class="card-title d-inline-block">Translate Keywords</div>
+                            <div class="card-title d-inline-block">Rótulos</div>
                         </div>
                         <div class="col-6 text-right">
-                            <a href="{{route('user.vcard')}}" class="btn btn-primary btn-sm"><i class="fas fa-chevron-left"></i> Back</a>
+                            <a href="{{route('user.vcard')}}" class="btn btn-primary btn-sm"><i class="fas fa-chevron-left"></i> Voltar</a>
                         </div>
                     </div>
                 </div>
@@ -65,7 +60,7 @@
                     <div class="form">
                         <div class="form-group from-show-notify row">
                             <div class="col-12 text-center">
-                                <button type="submit" id="submitBtn" class="btn btn-success">Update</button>
+                                <button type="submit" id="submitBtn" class="btn btn-success">Atualizar</button>
                             </div>
                         </div>
                     </div>

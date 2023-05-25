@@ -19,7 +19,7 @@
 
 @section('content')
 <div class="page-header">
-   <h4 class="page-title">About & Video</h4>
+   <h4 class="page-title">Sobre & Vídeo</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="#">
@@ -38,24 +38,19 @@
       <li class="nav-item">
          <a href="#">{{$vcard->vcard_name}}</a>
       </li>
-      <li class="separator">
-         <i class="flaticon-right-arrow"></i>
-      </li>
-      <li class="nav-item">
-         <a href="#">About & Video</a>
-      </li>
+    
    </ul>
 </div>
 <div class="row">
    <div class="col-md-12">
       <div class="card">
          <div class="card-header">
-            <div class="card-title d-inline-block">About & Video</div>
+            <div class="card-title d-inline-block">Sobre & Vídeo</div>
             <a class="btn btn-info btn-sm float-right d-inline-block" href="{{route('user.vcard')}}">
                <span class="btn-label">
                <i class="fas fa-backward"></i>
                </span>
-               Back
+               Voltar
             </a>
          </div>
          <div class="card-body pt-5 pb-5">
@@ -71,9 +66,9 @@
                      <div class="row">
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label>Video Link</label>
+                              <label>Link de vídeo</label>
                               <input type="text" class="form-control ltr" name="video" placeholder="Enter embed URL of video" value="{{$vcard->video}}">
-                              <p class="text-warning mb-0">Please enter embed URL of video, dont take URL from browser search bar</p>
+                              <p class="text-warning mb-0">Insira o URL de incorporação do vídeo, não pegue o URL da barra de pesquisa do navegador</p>
                            </div>
                         </div>
                      </div>
@@ -82,7 +77,7 @@
                      <div class="row">
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label for="summary">About</label>
+                              <label for="summary">Sobre</label>
                               <textarea name="about" id="about" class="form-control summernote" data-height="150" >{{$vcard->about}}</textarea>
                            </div>
                         </div>
@@ -96,7 +91,7 @@
             <div class="form">
                <div class="form-group from-show-notify row">
                   <div class="col-12 text-center">
-                     <button type="submit" id="submitBtn" class="btn btn-success">Submit</button>
+                     <button type="submit" id="submitBtn" class="btn btn-success">Salvar</button>
                   </div>
                </div>
             </div>

@@ -1,42 +1,21 @@
 @extends('user.layout')
 
 @section('content')
-    <div class="page-header">
-        <h4 class="page-title">vCard Management</h4>
-        <ul class="breadcrumbs">
-            <li class="nav-home">
-                <a href="{{route('admin.dashboard')}}">
-                    <i class="flaticon-home"></i>
-                </a>
-            </li>
-            <li class="separator">
-                <i class="flaticon-right-arrow"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">vCard Management</a>
-            </li>
-            <li class="separator">
-                <i class="flaticon-right-arrow"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#">vCards</a>
-            </li>
-        </ul>
-    </div>
+@include('user.vcard.parts.header')
     <div class="row">
         <div class="col-md-12">
 
             <div class="card">
                 <div class="card-header">
                     <div class="card-title d-inline-block">vCards</div>
-                    <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('user.vcard.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
-                    <a href="{{route('user.vcard.create')}}" class="btn btn-sm btn-primary float-right">Add vCard</a>
+                    <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('user.vcard.bulk.delete')}}"><i class="flaticon-interface-5"></i> Excluir</button>
+                    <a href="{{route('user.vcard.create')}}" class="btn btn-sm btn-primary float-right">Adicionar</a>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
                             @if (count($vcards) == 0)
-                                <h3 class="text-center">NO VCARD FOUND</h3>
+                                <h3 class="text-center">NENHUM VCARD ENCONTRADO</h3>
                             @else
                                 <div class="table-responsive">
                                     <table class="table table-striped mt-3" id="basic-datatables">
@@ -45,10 +24,10 @@
                                             <th scope="col">
                                                 <input type="checkbox" class="bulk-check" data-val="all">
                                             </th>
-                                            <th scope="col">vCard Name</th>
-                                            <th scope="col">Preview</th>
-                                            <th scope="col">Direction</th>
-                                            <th scope="col">Actions</th>
+                                            <th scope="col">vCard Nome</th>
+                                            <th scope="col">Visualização</th>
+                                            <th scope="col">Direção</th>
+                                            <th scope="col">Ações</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -63,22 +42,22 @@
                                                 <td>
                                                     <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#urlsModal{{$vcard->id}}"><i class="fas fa-link"></i> URLs</button>
                                                 </td>
-                                                <td>{{$vcard->direction == 1 ? 'Left to Right' : 'Right to Left'}}</td>
+                                                <td>{{$vcard->direction == 1 ? 'Da esquerda para direita' : 'Da direita para esquerda'}}</td>
                                                 <td>
                                                     <div class="dropdown show d-inline-block mr-2">
                                                         <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                          Manage
+                                                          Gerenciar
                                                         </a>
                                                       
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.edit', $vcard->id)}}">Infromation</a>
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.color', $vcard->id)}}">Colors</a>
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.preferences', $vcard->id)}}">Preferences</a>
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.services', $vcard->id)}}">Services</a>
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.projects', $vcard->id)}}">Projects</a>
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.testimonials', $vcard->id)}}">Testimonials</a>
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.about', $vcard->id)}}">About & Video</a>
-                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.keywords', $vcard->id)}}">Translate Keywords</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.edit', $vcard->id)}}">Informações</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.color', $vcard->id)}}">Cores</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.preferences', $vcard->id)}}">Preferência</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.services', $vcard->id)}}">Serviços</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.projects', $vcard->id)}}">Projetos</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.testimonials', $vcard->id)}}">Depoimentos</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.about', $vcard->id)}}">Sobre & Vídeo</a>
+                                                          <a target="_blank" class="dropdown-item" href="{{route('user.vcard.keywords', $vcard->id)}}">Rótulos</a>
                                                         </div>
                                                     </div>
                                                     <form class="deleteform d-inline-block" action="{{route('user.vcard.delete')}}" method="post">
@@ -107,7 +86,7 @@
                                                                     @php
                                                                         $pathUrl = env('WEBSITE_HOST') . '/' . Auth::user()->username . '/vcard/' . $vcard->id;
                                                                     @endphp
-                                                                    <strong class="mr-2">Path Based URL:</strong>
+                                                                    <strong class="mr-2">Path Base URL:</strong>
                                                                     <a target="_blank" href="//{{$pathUrl}}">{{$pathUrl}}</a>
                                                                 </li>
                                                                 @if (cPackageHasSubdomain(Auth::user()))
@@ -115,7 +94,7 @@
                                                                         @php
                                                                             $subUrl = Auth::user()->username . '.' . env('WEBSITE_HOST') . '/vcard/' . $vcard->id;
                                                                         @endphp
-                                                                        <strong class="mr-2">Subdomain Based URL:</strong>
+                                                                        <strong class="mr-2">Subdomínio URL:</strong>
                                                                         <a target="_blank" href="//{{$subUrl}}">{{$subUrl}}</a>
                                                                     </li>
                                                                 @endif
@@ -125,7 +104,7 @@
                                                                     @endphp
                                                                     @if (!empty($domUrl))
                                                                     <li>
-                                                                        <strong class="mr-2">Domain Based URL:</strong>
+                                                                        <strong class="mr-2">Domínio URL:</strong>
                                                                         <a target="_blank" href="//{{$domUrl->requested_domain}}/vcard/{{$vcard->id}}">{{$domUrl->requested_domain}}/vcard/{{$vcard->id}}</a>
                                                                     </li>
                                                                     @endif
@@ -133,7 +112,7 @@
                                                             </ul>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                                         </div>
                                                     </div>
                                                 </div>

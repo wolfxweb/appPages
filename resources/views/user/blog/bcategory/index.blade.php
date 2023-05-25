@@ -30,7 +30,7 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Blog Categories</h4>
+    <h4 class="page-title">Blog Categorias</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('user-dashboard')}}">
@@ -47,7 +47,7 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Categories</a>
+        <a href="#">Categorias</a>
       </li>
     </ul>
   </div>
@@ -58,9 +58,10 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card-title d-inline-block">Categories</div>
+                    <div class="card-title d-inline-block">Categorias</div>
                 </div>
                 <div class="col-lg-3">
+                  <!--
                     @if(!is_null($userDefaultLang))
                         @if (!empty($userLanguages))
                             <select name="userLanguage" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
@@ -71,11 +72,12 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
                             </select>
                         @endif
                     @endif
+                          -->
                 </div>
                 <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
                     @if(!is_null($userDefaultLang))
-                        <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Blog Category</a>
-                        <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('user.blog.category.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
+                        <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Adicionar</a>
+                        <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('user.blog.category.bulk.delete')}}"><i class="flaticon-interface-5"></i> Excluir</button>
                     @endif
                 </div>
             </div>
@@ -84,10 +86,10 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
           <div class="row">
             <div class="col-lg-12">
                 @if(is_null($userDefaultLang))
-                    <h3 class="text-center">NO LANGUAGE FOUND</h3>
+                    <h3 class="text-center">NENHUM IDIOMA ENCONTRADO</h3>
                 @else
                     @if (count($bcategorys) == 0)
-                        <h3 class="text-center">NO BLOG CATEGORY FOUND</h3>
+                        <h3 class="text-center">NENHUMA CATEGORIA DE BLOG ENCONTRADA</h3>
                     @else
                         <div class="table-responsive">
                             <table class="table table-striped mt-3" id="basic-datatables">
@@ -96,10 +98,10 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
                                     <th scope="col">
                                         <input type="checkbox" class="bulk-check" data-val="all">
                                     </th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">Titúlo</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Serial Number</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">Número serial</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,9 +113,9 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
                                         <td>{{$bcategory->name}}</td>
                                         <td>
                                             @if ($bcategory->status == 1)
-                                                <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>
+                                                <h2 class="d-inline-block"><span class="badge badge-success">Ativo</span></h2>
                                             @else
-                                                <h2 class="d-inline-block"><span class="badge badge-danger">Deactive</span></h2>
+                                                <h2 class="d-inline-block"><span class="badge badge-danger">Inativo</span></h2>
                                             @endif
                                         </td>
                                         <td>{{$bcategory->serial_number}}</td>
@@ -122,7 +124,7 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>
-                                                Edit
+                                                
                                             </a>
                                             <form class="deleteform d-inline-block" action="{{route('user.blog.category.delete')}}" method="post">
                                                 @csrf
@@ -131,7 +133,7 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
                                 <span class="btn-label">
                                   <i class="fas fa-trash"></i>
                                 </span>
-                                                    Delete
+                                                    
                                                 </button>
                                             </form>
                                         </td>
@@ -156,7 +158,7 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add Blog Category</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Adicionar categoria</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -165,9 +167,9 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
           <form id="ajaxForm" class="modal-form create" action="{{route('user.blog.category.store')}}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="">Language **</label>
+                <label for="">Idioma **</label>
                 <select name="user_language_id" class="form-control">
-                    <option value="" selected disabled>Select a language</option>
+                    <option value="" selected disabled>Selecione o idioma</option>
                     @foreach ($userLanguages as $lang)
                         <option value="{{$lang->id}}">{{$lang->name}}</option>
                     @endforeach
@@ -175,30 +177,30 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
                 <p id="erruser_language_id" class="mb-0 text-danger em"></p>
             </div>
             <div class="form-group">
-              <label for="">Name **</label>
+              <label for="">Titúlo **</label>
               <input type="text" class="form-control" name="name" value="" placeholder="Enter name">
               <p id="errname" class="mb-0 text-danger em"></p>
             </div>
             <div class="form-group">
               <label for="">Status **</label>
               <select class="form-control ltr" name="status">
-                <option value="" selected disabled>Select a status</option>
-                <option value="1">Active</option>
-                <option value="0">Deactive</option>
+                <option value="" selected disabled>Selecione status</option>
+                <option value="1">Ativo</option>
+                <option value="0">Inativo</option>
               </select>
               <p id="errstatus" class="mb-0 text-danger em"></p>
             </div>
             <div class="form-group">
-              <label for="">Serial Number **</label>
+              <label for="">Numero serial **</label>
               <input type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
               <p id="errserial_number" class="mb-0 text-danger em"></p>
-              <p class="text-warning"><small>The higher the serial number is, the later the blog category will be shown.</small></p>
+              <p class="text-warning"><small>Quanto maior o número de série, mais tarde a categoria do blog será exibida.</small></p>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button id="submitBtn" type="button" class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>
@@ -209,7 +211,7 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Edit Blog Category</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Editar categoria</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -219,30 +221,30 @@ $userLanguages = \App\Models\User\Language::where('user_id',\Illuminate\Support\
             @csrf
             <input id="inbcategory_id" type="hidden" name="bcategory_id" value="">
             <div class="form-group">
-              <label for="">Name **</label>
+              <label for="">Titúlo **</label>
               <input id="inname" type="name" class="form-control" name="name" value="" placeholder="Enter name">
               <p id="eerrname" class="mb-0 text-danger em"></p>
             </div>
             <div class="form-group">
               <label for="">Status **</label>
               <select id="instatus" class="form-control ltr" name="status">
-                <option value="" selected disabled>Select a status</option>
-                <option value="1">Active</option>
-                <option value="0">Deactive</option>
+                <option value="" selected disabled>Selecione o status</option>
+                <option value="1">Ativo</option>
+                <option value="0">Inativo</option>
               </select>
               <p id="eerrstatus" class="mb-0 text-danger em"></p>
             </div>
             <div class="form-group">
-              <label for="">Serial Number **</label>
+              <label for="">Número serial **</label>
               <input id="inserial_number" type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
               <p id="eerrserial_number" class="mb-0 text-danger em"></p>
-              <p class="text-warning"><small>The higher the serial number is, the later the blog category will be shown.</small></p>
+              <p class="text-warning"><small>Quanto maior o número de série, mais tarde a categoria do blog será exibida.</small></p>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="updateBtn" type="button" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button id="updateBtn" type="button" class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>

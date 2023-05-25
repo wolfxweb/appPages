@@ -1,37 +1,16 @@
 @extends('user.layout')
 @section('content')
-<div class="page-header">
-   <h4 class="page-title">Add vCard</h4>
-   <ul class="breadcrumbs">
-      <li class="nav-home">
-         <a href="#">
-         <i class="flaticon-home"></i>
-         </a>
-      </li>
-      <li class="separator">
-         <i class="flaticon-right-arrow"></i>
-      </li>
-      <li class="nav-item">
-         <a href="#">vCards Management</a>
-      </li>
-      <li class="separator">
-         <i class="flaticon-right-arrow"></i>
-      </li>
-      <li class="nav-item">
-         <a href="#">Add vCard</a>
-      </li>
-   </ul>
-</div>
+@include('user.vcard.parts.header')
 <div class="row">
    <div class="col-md-12">
       <div class="card">
          <div class="card-header">
-            <div class="card-title d-inline-block">Add vCard</div>
+            <div class="card-title d-inline-block">Cadastro vCard</div>
             <a class="btn btn-info btn-sm float-right d-inline-block" href="{{route('user.vcard')}}">
             <span class="btn-label">
             <i class="fas fa-backward"></i>
             </span>
-            Back
+            Voltar
             </a>
          </div>
          <div class="card-body pt-5 pb-5">
@@ -44,7 +23,7 @@
                      <div class="row">
                         <div class="col-12">
                            <div class="form-group">
-                              <label class="form-label">Choose a Template</label>
+                              <label class="form-label">Selecione o Template</label>
                               <div class="row">
                                  <div class="col-2">
                                     <label class="imagecheck mb-4">
@@ -136,7 +115,7 @@
                         <div class="col-lg-6">
                           <div class="form-group">
                             <div class="col-12 mb-2">
-                              <label for="image"><strong>Profile Image</strong></label>
+                              <label for="image"><strong>Imagem Perfil</strong></label>
                             </div>
                             <div class="col-md-12 showImage mb-3">
                               <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
@@ -148,7 +127,7 @@
                         <div class="col-lg-6">
                           <div class="form-group">
                             <div class="col-12 mb-2">
-                              <label for="image"><strong>Cover Image</strong></label>
+                              <label for="image"><strong>Cover Imagem</strong></label>
                             </div>
                             <div class="col-md-12 showImage mb-3">
                               <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
@@ -170,11 +149,11 @@
                            </div>
                           <div class="col-lg-6">
                               <div class="form-group">
-                                  <label for="">Direction **</label>
+                                  <label for="">Direção **</label>
                                   <select name="direction" class="form-control" id="direction">
-                                      <option value="" selected disabled>Select a Direction</option>
-                                      <option value="1">LTR (Left to Right)</option>
-                                      <option value="2">RTL (Right to Left)</option>
+                                      <option value="" selected disabled>Selecione a Direção</option>
+                                      <option value="1">LTR (Da esquerda para direita)</option>
+                                      <option value="2">RTL (Da direita para esquerda)</option>
                                   </select>
                                   <p id="errdirection" class="mb-0 text-danger em"></p>
                               </div>
@@ -184,21 +163,21 @@
                      <div class="row">
                         <div class="col-lg-4">
                            <div class="form-group">
-                              <label for="">Name</label>
+                              <label for="">Nome</label>
                               <input type="text" class="form-control" name="name" value="" placeholder="Enter name">
                               <p id="errname" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-4">
                            <div class="form-group">
-                              <label for="">Company Name</label>
+                              <label for="">Nome empresa</label>
                               <input type="text" class="form-control" name="company" value="" placeholder="Enter company">
                               <p id="errcompany" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-4">
                            <div class="form-group">
-                              <label for="">Occupation</label>
+                              <label for="">Ocupação</label>
                               <input type="text" class="form-control" name="occupation" value="" placeholder="Enter occupation">
                               <p id="erroccupation" class="mb-0 text-danger em"></p>
                            </div>
@@ -215,15 +194,15 @@
                         </div>
                         <div class="col-lg-6">
                            <div class="form-group">
-                              <label for="">Phone</label>
+                              <label for="">Telefone</label>
                               <input type="text" class="form-control ltr" name="phone" value="" placeholder="Enter phone">
-                              <p class="text-warning mb-0">Enter Phone Number with <strong class="text-danger">Country Code</strong></p>
+                              <p class="text-warning mb-0">Digite o numero de telefone <strong class="text-danger">código do país.</strong></p>
                               <p id="errphone" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-6">
                            <div class="form-group">
-                              <label for="">Address</label>
+                              <label for="">Endereço</label>
                               <input type="text" class="form-control" name="address" value="" placeholder="Enter address">
                               <p id="erraddress" class="mb-0 text-danger em"></p>
                            </div>
@@ -242,7 +221,7 @@
 
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label for="summary">Introduction</label>
+                              <label for="summary">Introdução</label>
                               <textarea name="introduction" id="introduction" class="form-control" rows="4" placeholder="Enter Introduction"></textarea>
                            </div>
                         </div>
@@ -254,8 +233,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="" class="d-block mb-2">Other Infromation</label>
-                                    <button class="btn btn-primary" @click="addInformation">Add Information</button>
+                                    <label for="" class="d-block mb-2">Outras informações</label>
+                                    <button class="btn btn-primary" @click="addInformation">Adicionar informação</button>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +243,7 @@
                         <div class="row no-gutters" v-for="(information, index) in infromations" :key="information.uniqid">
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label for="">Icon **</label>
+                                    <label for="">Icone **</label>
                                     <div class="btn-group d-block">
                                         <button type="button" class="btn btn-primary iconpicker-component"><i :id="'vcard-icp-icon' + index"
                                                 class="fa fa-fw fa-heart"></i></button>
@@ -286,21 +265,21 @@
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                   <label for="">Icon Color **</label>
+                                   <label for="">Icone Color **</label>
                                     <input name="colors[]" class="jscolor ltr form-control" value="000000" type="text" >
                                     <p class="em text-danger mb-0" :id="'errcolors.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                   <label for="">Label **</label>
+                                   <label for="">Rótulo **</label>
                                     <input name="labels[]" class="form-control" :class="{rtl: information.dir == 2}" value="" type="text">
                                     <p class="em text-danger mb-0" :id="'errlabels.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                   <label for="">Value **</label>
+                                   <label for="">Valor **</label>
                                     <input name="values[]" class="form-control" :class="{rtl: information.dir == 2}" value="" type="text">
                                     <p class="em text-danger mb-0" :id="'errvalues.'+index"></p>
                                 </div>
@@ -321,7 +300,7 @@
             <div class="form">
                <div class="form-group from-show-notify row">
                   <div class="col-12 text-center">
-                     <button type="submit" id="submitBtn" class="btn btn-success">Submit</button>
+                     <button type="submit" id="submitBtn" class="btn btn-success">Enviar</button>
                   </div>
                </div>
             </div>
