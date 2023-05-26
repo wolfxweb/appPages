@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-   <h4 class="page-title">vCard Projects</h4>
+   <h4 class="page-title">vCard Projetos</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="{{route('user.vcard')}}">
@@ -21,12 +21,7 @@
       <li class="nav-item">
          <a href="#">{{$vcard->vcard_name}}</a>
       </li>
-      <li class="separator">
-         <i class="flaticon-right-arrow"></i>
-      </li>
-      <li class="nav-item">
-         <a href="#">Projects</a>
-      </li>
+
    </ul>
 </div>
 <div class="row">
@@ -35,11 +30,11 @@
          <div class="card-header">
             <div class="row">
                <div class="col-lg-4">
-                  <div class="card-title d-inline-block">vCard Projects</div>
+                  <div class="card-title d-inline-block">vCard Projetos</div>
                </div>
                <div class="col-lg-4 offset-lg-4 mt-2 mt-lg-0">
-                    <a href="{{route('user.vcard')}}" class="btn btn-secondary float-right btn-sm ml-2"><i class="fas fa-chevron-left"></i> Back</a>
-                    <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Project</a>
+                    <a href="{{route('user.vcard')}}" class="btn btn-secondary float-right btn-sm ml-2"><i class="fas fa-chevron-left"></i> Voltar</a>
+                    <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Adicionar</a>
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('user.vcard.bulkProjectDelete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                </div>
             </div>
@@ -48,7 +43,7 @@
             <div class="row">
                <div class="col-lg-12">
                     @if (count($projects) == 0)
-                        <h3 class="text-center">NO PROJECT FOUND</h3>
+                        <h3 class="text-center">NENHUM PROJETO ENCONTRADO</h3>
                     @else
                         <div class="table-responsive">
                             <table class="table table-striped mt-3" id="basic-datatables">
@@ -57,10 +52,10 @@
                                     <th scope="col">
                                         <input type="checkbox" class="bulk-check" data-val="all">
                                     </th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Serial Number</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">ImageM</th>
+                                    <th scope="col">Titúlo</th>
+                                    <th scope="col">Serial </th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -79,7 +74,7 @@
                                                 <span class="btn-label">
                                                 <i class="fas fa-edit"></i>
                                                 </span>
-                                                Edit
+                                                
                                             </a>
                                             <form class="deleteform d-inline-block" action="{{route('user.vcard.projectDelete')}}" method="post">
                                                 @csrf
@@ -88,7 +83,7 @@
                                                     <span class="btn-label">
                                                     <i class="fas fa-trash"></i>
                                                     </span>
-                                                    Delete
+                                                    
                                                 </button>
                                             </form>
                                         </td>
