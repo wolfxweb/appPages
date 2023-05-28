@@ -170,9 +170,9 @@
                         <div class="form-group">
                             <label for="term">Package term*</label>
                             <select id="term" name="term" class="form-control" required>
-                                <option value="" selected disabled>Choose a Package term</option>
-                                <option value="monthly">{{__('monthly')}}</option>
-                                <option value="yearly">{{__('yearly')}}</option>
+                                <option value="" selected disabled>Selecione o pacote</option>
+                                <option value="Mensal">{{__('Mensal')}}</option>
+                                <option value="Anual">{{__('Anual')}}</option>
                                 <option value="lifetime">{{__('lifetime')}}</option>
                             </select>
                             <p id="errterm" class="mb-0 text-danger em"></p>
@@ -234,6 +234,18 @@
                                     <input type="checkbox" name="features[]" value="Testimonial" class="selectgroup-input">
                                     <span class="selectgroup-button">Testimonial</span>
                                 </label>
+                                <label class="selectgroup-item">
+                                    <input type="checkbox" name="features[]" value="Configuracao" class="selectgroup-input">
+                                    <span class="selectgroup-button">Configurações</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="checkbox" name="features[]" value="Home Secoes" class="selectgroup-input">
+                                    <span class="selectgroup-button">Home Seções</span>
+                                </label>
+                                <label class="selectgroup-item">
+                                    <input type="checkbox" name="features[]" value="Dominios" class="selectgroup-input">
+                                    <span class="selectgroup-button">Dominios </span>
+                                </label> 
                             </div>
                         </div>
 

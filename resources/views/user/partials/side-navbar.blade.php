@@ -79,7 +79,7 @@ $permissions = json_decode($permissions, true);
                 </a>
                 </li>
                 
-                @if(!is_null($package))
+                @if(!is_null($package) && in_array('Dominios', $permissions))
                 <li class="nav-item
                     @if(request()->path() == "user/domains") active
                     @elseif(request()->path() == 'user/subdomain') active
@@ -125,7 +125,7 @@ $permissions = json_decode($permissions, true);
                 </li>
                 @endif
 
-                @if(!is_null($package))
+                @if(!is_null($package)  && in_array('Configuracoes', $permissions))
                 <li class="nav-item
                     @if(request()->path() == 'user/favicon') active
                     @elseif(request()->path() == 'user/theme/version') active
@@ -139,6 +139,7 @@ $permissions = json_decode($permissions, true);
                     <a data-toggle="collapse" href="#basic">
                         <i class="la flaticon-settings"></i>
                         <p>Configurações</p>
+                
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -199,9 +200,8 @@ $permissions = json_decode($permissions, true);
                         </ul>
                     </div>
                 </li>
-                @endif
-
-                @if(!is_null($package))
+                @endif      
+                @if(!is_null($package)  && in_array('Home Secoes', $permissions))
                 <li class="nav-item @if(request()->path() == 'user/home-page-text/edit') active @endif">
                     <a href="{{route('user.home.page.text.edit', ['language' => $default->code])}}">
                         <i class="fas fa-home"></i>
