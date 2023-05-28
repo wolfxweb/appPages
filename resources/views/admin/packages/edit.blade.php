@@ -81,8 +81,8 @@
                                     <select id="plan_term" name="term" class="form-control">
                                         <option value="" selected disabled>{{__('choose_plan_term')}}</option>
                                         <option
-                                            value="Mensal" {{$package->term == "Mensal" ? "selected" : ""}}>{{__('Mensal')}}</option>
-                                        <option value="Anual" {{$package->term == "Anual" ? "selected" : ""}}>{{__('Anual')}}</option>
+                                            value="monthly" {{$package->term == "Mensal" ? "selected" : ""}}>{{__('Mensal')}}</option>
+                                        <option value="yearly" {{$package->term == "Anual" ? "selected" : ""}}>{{__('Anual')}}</option>
                                         <option value="lifetime" {{$package->term == "lifetime" ? "selected" : ""}}>{{__('lifetime')}}</option>
                                     </select>
                                     <p id="errterm" class="mb-0 text-danger em"></p>

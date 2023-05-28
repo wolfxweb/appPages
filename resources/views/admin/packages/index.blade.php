@@ -171,8 +171,8 @@
                             <label for="term">Package term*</label>
                             <select id="term" name="term" class="form-control" required>
                                 <option value="" selected disabled>Selecione o pacote</option>
-                                <option value="Mensal">{{__('Mensal')}}</option>
-                                <option value="Anual">{{__('Anual')}}</option>
+                                <option value="monthly">{{__('Mensal')}}</option>
+                                <option value="yearly">{{__('Anual')}}</option>
                                 <option value="lifetime">{{__('lifetime')}}</option>
                             </select>
                             <p id="errterm" class="mb-0 text-danger em"></p>

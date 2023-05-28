@@ -65,6 +65,7 @@
                                                     <td>{{$user->first_name}}</td>
                                                     <td>{{$user->last_name}}</td>
                                                     <td>
+                                                      {{$user->role->name??""}}
                                                     </td>
                                                     <td>
                                                         @if ($user->status == 1)
