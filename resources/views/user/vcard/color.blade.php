@@ -1,7 +1,7 @@
 @extends('user.layout')
 @section('content')
     <div class="page-header">
-        <h4 class="page-title">Button & Icon Colors</h4>
+        <h4 class="page-title">Corres botões e icones</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="{{route('user-dashboard')}}">
@@ -35,7 +35,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">
-                            <div class="card-title d-inline-block">Button & Icon Colors</div>
+                            <div class="card-title d-inline-block">Botões e Icones</div>
                         </div>
                         <div class="col-6 text-right">
                             <a href="{{route('user.vcard')}}" class="btn btn-primary btn-sm"><i class="fas fa-chevron-left"></i> Voltar</a>

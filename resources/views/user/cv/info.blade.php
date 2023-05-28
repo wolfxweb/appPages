@@ -1,7 +1,7 @@
 @extends('user.layout')
 @section('content')
 <div class="page-header">
-   <h4 class="page-title">CV Content</h4>
+   <h4 class="page-title">Curriculo conteúdo</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="#">
@@ -12,7 +12,7 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="{{route('user.cv')}}">CVs Management</a>
+         <a href="{{route('user.cv')}}">Gerenciamento </a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
@@ -24,7 +24,7 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Information</a>
+         <a href="#">Informações</a>
       </li>
    </ul>
 </div>
@@ -35,12 +35,12 @@
             <div class="row">
                <div class="col-lg-6">
                   <div class="card-title d-inline-block" dir="{{$cv->direction == 2 ? 'rtl' : 'ltr'}}">{!! $cv->contact_title !!}</div>
-                  <a class="editbtn btn btn-warning btn-sm ml-4" data-toggle="modal" data-target="#renameModal" title="Rename Contact Section" data-contact_title="{{$cv->contact_title}}"><i class="far fa-edit"></i></a>
+                  <a class="editbtn btn btn-warning btn-sm ml-4" data-toggle="modal" data-target="#renameModal" title="Renomear o título da seção de contato" data-contact_title="{{$cv->contact_title}}"><i class="far fa-edit"></i></a>
                </div>
                <div class="col-lg-6">
                   <a href="{{route('user.cv')}}" class="btn btn-sm btn-primary float-right">
                      <i class="fas fa-backward"></i>
-                     Back
+                   Voltar
                   </a>
                </div>
             </div>
@@ -82,8 +82,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="" class="d-block mb-2">Infromation</label>
-                                    <button class="btn btn-primary" @click="addInformation()">Add Information</button>
+                                    <label for="" class="d-block mb-2">Informações</label>
+                                    <button class="btn btn-primary" @click="addInformation()">Adicionar</button>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                         <div class="row no-gutters" v-for="(information, index) in infromations" :key="information.uniqid">
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="">Icon **</label>
+                                    <label for="">Icone **</label>
                                     <div class="btn-group d-block">
                                         <button type="button" class="btn btn-primary iconpicker-component"><i :id="'cv-icp-icon' + index"
                                                 :class="information.icon"></i></button>
@@ -107,14 +107,14 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                   <label for="">Icon Color</label>
+                                   <label for="">Icone Cor</label>
                                     <input name="colors[]" :class="'jscolor jscolor' + information.uniqid + ' ltr form-control'" :value="information.color" @change="setColor($event, index)" type="text" >
                                     <p class="em text-danger mb-0" :id="'errcolors.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                   <label for="">Content</label>
+                                   <label for="">Conteúdo</label>
                                     <input name="contents[]" class="form-control {{$cv->direction == 2 ? 'rtl' : ''}}" v-model="information.content" type="text" >
                                     <p class="em text-danger mb-0" :id="'errcontents.'+index"></p>
                                 </div>
@@ -135,7 +135,7 @@
             <div class="form">
                <div class="form-group from-show-notify row">
                   <div class="col-12 text-center">
-                     <button type="submit" id="submitBtn" class="btn btn-success">Update</button>
+                     <button type="submit" id="submitBtn" class="btn btn-success">Atualizar</button>
                   </div>
                </div>
             </div>
@@ -149,7 +149,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Rename Contact Section Title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Renomear o título da seção de contato</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -189,8 +189,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="updateBtn">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" id="updateBtn">Atualizar</button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-    <h4 class="page-title">Sections</h4>
+    <h4 class="page-title">Seções</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('user-dashboard')}}">
@@ -13,7 +13,7 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="{{route('user.cv')}}">CVs Management</a>
+            <a href="{{route('user.cv')}}">Gerenciamento </a>
         </li>
         <li class="separator">
            <i class="flaticon-right-arrow"></i>
@@ -25,7 +25,7 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="{{route('user.cv.section.index', $section->user_cv_id)}}">Sections</a>
+            <a href="{{route('user.cv.section.index', $section->user_cv_id)}}">Seção</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
@@ -37,7 +37,7 @@
            <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-           <a href="#">Edit</a>
+           <a href="#">Editar</a>
         </li>
     </ul>
 </div>
@@ -47,18 +47,19 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card-title d-inline-block">Sections</div>
+                        <div class="card-title d-inline-block">Edição da seção</div>
                     </div>
                     <div class="col-lg-4">
                     </div>
                     <div class="col-lg-4 mt-2 mt-lg-0">
-                        <a class="btn btn-primary float-right text-white btn-sm" href="{{route('user.cv.section.index', $section->user_cv_id)}}"><i class="fas fa-backward"></i> Back</a>
+                        <a class="btn btn-primary float-right text-white btn-sm" href="{{route('user.cv.section.index', $section->user_cv_id)}}"><i class="fas fa-backward"></i> Voltar</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="row">
                     @if ($section->user_cv->direction == 2)
+                    <!--
                     <div class="col-10 offset-1">
                         <div class="alert alert-info text-dark">
                             If you want to enter <strong>LTR word / text</strong> in <strong>Section Name</strong> field, then wrap that <strong>word / text</strong> with <strong><code>{{'<span dir="ltr"></span>'}}</code></strong>
@@ -81,6 +82,7 @@
                             </div>
                         </div>
                     </div>
+                -->
                     @endif
                     <div class="col-lg-6 offset-lg-3">
                         <form id="ajaxForm" enctype="multipart/form-data" class="modal-form" action="{{route('user.cv.section.update')}}" method="POST">
@@ -89,7 +91,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="">Icon **</label>
+                                        <label for="">Icone **</label>
                                         <div class="btn-group d-block">
                                             <button type="button" class="btn btn-primary iconpicker-component"><i class="{{$section->icon}}"></i></button>
                                             <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown">
@@ -102,7 +104,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="">Section Name **</label>
+                                        <label for="">Nome seção **</label>
                                         <input type="text" class="form-control {{$section->user_cv->direction == 2 ? 'rtl' : ''}}" name="name" value="{{$section->name}}">
                                         <p class="em text-danger mb-0" id="errname"></p>
                                     </div>
@@ -112,11 +114,11 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="">Which Column **</label>
+                                        <label for="">Qual coluna **</label>
                                         <select name="column" id="" class="form-control">
                                             <option value="" selected disabled>Select a Column</option>
-                                            <option value="1" {{$section->column == 1 ? 'selected' : ''}}>Left Column in CV</option>
-                                            <option value="2" {{$section->column == 2 ? 'selected' : ''}}>Right Column in CV</option>
+                                            <option value="1" {{$section->column == 1 ? 'selected' : ''}}>Coluna da Esquerda no curriculo</option>
+                                            <option value="2" {{$section->column == 2 ? 'selected' : ''}}>Coluna da Direita no curriculo</option>
                                         </select>
                                         <p id="errcolumn" class="em text-danger mb-0"></p>
                                     </div>
@@ -129,7 +131,7 @@
             </div>
 
             <div class="card-footer text-center">
-                <button id="submitBtn" class="btn btn-success">Update</button>
+                <button id="submitBtn" class="btn btn-success">Atualizar</button>
             </div>
 
         </div>

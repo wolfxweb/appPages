@@ -1,7 +1,7 @@
 @extends('user.layout')
 @section('content')
 <div class="page-header">
-   <h4 class="page-title">CV Section Content</h4>
+   <h4 class="page-title">Conteúdo da seção do curriculo</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="#">
@@ -12,7 +12,7 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="{{route('user.cv')}}">CVs Management</a>
+         <a href="{{route('user.cv')}}">Gerencianto </a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
@@ -24,7 +24,7 @@
           <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-          <a href="{{route('user.cv.section.index', $section->user_cv_id)}}">Sections</a>
+          <a href="{{route('user.cv.section.index', $section->user_cv_id)}}">Seções</a>
       </li>
       <li class="separator">
           <i class="flaticon-right-arrow"></i>
@@ -36,7 +36,7 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Content</a>
+         <a href="#">Conteudo</a>
       </li>
    </ul>
 </div>
@@ -46,16 +46,17 @@
          <div class="card-header">
              <div class="row">
                  <div class="col-lg-6">
-                    <div class="card-title d-inline-block">Section Contents</div>
+                    <div class="card-title d-inline-block">Seção conteúdo</div>
                  </div>
                  <div class="col-lg-6">
-                     <a href="{{route('user.cv.section.index', $section->user_cv_id)}}" class="btn btn-sm btn-primary float-right"><i class="fas fa-backward"></i> Back</a>
+                     <a href="{{route('user.cv.section.index', $section->user_cv_id)}}" class="btn btn-sm btn-primary float-right"><i class="fas fa-backward"></i> Voltar</a>
                  </div>
              </div>
          </div>
          <div class="card-body pt-5 pb-5">
             <div class="row">
                 @if ($section->user_cv->direction == 2)
+                <!--
                   <div class="col-12">
                     <div class="alert alert-info text-dark">
                        If you want to enter <strong>LTR word / text</strong> in <strong>Duration, Title, Subtitle, Description</strong> field, then wrap that <strong>word / text</strong> with <strong><code>{{'<span dir="ltr"></span>'}}</code></strong>
@@ -78,6 +79,7 @@
                        </div>
                     </div>
                   </div>
+                -->
                 @endif
                <div class="col-lg-12">
 
@@ -92,8 +94,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="" class="d-block mb-2">Contents</label>
-                                    <button class="btn btn-primary" @click="addContent">Add Content</button>
+                                    <label for="" class="d-block mb-2">Coteúdo da seção</label>
+                                    <button class="btn btn-primary" @click="addContent">Adicionar</button>
                                 </div>
                             </div>
                         </div>
@@ -108,46 +110,46 @@
                         mt-4 pt-2 pb-4" v-for="(content, index) in contents" :key="content.uniqid">
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label for="">Left Border **</label>
+                                    <label for="">Borda Esquerda **</label>
                                     <select class="form-control" name="left_borders[]" v-model="content.left_border">
-                                        <option value="0">Disable</option>
-                                        <option value="1">Enable</option>
+                                        <option value="0">Desativar</option>
+                                        <option value="1">Habilitar</option>
                                     </select>
                                     <p class="em text-danger mb-0" :id="'errleft_borders.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                   <label for="">Duration (Optional)</label>
+                                   <label for="">Duração (opcional)</label>
                                     <input name="durations[]" class="form-control {{$section->user_cv->direction == 2 ? 'rtl' : ''}}" v-model="content.duration" type="text" >
-                                    <p class="text-warning mb-0">** Here, You can enter durations like this - (1st October, 2021 >> Present)</p>
+                                    <p class="text-warning mb-0">** Aqui, você pode inserir durações como esta - (1º de outubro de 2021 >> Presente)</p>
                                     <p class="em text-danger mb-0" :id="'errdurations.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                   <label for="">Title (Optional)</label>
+                                   <label for="">Titúlo (Opiconal)</label>
                                     <input name="titles[]" class="form-control {{$section->user_cv->direction == 2 ? 'rtl' : ''}}" v-model="content.title" type="text" >
                                     <p class="em text-danger mb-0" :id="'errtitles.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                   <label for="">Subtitle (Optional)</label>
+                                   <label for="">Subtitúlo (Opicional)</label>
                                     <input name="subtitles[]" class="form-control {{$section->user_cv->direction == 2 ? 'rtl' : ''}}" v-model="content.subtitle" type="text" >
                                     <p class="em text-danger mb-0" :id="'errsubtitles.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                   <label for="">Description (Optional)</label>
+                                   <label for="">Descrição (Opicional)</label>
                                    <textarea class="form-control {{$section->user_cv->direction == 2 ? 'rtl' : ''}}" name="descriptions[]" id="" cols="30" rows="3" v-model="content.description"></textarea>
                                     <p class="em text-danger mb-0" :id="'errdescriptions.'+index"></p>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <button class="btn btn-sm btn-primary" @click="addSpacing(index)">Add Sapcing</button>
+                                    <button class="btn btn-sm btn-primary" @click="addSpacing(index)">Adicionar espaçamento</button>
                                 </div>
                             </div>
                             <input type="hidden" name="newLines[]" v-model="content.newLines">
@@ -162,7 +164,7 @@
                             </div>
                             <div class="col-lg-12 text-center">
                                 <button class="btn btn-danger text-white mt-4" @click="removeContent(index)">
-                                    <i class="fas fa-times"></i> Remove Content
+                                    <i class="fas fa-times"></i> Remove conteúdo
                                 </button>
                             </div>
                         </div>
@@ -176,7 +178,7 @@
             <div class="form">
                <div class="form-group from-show-notify row">
                   <div class="col-12 text-center">
-                     <button type="submit" id="submitBtn" class="btn btn-success">Update</button>
+                     <button type="submit" id="submitBtn" class="btn btn-success">Atualizar</button>
                   </div>
                </div>
             </div>

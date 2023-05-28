@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add CV</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Cadastro Currilo</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,7 +15,7 @@
           <div class="row">
             <div class="col-12">
                <div class="form-group">
-                  <label class="form-label">Choose a Template</label>
+                  <label class="form-label">Selecione o template</label>
                   <div class="row">
                      <div class="col-4">
                         <label class="imagecheck mb-4">
@@ -43,7 +43,7 @@
             <div class="col-lg-12">
               <div class="form-group">
                 <div class="col-12 mb-2">
-                  <label for="image"><strong>Your Image*</strong></label>
+                  <label for="image"><strong>Foto *</strong></label>
                 </div>
                 <div class="col-md-12 showImage mb-3">
                   <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
@@ -56,25 +56,25 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="">CV Name **</label>
-                <input type="text" class="form-control" name="cv_name" placeholder="Enter CV name" value="">
+                <label for="">Curriculo nome **</label>
+                <input type="text" class="form-control" name="cv_name" placeholder="" value="">
                 <p id="errcv_name" class="mb-0 text-danger em"></p>
-                <p class="text-warning mb-0">This will be used to identify this specific CV from CVs list.</p>
+                <p class="text-warning mb-0">Isso será usado para identificar esse currículo específico da lista de currículos.</p>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="">Direction **</label>
+                <label for="">Direção **</label>
                 <select name="direction" class="form-control ltr">
-                    <option value="" selected disabled>Select a Direction</option>
-                    <option value="1">LTR (Left to Right)</option>
-                    <option value="2">RTL (Right to Left)</option>
+                    <option value="" selected disabled>Selecione a direção</option>
+                    <option value="1">LTR (Da esquerda para direita)</option>
+                    <option value="2">RTL (Da direita para esquerda)</option>
                 </select>
                 <p id="errdirection" class="mb-0 text-danger em"></p>
               </div>
             </div>
           </div>
-
+<!--
           <div class="alert alert-info text-dark" id="ltrAlert" style="display: none;">
             If you want to enter <strong>LTR word / text</strong> in <strong>Your Name, Your Occupation</strong> field, then wrap that <strong>word / text</strong> with <strong><code>{{'<span dir="ltr"></span>'}}</code></strong>
             <br>
@@ -95,19 +95,19 @@
                </div>
             </div>
          </div>
-
+        -->
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="">Your Name **</label>
-                <input type="text" class="form-control" name="name" placeholder="Enter name" value="">
+                <label for="">Nome **</label>
+                <input type="text" class="form-control" name="name" placeholder="" value="">
                 <p id="errname" class="mb-0 text-danger em"></p>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="">Your Occupation **</label>
-                <input type="text" class="form-control" name="occupation" placeholder="Enter occupation" value="">
+                <label for="">Cargo **</label>
+                <input type="text" class="form-control" name="occupation" placeholder="" value="">
                 <p id="erroccupation" class="mb-0 text-danger em"></p>
               </div>
             </div>
@@ -115,8 +115,8 @@
           <div class="row">
             <div class="col-12">
               <div class="form-group">
-                <label for="">Base Color Code **</label>
-                <input type="text" class="form-control jscolor ltr" name="base_color" placeholder="Enter base color" value="F4B0AE">
+                <label for="">Cor base do curriculo **</label>
+                <input type="text" class="form-control jscolor ltr" name="base_color" placeholder="" value="F4B0AE">
                 <p id="errbase_color" class="mb-0 text-danger em"></p>
               </div>
             </div>
@@ -124,8 +124,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button id="submitBtn" type="button" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-    <h4 class="page-title">Sections</h4>
+    <h4 class="page-title">Seções</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('user-dashboard')}}">
@@ -13,7 +13,7 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="{{route('user.cv')}}">CVs Management</a>
+            <a href="{{route('user.cv')}}">Gerenciamento </a>
         </li>
         <li class="separator">
            <i class="flaticon-right-arrow"></i>
@@ -21,12 +21,7 @@
         <li class="nav-item">
            <a href="#">{{$cv->cv_name}}</a>
         </li>
-        <li class="separator">
-           <i class="flaticon-right-arrow"></i>
-        </li>
-        <li class="nav-item">
-           <a href="#">Sections</a>
-        </li>
+
     </ul>
 </div>
 <div class="row">
@@ -35,12 +30,12 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card-title d-inline-block">Sections</div>
+                        <div class="card-title d-inline-block">Seções</div>
                     </div>
                     <div class="col-lg-4">
                     </div>
                     <div class="col-lg-4 mt-2 mt-lg-0">
-                        <a class="btn btn-primary float-right text-white" data-toggle="modal" data-target="#createModal">Add Section</a>
+                        <a class="btn btn-primary float-right text-white" data-toggle="modal" data-target="#createModal">Adicionar</a>
                     </div>
                 </div>
             </div>
@@ -48,22 +43,22 @@
                 <div class="row">
                     <div class="col-lg-12">
                         @if (count($sections) == 0)
-                        <h3 class="text-center">NO SECTION FOUND</h3>
+                        <h3 class="text-center">NENHUMA SEÇÃO CADASTRADA</h3>
                         @else
                         <div>
-                            <p class="text-warning mb-0">** Drag & Drop the sections to change the order</p>
+                            <p class="text-warning mb-0">** Arraste e solte as seções para alterar a ordem</p>
                             <table class="table table-striped mt-3">
                                 <thead>
                                     <tr>
                                         <th scope="col">
                                             #
                                         </th>
-                                        <th scope="col">Icon</th>
-                                        <th scope="col">Section Name</th>
+                                        <th scope="col">IconE</th>
+                                        <th scope="col">Nome seção</th>
                                         @if ($cv->template == 1)
-                                        <th scope="col">Column Side</th>
+                                        <th scope="col">Lado coluna</th>
                                         @endif
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody id="sortable">
@@ -84,13 +79,13 @@
                                                 <span class="btn-label">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-                                                Edit
+                                                Editar
                                             </a>
                                             <a class="btn btn-secondary btn-sm text-white" href="{{route('user.cv.section.content', $section->id)}}">
                                                 <span class="btn-label">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-                                                Section Content
+                                                Conteúdo
                                             </a>
                                             <form class="deleteform d-inline-block" action="{{route('user.cv.section.delete')}}" method="post">
                                                 @csrf
@@ -99,7 +94,7 @@
                                                 <span class="btn-label">
                                                 <i class="fas fa-trash"></i>
                                                 </span>
-                                                Delete
+                                                Excluir
                                                 </button>
                                             </form>
                                         </td>
@@ -121,13 +116,14 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Section</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Cadastro seção</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 @if ($cv->direction == 2)
+                <!--
                   <div class="col-12">
                     <div class="alert alert-info text-dark">
                        If you want to enter <strong>LTR word / text</strong> in <strong>Section Name</strong> field, then wrap that <strong>word / text</strong> with <strong><code>{{'<span dir="ltr"></span>'}}</code></strong>
@@ -150,6 +146,7 @@
                        </div>
                     </div>
                   </div>
+                -->
                 @endif
                 <form id="ajaxForm" enctype="multipart/form-data" class="modal-form" action="{{route('user.cv.section.store')}}" method="POST">
                     @csrf
@@ -157,7 +154,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="">Icon **</label>
+                                <label for="">Icone **</label>
                                 <div class="btn-group d-block">
                                     <button type="button" class="btn btn-primary iconpicker-component"><i class="fas fa-heart"></i></button>
                                     <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown">
@@ -170,7 +167,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="">Section Name **</label>
+                                <label for="">Nome seção **</label>
                                 <input type="text" class="form-control {{$cv->direction == 2 ? 'rtl' : ''}}" name="name" value="">
                                 <p class="em text-danger mb-0" id="errname"></p>
                             </div>
@@ -180,11 +177,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="">Which Column **</label>
+                                    <label for="">Qual coluna **</label>
                                     <select name="column" id="" class="form-control">
-                                        <option value="" selected disabled>Select a Column</option>
-                                        <option value="1">Left Column in CV</option>
-                                        <option value="2">Right Column in CV</option>
+                                        <option value="" selected disabled>Selecione coluna</option>
+                                        <option value="1">Coluna da Esquerda no curriculo</option>
+                                        <option value="2">Coluna da Direita no curriculo</option>
                                     </select>
                                     <p id="errcolumn" class="em text-danger mb-0"></p>
                                 </div>
@@ -194,8 +191,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar </button>
+                <button id="submitBtn" type="button" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>

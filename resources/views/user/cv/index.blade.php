@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">CVs</h4>
+    <h4 class="page-title">Curriculo</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('user-dashboard')}}">
@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">CV Management</a>
+        <a href="#">Gerenciamento </a>
       </li>
     </ul>
   </div>
@@ -24,14 +24,14 @@
         <div class="card-header">
           <div class="row">
             <div class="col-lg-6">
-              <div class="card-title d-inline-block">CVs</div>
+              <div class="card-title d-inline-block">Curriculo</div>
             </div>
             <div class="col-lg-6">
-              <button class="btn btn-danger float-right ml-2 d-none bulk-delete" data-href="{{route('user.cv.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
+              <button class="btn btn-danger float-right ml-2 d-none bulk-delete" data-href="{{route('user.cv.bulk.delete')}}"><i class="flaticon-interface-5"></i> Excluir</button>
               <a href="#" class="btn btn-primary float-right"
                  data-toggle="modal" data-target="#createModal">
                   <i class="fas fa-plus"></i>
-                  Add CV
+                  Adicionar
               </a>
             </div>
           </div>
@@ -40,7 +40,7 @@
           <div class="row">
             <div class="col-lg-12">
               @if (count($cvs) == 0)
-                <h3 class="text-center">NO CV FOUND</h3>
+                <h3 class="text-center">NENHUM CURRICULO ENCONTRADO</h3>
               @else
                 <div class="table-responsive">
                   <table class="table table-striped mt-3" id="basic-datatables">
@@ -49,10 +49,10 @@
                         <th scope="col">
                             <input type="checkbox" class="bulk-check" data-val="all">
                         </th>
-                        <th scope="col">CV Name</th>
-                        <th scope="col">Direction</th>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Curriculo nome</th>
+                        <th scope="col">Direção</th>
+                        <th scope="col">Visualização</th>
+                        <th scope="col">Ações</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -71,19 +71,19 @@
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>
-                              Edit
+                              Editar
                             </a>
                             <a class="btn btn-secondary btn-sm" href="{{route('user.cv.info', $cv->id)}}">
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>
-                              Information
+                              Informações
                             </a>
                             <a class="btn btn-secondary btn-sm" href="{{route('user.cv.section.index', $cv->id)}}">
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>
-                              Sections
+                              Seções
                             </a>
                             <form class="deleteform d-inline-block" action="{{route('user.cv.delete')}}" method="post">
                               @csrf
@@ -100,7 +100,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="urlsModalLabel">CV URLs</h5>
+                                        <h5 class="modal-title" id="urlsModalLabel">Curriculo URLs</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -111,7 +111,7 @@
                                                 @php
                                                     $pathUrl = env('WEBSITE_HOST') . '/' . Auth::user()->username . '/cv/' . $cv->id;
                                                 @endphp
-                                                <strong class="mr-2">Path Based URL:</strong>
+                                                <strong class="mr-2">URL padrão:</strong>
                                                 <a target="_blank" href="//{{$pathUrl}}">{{$pathUrl}}</a>
                                             </li>
                                             @if (cPackageHasSubdomain(Auth::user()))
@@ -119,7 +119,7 @@
                                                     @php
                                                         $subUrl = Auth::user()->username . '.' . env('WEBSITE_HOST') . '/cv/' . $cv->id;
                                                     @endphp
-                                                    <strong class="mr-2">Subdomain Based URL:</strong>
+                                                    <strong class="mr-2">Subdominio URL:</strong>
                                                     <a target="_blank" href="//{{$subUrl}}">{{$subUrl}}</a>
                                                 </li>
                                             @endif
@@ -129,7 +129,7 @@
                                                 @endphp
                                                 @if (!empty($domUrl))
                                                 <li>
-                                                    <strong class="mr-2">Domain Based URL:</strong>
+                                                    <strong class="mr-2">Domínio URL:</strong>
                                                     <a target="_blank" href="//{{$domUrl->requested_domain}}/cv/{{$cv->id}}">{{$domUrl->requested_domain}}/cv/{{$cv->id}}</a>
                                                 </li>
                                                 @endif
@@ -137,7 +137,7 @@
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     </div>
                                 </div>
                             </div>

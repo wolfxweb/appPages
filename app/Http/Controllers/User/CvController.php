@@ -39,7 +39,7 @@ class CvController extends Controller
                     if (!empty($image)) {
                         $ext = $image->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Only png, jpg, jpeg são as imagens permitidas.");
                         }
                     }
                 },
@@ -69,9 +69,10 @@ class CvController extends Controller
         $cv->name = clean($request->name);
         $cv->occupation = clean($request->occupation);
 
-        $cv->save();
+      
+       $cv->save();
 
-        $request->session()->flash('success', 'CV added successfully');
+        $request->session()->flash('success', 'Curriculo cadastrado com sucesso.');
         return 'success';
     }
 
@@ -91,7 +92,7 @@ class CvController extends Controller
                     if (!empty($image)) {
                         $ext = $image->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Only png, jpg, jpeg imagem permtida");
                         }
                     }
                 },
@@ -120,12 +121,12 @@ class CvController extends Controller
             $request->file('image')->move($dir, $filename);
             $cv->image = $filename;
         }
-        $cv->name = clean($request->name);
-        $cv->occupation = clean($request->occupation);
+   //     $cv->name = clean($request->name);
+   //     $cv->occupation = clean($request->occupation);
 
         $cv->save();
 
-        $request->session()->flash('success', 'CV updated successfully');
+        $request->session()->flash('success', 'Curriculo atualizado com sucesso.');
         return 'success';
     }
 
@@ -161,7 +162,7 @@ class CvController extends Controller
             }
             $cv->delete();
         }
-        Session::flash('success', 'CVs deleted successfully!');
+        Session::flash('success', 'Curriculo excluido com sucesso!');
         return "success";
     }
 
@@ -185,9 +186,9 @@ class CvController extends Controller
         ];
 
         $messages = [
-            'icons.*.required' => 'The Icon field cannot be empty',
-            'colors.*.required' => 'The Color field cannot be empty',
-            'contents.*.required' => 'The Content field cannot be empty'
+            'icons.*.required' => 'O campo Ícone não pode estar vazio',
+            'colors.*.required' => 'O campo Cor não pode estar vazio',
+            'contents.*.required' => 'O campo Conteúdo não pode estar vazio'
         ];
 
 
@@ -239,7 +240,7 @@ class CvController extends Controller
         $cv->contact_title = clean($request->contact_title);
         $cv->save();
 
-        $request->session()->flash('success', 'Contact title updated');
+        $request->session()->flash('success', 'Contato atualizado com sucesso');
         return "success";
     }
 }
