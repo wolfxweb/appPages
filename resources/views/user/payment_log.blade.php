@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-    <h4 class="page-title">Payment Logs</h4>
+    <h4 class="page-title">Histórico pagamentos</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('user-dashboard')}}">
@@ -13,7 +13,7 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Payment Logs</a>
+            <a href="#">Histórico pagamentos</a>
         </li>
     </ul>
 </div>
@@ -23,7 +23,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card-title d-inline-block">Payment Log</div>
+                        <div class="card-title d-inline-block">Histórico  pagamento</div>
                     </div>
                     <div class="col-lg-3">
                     </div>
@@ -40,19 +40,19 @@
                 <div class="row">
                     <div class="col-lg-12">
                         @if (count($memberships) == 0)
-                        <h3 class="text-center">NO MEMBERSHIP FOUND</h3>
+                        <h3 class="text-center">NENHUM PAGAMENTO ENCONTRAD</h3>
                         @else
                         <div class="table-responsive">
                             <table class="table table-striped mt-3">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Transaction Id</th>
-                                        <th scope="col">Package</th>
-                                        <th scope="col">Amount</th>
-                                        <th scope="col">Payment Status</th>
-                                        <th scope="col">Payment Method</th>
-                                        <th scope="col">Receipt</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">Transação Id</th>
+                                        <th scope="col">Plano</th>
+                                        <th scope="col">Valor</th>
+                                        <th scope="col">Pagamento Status</th>
+                                        <th scope="col">Forma de pagamento</th>
+                                        <th scope="col">Recibo</th>
+                                        <th scope="col">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,18 +77,18 @@
                                         </td>
                                         <td>
                                             @if ($membership->status == 1)
-                                            <h3 class="d-inline-block badge badge-success">Success</h3>
+                                            <h3 class="d-inline-block badge badge-success">Sucesso</h3>
                                             @elseif ($membership->status == 0)
-                                            <h3 class="d-inline-block badge badge-warning">Pending</h3>
+                                            <h3 class="d-inline-block badge badge-warning">Pendente</h3>
                                             @elseif ($membership->status == 2)
-                                            <h3 class="d-inline-block badge badge-danger">Rejected</h3>
+                                            <h3 class="d-inline-block badge badge-danger">Rejeitado</h3>
                                             @endif
                                         </td>
                                         <td>{{$membership->payment_method}}</td>
                                         <td>
                                             @if (!empty($membership->receipt))
                                             <a class="btn btn-sm btn-info" href="#" data-toggle="modal"
-                                                data-target="#receiptModal{{$membership->id}}">Show</a>
+                                                data-target="#receiptModal{{$membership->id}}">Visualizar</a>
                                             @else
                                             -
                                             @endif
@@ -107,8 +107,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Receipt
-                                                        Image
+                                                    <h5 class="modal-title" id="exampleModalLabel">Imagem do recibo
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -122,7 +121,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close
+                                                        data-dismiss="modal">Fechar
                                                     </button>
                                                 </div>
                                             </div>
@@ -133,8 +132,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Owner
-                                                        Details
+                                                    <h5 class="modal-title" id="exampleModalLabel">Outros detalhes
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -142,49 +140,47 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h3 class="text-warning">Member details</h3>
-                                                    <label>Name</label>
+                                                    <h3 class="text-warning">Detalhes Usuário </h3>
+                                                    <label>Nome</label>
                                                     <p>{{$membership->user->first_name.' '.$membership->user->last_name}}</p>
                                                     <label>Email</label>
                                                     <p>{{$membership->user->email}}</p>
-                                                    <label>Phone</label>
+                                                    <label>Telefone</label>
                                                     <p>{{$membership->user->phone}}</p>
-                                                    <h3 class="text-warning">Payment details</h3>
-                                                    <p><strong>Cost: </strong> {{$membership->price == 0 ? "Free" : $membership->price}}
+                                                    <h3 class="text-warning">Detalhes Pagamento</h3>
+                                                    <p><strong>Valor: </strong> {{$membership->price == 0 ? "Free" : $membership->price}}
                                                     </p>
-                                                    <p><strong>Currency: </strong> {{$membership->currency}}
+                                                    <p><strong>Moeda: </strong> {{$membership->currency}}
                                                     </p>
-                                                    <p><strong>Method: </strong> {{$membership->payment_method}}
+                                                    <p><strong>Forma pagamento: </strong> {{$membership->payment_method}}
                                                     </p>
-                                                    <h3 class="text-warning">Package Details</h3>
-                                                    <p><strong>Title: </strong>{{$membership->package->title}}
+                                                    <h3 class="text-warning">Detalhes plano</h3>
+                                                    <p><strong>Titúlo: </strong>{{$membership->package->title}}
                                                     </p>
-                                                    <p><strong>Term: </strong> {{$membership->package->term}}
+                                                    <p><strong>Prazo (Tempo do plano): </strong> {{$membership->package->term}}
                                                     </p>
-                                                    <p><strong>Start
-                                                        Date: </strong>
+                                                    <p><strong>Data inicio: </strong>
                                                         @if (\Illuminate\Support\Carbon::parse($membership->start_date)->format('Y') == '9999')
-                                                            <span class="badge badge-danger">Never Activated</span>
+                                                            <span class="badge badge-danger">Nunca ativado</span>
                                                         @else
                                                             {{\Illuminate\Support\Carbon::parse($membership->start_date)->format('M-d-Y')}} 
                                                         @endif
                                                     </p>
-                                                    <p><strong>Expire
-                                                        Date: </strong>
+                                                    <p><strong>Data expiração: </strong>
                                                         
                                                         @if (\Illuminate\Support\Carbon::parse($membership->start_date)->format('Y') == '9999')
                                                             -
                                                         @else
                                                             @if ($membership->modified == 1)
                                                                 {{\Illuminate\Support\Carbon::parse($membership->expire_date)->addDay()->format('M-d-Y')}}
-                                                                <span class="badge badge-primary btn-xs">modified by Admin</span>
+                                                                <span class="badge badge-primary btn-xs">modificado pelo adminstrador</span>
                                                             @else
                                                                 {{$membership->package->term == 'lifetime' ? 'Lifetime' : \Illuminate\Support\Carbon::parse($membership->expire_date)->format('M-d-Y')}}
                                                             @endif
                                                         @endif
                                                     </p>
                                                     <p>
-                                                        <strong>Purchase Type: </strong>
+                                                        <strong>Tipo de compra: </strong>
                                                         @if($membership->is_trial == 1)
                                                         Trial
                                                         @else
@@ -194,7 +190,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Close
+                                                    Fechar
                                                     </button>
                                                 </div>
                                             </div>

@@ -25,7 +25,7 @@ $userDefaultLang = \App\Models\User\Language::where([
 
 @section('content')
 <div class="page-header">
-   <h4 class="page-title">Following List</h4>
+   <h4 class="page-title">Lista Seguidores</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="{{route('user.following.list')}}">
@@ -36,13 +36,13 @@ $userDefaultLang = \App\Models\User\Language::where([
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Following Page</a>
+         <a href="#">Página de seguidores</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Following</a>
+         <a href="#">Seguidores</a>
       </li>
    </ul>
 </div>
@@ -52,7 +52,7 @@ $userDefaultLang = \App\Models\User\Language::where([
          <div class="card-header">
             <div class="row">
                <div class="col-lg-4">
-                  <div class="card-title d-inline-block">Following</div>
+                  <div class="card-title d-inline-block">Seguidores</div>
                </div>
                <div class="col-lg-3">
                </div>
@@ -64,19 +64,19 @@ $userDefaultLang = \App\Models\User\Language::where([
             <div class="row">
                <div class="col-lg-12">
                  @if(is_null($userDefaultLang))
-                       <h3 class="text-center">NO LANGUAGE FOUND</h3>
+                       <h3 class="text-center">NENHUM IDIOMA ENCONTRADO</h3>
                    @else
                        @if (count($users) == 0)
-                           <h3 class="text-center">NO FOLLOWING USER FOUND</h3>
+                           <h3 class="text-center">NENHUM USUÁRIO ENCONTRADO</h3>
                        @else
                            <div class="table-responsive">
                                <table class="table table-striped mt-3">
                                    <thead>
                                    <tr>
-                                       <th scope="col">Image</th>
-                                       <th scope="col">User name</th>
+                                       <th scope="col">ImageM</th>
+                                       <th scope="col">Nome usuário</th>
                                        <th scope="col">Email</th>
-                                       <th scope="col">Actions</th>
+                                       <th scope="col">Ações</th>
                                    </tr>
                                    </thead>
                                    <tbody>
@@ -90,10 +90,10 @@ $userDefaultLang = \App\Models\User\Language::where([
                                                  <span class="btn-label">
                                                    <i class="fas fa-eye"></i>
                                                  </span>
-                                                   View
+                                                   Visualizar
                                                </a>
                                                <a class="btn btn-danger btn-sm" href="{{route('user.unfollow', $user->id)}}">
-                                                 Unfollow
+                                                 Deixar de seguir
                                                </a>
                                            </td>
                                        </tr>

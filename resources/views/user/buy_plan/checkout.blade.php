@@ -9,7 +9,7 @@
     @endif
     @if(!empty($membership) && ($membership->package->term == 'lifetime' || $membership->is_trial == 1))
     <div class="alert bg-warning alert-warning text-white text-center">
-        <h3>If you purchase this package <strong class="text-dark">({{$package->title}})</strong>, then your current package <strong class="text-dark">({{$membership->package->title}}@if($membership->is_trial == 1) <span class="badge badge-secondary">Trial</span>@endif)</strong> will be replaced immediately</h3>
+        <h3>Se você comprar este pacote <strong class="text-dark">({{$package->title}})</strong>, então seu pacote atual <strong class="text-dark">({{$membership->package->title}}@if($membership->is_trial == 1) <span class="badge badge-secondary">Trial</span>@endif)</strong> será substituído imediatamente</h3>
     </div>
     @endif
     <div class="row justify-content-center align-items-center mb-1">
@@ -32,12 +32,14 @@
                     </div>
                     <div class="card-body">
                         <ul class="specification-list">
+                            <!--
                             <li>
                                 <span class="name-specification">Membership</span>
                                 <span class="status-specification">Yes</span>
                             </li>
+                        -->
                             <li>
-                                <span class="name-specification">Start Date</span>
+                                <span class="name-specification">Data inicio</span>
                                 @if((!empty($previousPackage) && $previousPackage->term == 'lifetime') || (!empty($membership) && $membership->is_trial == 1))
                                     <input type="hidden" name="start_date" value="{{\Carbon\Carbon::today()->format('d-m-Y')}}">
                                     <span class="status-specification">{{\Carbon\Carbon::today()->format('d-m-Y')}}</span>
@@ -47,7 +49,7 @@
                                 @endif
                             </li>
                             <li>
-                                <span class="name-specification">Expire Date</span>
+                                <span class="name-specification">Data expiração</span>
                                 <span class="status-specification">
                                     @if($package->term == "monthly")
                                         @if((!empty($previousPackage) && $previousPackage->term == 'lifetime') || (!empty($membership) && $membership->is_trial == 1))
@@ -73,7 +75,7 @@
                             </span>
                             </li>
                             <li>
-                                <span class="name-specification">Total Cost</span>
+                                <span class="name-specification">Total </span>
                                 <input type="hidden" name="price" value="{{$package->price}}">
                                 <span class="status-specification">
                                     {{$package->price== 0 ? "Free" : format_price($package->price)}}
@@ -82,10 +84,10 @@
                             @if($package->price != 0)
                             <li>
                                 <div class="form-group px-0">
-                                    <label class="text-white">Payment Method</label>
+                                    <label class="text-white">Forma de pagamento</label>
                                     <select name="payment_method" class="form-control input-solid" id="payment-gateway"
                                             required>
-                                        <option value="" disabled selected>Select a Payment Method</option>
+                                        <option value="" disabled selected>Selecione a forma de pagamento</option>
                                         @foreach($payment_methods as $payment_method)
                                             <option value="{{$payment_method->name}}" {{old("payment_method") == $payment_method->name ? "selected":""}}>{{$payment_method->name}}</option>
                                         @endforeach

@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Password</h4>
+    <h4 class="page-title">Atualizar snha</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="#">
@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Profile Settings</a>
+        <a href="#">Configuração</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Password</a>
+        <a href="#">Senha</a>
       </li>
     </ul>
   </div>
@@ -28,7 +28,7 @@
       <div class="card">
         <form action="{{route('user.updatePassword')}}" method="post" role="form">
           <div class="card-header">
-            <div class="card-title">Update Password</div>
+            <div class="card-title">Atualizar senha</div>
           </div>
           <div class="card-body">
             <div class="row">
@@ -36,7 +36,7 @@
                  {{csrf_field()}}
                  <div class="form-body">
                     <div class="form-group">
-                       <label>Current Password</label>
+                       <label>Senha atual</label>
                        <div class="">
                           <input class="form-control" name="old_password" placeholder="Your Current Password" type="password">
                           @if ($errors->has('old_password'))
@@ -53,7 +53,7 @@
                        </div>
                     </div>
                     <div class="form-group">
-                       <label>New Password</label>
+                       <label>Nova senha</label>
                        <div class="">
                           <input class="form-control" name="password" placeholder="New Password" type="password">
                           @if ($errors->has('password'))
@@ -64,7 +64,7 @@
                        </div>
                     </div>
                     <div class="form-group">
-                       <label>New Password Again</label>
+                       <label>Nova Senha Novamente</label>
                        <div class="">
                           <input class="form-control" name="password_confirmation" placeholder="New Password Again" type="password">
                        </div>
@@ -76,7 +76,7 @@
           <div class="card-footer">
             <div class="row">
                <div class="col-md-12 text-center">
-                  <button type="submit" class="btn btn-success">Update</button>
+                  <button type="submit" class="btn btn-success">Atualizar</button>
                </div>
             </div>
           </div>
