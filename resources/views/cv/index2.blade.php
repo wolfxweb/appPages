@@ -27,8 +27,8 @@
                     <div class="col-lg-9">
                         <div class="user-content">
                             <div class="title">
-                                <h3>{!! $cv->name !!}</h3>
-                                <span class="span">{!! $cv->occupation !!}</span>
+                                <h3 style="color:#{{$cv->base_color_text}}">{!! $cv->name !!}</h3>
+                                <span style="color:#{{$cv->base_color_text}}"class="span">{!! $cv->occupation !!}</span>
                             </div>
 
                             @if (!empty($infos))
@@ -36,7 +36,7 @@
                                 @foreach ($infos as $info)
                                     <li>
                                         <div class="icon">
-                                            <i class="{{$info['icon']}} text-white" style="background-color: #{{$info['color']}}"></i>
+                                            <i  style="color:#{{$cv->base_color_text}}" class="{{$info['icon']}} text-white" style="background-color: #{{$info['color']}}"></i>
                                         </div>
                                         <div class="info">
                                             <h5>{!! $info['content'] !!}</h5>
@@ -58,7 +58,7 @@
                                 <div class="info-box-item">
                                     <page-break>
                                         <div class="title">
-                                            <h5><i class="{{$section->icon}}" style="color: #{{$cv->base_color}}"></i>{!! $section->name !!}</h5>
+                                            <h5 style="color:#{{$cv->base_color_text}}" ><i class="{{$section->icon}}"></i>{!! $section->name !!}</h5>
                                         </div>
                                     </page-break>
                                     @php
