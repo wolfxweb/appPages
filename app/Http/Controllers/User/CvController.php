@@ -59,6 +59,8 @@ class CvController extends Controller
         $cv->cv_name = $request->cv_name;
         $cv->direction = $request->direction;
         $cv->base_color = $request->base_color;
+        $cv->base_color_text = $request->base_color_text;
+        
         if ($request->hasFile('image')) {
             $filename = uniqid() . '.' . $image->getClientOriginalExtension();
             $dir = public_path('assets/front/img/user/cv/');
@@ -114,6 +116,7 @@ class CvController extends Controller
         $cv->template = $request->template;
         $cv->direction = $request->direction;
         $cv->base_color = $request->base_color;
+        $cv->base_color_text = $request->base_color_text;
         if ($request->hasFile('image')) {
             $filename = uniqid() . '.' . $image->getClientOriginalExtension();
             $dir = public_path('assets/front/img/user/cv/');

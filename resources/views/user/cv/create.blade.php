@@ -116,11 +116,20 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="">Cor base do curriculo **</label>
-                <input type="text" class="form-control jscolor ltr" name="base_color" placeholder="" value="F4B0AE">
+                <input type="text" class="form-control jscolor ltr" name="base_color" placeholder="" value="FFCBDB">
                 <p id="errbase_color" class="mb-0 text-danger em"></p>
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="">Cor do texto titúlo **</label>
+                <input type="text" class="form-control jscolor ltr" name="base_color_text" placeholder="" value="FF007F">
+                <p id="errbase_color" class="mb-0 text-danger em"></p>
+              </div>
+            </div>
+          </div> 
         </form>
       </div>
       <div class="modal-footer">

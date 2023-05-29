@@ -36,7 +36,7 @@
                                 @foreach ($infos as $info)
                                     <li>
                                         <div class="icon">
-                                            <i class="{{$info['icon']}}" style="background-color: #{{$info['color']}}"></i>
+                                            <i class="{{$info['icon']}} text-white" style="background-color: #{{$info['color']}}"></i>
                                         </div>
                                         <div class="info">
                                             <h5>{!! $info['content'] !!}</h5>

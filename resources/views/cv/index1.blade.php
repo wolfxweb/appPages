@@ -22,8 +22,8 @@
                     <div class="user-info-wrapper">
                         <div class="user-box text-center">
                             <div class="title">
-                                <h4>{!! $cv->name !!}</h4>
-                                <span class="position">{!! $cv->occupation !!}</span>
+                                <h4 style="color:#{{$cv->base_color_text}}">{!! $cv->name !!}</h4>
+                                <span style="color:#{{$cv->base_color_text}}" class="position">{!! $cv->occupation !!}</span>
                             </div>
                             <div class="user-thumb">
                                 <img src="{{asset('assets/front/img/user/cv/' . $cv->image)}}" alt="User Thumbnail">
@@ -33,13 +33,13 @@
                         @if (!empty($infos))
                         <div class="info-box-item">
                             <div class="title">
-                                <h5><i class="fas fa-address-card"></i>{!! $cv->contact_title !!}</h5>
+                                <h5 style="color:#{{$cv->base_color_text}}"><i class="fas fa-address-card"></i>{!! $cv->contact_title !!}</h5>
                             </div>
                             <div class="content">
                                 <ul class="info-list">
                                     @foreach ($infos as $info)
                                         <page-break>
-                                            <li><i class="{{$info['icon']}}" style="color: #{{$info['color']}}"></i><span>{!! $info['content'] !!}</span></li>
+                                            <li  ><i class="{{$info['icon']}}" style="color: #{{$info['color']}}"></i><span>{!! $info['content'] !!}</span></li>
                                         </page-break>
                                     @endforeach
                                 </ul>
@@ -52,7 +52,7 @@
                                 <div class="info-box-item">
                                     <page-break>
                                         <div class="title">
-                                            <h5><i class="{{$lsection->icon}}"></i>{!! $lsection->name !!}</h5>
+                                            <h5 style="color:#{{$cv->base_color_text}}" ><i class="{{$lsection->icon}}"></i>{!! $lsection->name !!}</h5>
                                         </div>
                                     </page-break>
 
@@ -70,7 +70,7 @@
                                                             @endif
                                                             @if (!empty($content['title']) || !empty($content['subtitle']))
                                                                 <p>
-                                                                    <span>{!! $content['title'] ?? '' !!}{{!empty($content['title']) && !empty($content['subtitle']) ? ', ' : ''}}{!! $content['subtitle'] ?? '' !!}</span>
+                                                                    <span >{!! $content['title'] ?? '' !!}{{!empty($content['title']) && !empty($content['subtitle']) ? ', ' : ''}}{!! $content['subtitle'] ?? '' !!}</span>
                                                                 </p>
                                                             @endif
                                                             @if (!empty($content['description']))
@@ -99,7 +99,7 @@
                                 <div class="info-box-item">
                                     <page-break>
                                         <div class="title">
-                                            <h5><i class="{{$rsection->icon}}"></i>{!! $rsection->name !!}</h5>
+                                            <h5 style="color:#{{$cv->base_color_text}}"><i class="{{$rsection->icon}}"></i>{!! $rsection->name !!}</h5>
                                         </div>
                                     </page-break>
 

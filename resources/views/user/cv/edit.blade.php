@@ -154,8 +154,17 @@
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
-                      <label for="">Cor base curriculo **</label>
-                      <input type="text" class="form-control jscolor ltr" name="base_color" placeholder="Enter base color" value="{{$cv->base_color}}">
+                      <label for="">Cor Fundo titúlos **</label>
+                      <input type="text" class="form-control jscolor ltr" name="base_color" placeholder="" value="{{$cv->base_color}}">
+                      <p id="errbase_color" class="mb-0 text-danger em"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="">Cor do texto titúlo **</label>
+                      <input type="text" class="form-control jscolor ltr" name="base_color_text" placeholder="" value="{{$cv->base_color_text}}">
                       <p id="errbase_color" class="mb-0 text-danger em"></p>
                     </div>
                   </div>
