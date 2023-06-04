@@ -23,7 +23,13 @@
 @endsection
 
 @section('content')
-    <!--====== Start Page Wrapper ======-->
+@php
+  echo "<pre>";
+    var_dump($keywords);
+    echo "</pre>";
+     
+@endphp    
+<!--====== Start Page Wrapper ======-->
     <div class="page-wrapper">
         <div class="container p-0">
             <div class="page-content page-content-three">
@@ -53,7 +59,7 @@
                                 <div class="action-btn">
                                     <a class="call" href="tel:{{$vcard->phone}}" style="background: #{{$vcard->call_button_color}}"><i class="fas fa-mobile-alt"></i></a>
                                     <br>
-                                    <span>{{$keywords["Call"] ?? "Call"}}</span>
+                                    <span>{{$keywords["Chamar"] ?? "Telefone"}}</span>
                                 </div>
                                 @endif
                                 @if (!empty($vcard->phone) && (is_array($prefs) && in_array('Whatsapp', $prefs)))
@@ -67,16 +73,16 @@
                                 <div class="action-btn">
                                     <a class="mail" href="mailto:{{$vcard->email}}" style="background: #{{$vcard->mail_button_color}}"><i class="far fa-envelope"></i></a>
                                     <br>
-                                    <span>{{$keywords["Mail"] ?? "Mail"}}</span>
+                                    <span>{{$keywords["Email"] ?? "Email"}}</span>
                                 </div>
                                 @endif
                             </div>
                             <div class="more-btns text-center mt-3">
                                 @if (!empty($vcard->phone) && (is_array($prefs) && in_array('Add to Contact', $prefs)))
-                                <a href="{{route('front.user.vcardImport', [getParam(), $vcard->id])}}" class="add-contact" style="background: #{{$vcard->add_to_contact_button_color}}"><i class="fas fa-plus"></i> {{$keywords["Add_to_Contact"] ?? "Add to Contact"}}</a>
+                                <a href="{{route('front.user.vcardImport', [getParam(), $vcard->id])}}" class="add-contact" style="background: #{{$vcard->add_to_contact_button_color}}"><i class="fas fa-plus"></i> {{$keywords["Adicionar_contato"] ?? "Adicionar contato"}}</a>
                                 @endif
                                 @if (is_array($prefs) && in_array('Share vCard', $prefs))
-                                <a href="#" data-toggle="modal" data-target="#socialMediaModal" class="share" style="background: #{{$vcard->share_vcard_button_color}}"><i class="fas fa-share-square"></i> {{$keywords["Share_vCard"] ?? "Share vCard"}}</a>
+                                <a href="#" data-toggle="modal" data-target="#socialMediaModal" class="share" style="background: #{{$vcard->share_vcard_button_color}}"><i class="fas fa-share-square"></i> {{$keywords["Compartilhar vCard"] ?? "Compartilhar"}}</a>
                                 @endif
                             </div>
                         </div>
@@ -91,7 +97,7 @@
                             <i class="fas fa-mobile-alt" style="color: #{{$vcard->phone_icon_color}};"></i>
                         </a>
                         <div class="content">
-                            <span class="title">{{$keywords["Phone"] ?? "Phone"}}</span>
+                            <span class="title">{{$keywords["Telefone"] ?? "Telefone"}}</span>
                             <h5><a href="tel:{{$vcard->phone}}">{{$vcard->phone}}</a></h5>
                         </div>
                     </div>
@@ -102,7 +108,7 @@
                             <i class="fas fa-at" style="color: #{{$vcard->email_icon_color}};"></i>
                         </a>
                         <div class="content">
-                            <span class="title">{{$keywords["Email"] ?? "Email"}}</span>
+                            <span class="title">{{$keywords["Corespondencia"] ?? "Email"}}</span>
                             <h5><a href="mailto:{{$vcard->email}}">{{$vcard->email}}</a></h5>
                         </div>
                     </div>
@@ -113,7 +119,7 @@
                             <i class="fas fa-map-marker-alt" style="color: #{{$vcard->address_icon_color}};"></i>
                         </a>
                         <div class="content">
-                            <span class="title">{{$keywords["Address"] ?? "Address"}}</span>
+                            <span class="title">{{$keywords["Endereço"] ?? "Endereço"}}</span>
                             <h5><a href="https://www.google.com/maps?q={{$vcard->address}}">{{$vcard->address}}</a></h5>
                         </div>
                     </div>
@@ -155,7 +161,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title">
-                                <h4>{{$keywords["About_us"] ?? "About us"}}</h4>
+                                <h4>{{$keywords["Sobre_nós"] ?? "Sobre_nós"}}</h4>
                             </div>
                         </div>
                     </div>
@@ -170,7 +176,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title">
-                                <h4>{{$keywords["Our_Service"] ?? "Our Service"}}</h4>
+                                <h4>{{$keywords["Serviços"] ?? "Serviços"}}</h4>
                             </div>
                         </div>
                     </div>
@@ -188,7 +194,7 @@
                                     @if ($service->external_link_status == 1 && !empty($service->external_link))
                                     <a href="{{$service->external_link}}" target="_blank" class="main-btn btn-color-three">{{$keywords["Details"] ?? "Details"}}</a>
                                     @elseif ($service->external_link_status == 0 && !empty($service->short_details))
-                                    <a href="#" data-toggle="modal" data-target="#serviceDetails{{$service->id}}" class="main-btn btn-color-three">{{$keywords["Details"] ?? "Details"}}</a>
+                                    <a href="#" data-toggle="modal" data-target="#serviceDetails{{$service->id}}" class="main-btn btn-color-three">{{$keywords["Detalhes"] ?? "Detalhes"}}</a>
                                     @endif
                                 </div>
                             </div>
@@ -200,7 +206,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Details"] ?? "Details"}}</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Detalhes"] ?? "Detalhes"}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -221,7 +227,7 @@
                     <div class="row align-items-center">
                         <div class="col-8">
                             <div class="section-title">
-                                <h4>{{$keywords["Projects"] ?? "Projects"}}</h4>
+                                <h4>{{$keywords["Projetos"] ?? "Projetos"}}</h4>
                             </div>
                         </div>
                         <div class="col-4">
@@ -245,9 +251,9 @@
                             </div>
                             <div class="content text-center">
                                 @if ($project->external_link_status == 1 && !empty($project->external_link))
-                                <a href="{{$project->external_link}}" target="_blank" class="main-btn btn-color-three">Details</a>
+                                <a href="{{$project->external_link}}" target="_blank" class="main-btn btn-color-three">Detalhes</a>
                                 @elseif ($project->external_link_status == 0 && !empty($project->short_details))
-                                <a href="#" data-toggle="modal" data-target="#projectDetails" class="main-btn btn-color-three" data-details="{{$project->short_details}}">{{$keywords["Details"] ?? "Details"}}</a>
+                                <a href="#" data-toggle="modal" data-target="#projectDetails" class="main-btn btn-color-three" data-details="{{$project->short_details}}">{{$keywords["Detalhes"] ?? "Detalhes"}}</a>
                                 @endif
                             </div>
                         </div>
@@ -262,7 +268,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Details"] ?? "Details"}}</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Detalhes"] ?? "Detalhes"}}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -284,7 +290,9 @@
                     </div>
                     @if (!empty($vcard->video))
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{$vcard->video}}" allowfullscreen></iframe>
+                        @php
+                            echo $vcard->video;
+                        @endphp
                     </div>
                     @endif
                 </div>
@@ -295,7 +303,7 @@
                     <div class="row align-items-center">
                         <div class="col-8">
                             <div class="section-title">
-                                <h4>{{$keywords["Testimonial"] ?? "Testimonial"}}</h4>
+                                <h4>{{$keywords["Depoimentos"] ?? "Depoimentos"}}</h4>
                             </div>
                         </div>
                         <div class="col-4">
@@ -340,7 +348,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title">
-                                <h4>{{$keywords["Enquiry_Form"] ?? "Enquiry_Form"}}</h4>
+                                <h4>{{$keywords["Formulário"] ?? "Formulário"}}</h4>
                             </div>
                         </div>
                     </div>
@@ -354,7 +362,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form_group">
-                                        <input type="text" class="form_control" placeholder="{{$keywords["Enter_Name"] ?? "Enter_Name"}}" name="fullname" required>
+                                        <input type="text" class="form_control" placeholder="{{$keywords["Nome"] ?? "Digite seu nome"}}" name="fullname" required>
                                         @if ($errors->has('fullname'))
                                             <p class="text-danger mb-0">{{$errors->first('fullname')}}</p>
                                         @endif
@@ -362,7 +370,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form_group">
-                                        <input type="email" class="form_control" placeholder="{{$keywords["Enter_Email_Address"] ?? "Enter_Email_Address"}}" name="email" required>
+                                        <input type="email" class="form_control" placeholder="{{$keywords["Email_formulário"] ?? "Digite se email"}}" name="email" required>
                                         @if ($errors->has('email'))
                                             <p class="text-danger mb-0">{{$errors->first('email')}}</p>
                                         @endif
@@ -370,7 +378,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form_group">
-                                        <input type="text" class="form_control" placeholder="{{$keywords["Enter_Subject"] ?? "Enter_Subject"}}" name="subject" required>
+                                        <input type="text" class="form_control" placeholder="{{$keywords["Assunto"] ?? "Assunto"}}" name="subject" required>
                                         @if ($errors->has('subject'))
                                             <p class="text-danger mb-0">{{$errors->first('subject')}}</p>
                                         @endif
@@ -378,7 +386,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form_group">
-                                        <textarea class="form_control" placeholder="{{$keywords["Enter_Message"] ?? "Enter_Message"}}" name="message"></textarea>
+                                        <textarea class="form_control" placeholder="{{$keywords["Mensagem"] ?? "Digite sua mensagem"}}" name="message"></textarea>
                                         @if ($errors->has('message'))
                                             <p class="text-danger mb-0">{{$errors->first('message')}}</p>
                                         @endif
@@ -386,7 +394,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form_group">
-                                        <button class="main-btn btn-color-three" type="submit">{{$keywords["Send"] ?? "Send"}}</button>
+                                        <button class="main-btn btn-color-three" type="submit">{{$keywords["Enviar"] ?? "Enviar"}}</button>
                                     </div>
                                 </div>
                             </div>
