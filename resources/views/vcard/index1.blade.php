@@ -11,7 +11,7 @@
 @endif
 
 @section('base-color')
-<link rel="stylesheet" href="{{asset('assets/front/css/profile/vcard/template1234/vcard-base-color.php').'?color='.$vcard->base_color}}">
+<link rel="stylesheet" href="{{asset('assets/front/css/profile/vcard/template1234/vcard-base-color.php').'?color='.$vcard->summary_background_color}}">
 @endsection
 
 @section('og-image', asset('assets/front/img/user/vcard/' . $vcard->cover_image))
@@ -23,12 +23,7 @@
 @endsection
 
 @section('content')
-@php
-  echo "<pre>";
-    var_dump($keywords);
-    echo "</pre>";
-     
-@endphp    
+   
 <!--====== Start Page Wrapper ======-->
     <div class="page-wrapper">
         <div class="container p-0">

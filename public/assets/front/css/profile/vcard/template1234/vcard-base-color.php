@@ -34,3 +34,14 @@ else {
 .contact-section-widget.contact-section-four .form_control {
     border-color: <?php echo $color ?>;
 }
+
+.more-btns a {
+    display: inline-block;
+    background-color:<?php echo $color ?>;
+    color: #fff;
+    width: 150px;
+    text-align: center;
+    padding: 8px 0px;
+    border-radius: 50px;
+    font-size: 12px;
+}
