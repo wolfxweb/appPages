@@ -66,9 +66,10 @@
                      <div class="row">
                         <div class="col-lg-12">
                            <div class="form-group">
-                              <label>Link de vídeo</label>
-                              <input type="text" class="form-control ltr" name="video" placeholder="Enter embed URL of video" value="{{$vcard->video}}">
-                              <p class="text-warning mb-0">Insira o URL de incorporação do vídeo, não pegue o URL da barra de pesquisa do navegador</p>
+                              <label>Incorporação de vídeo</label>
+                              <textarea cols="30" class="form-control ltr"rows="5" name="video" placeholder="Adicione o codigo de incorporação" >{{$vcard->video}}</textarea>
+           
+                              <p class="text-warning mb-0">Insira o codigo de incorporação do vídeo, não pegue o URL da barra de pesquisa do navegador, no youtube o este codigo fica em compratinhar vídeo</p>
                            </div>
                         </div>
                      </div>
