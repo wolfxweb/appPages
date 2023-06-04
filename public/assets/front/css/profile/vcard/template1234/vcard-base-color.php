@@ -45,3 +45,12 @@ else {
     border-radius: 50px;
     font-size: 12px;
 }
+body {
+	font-family: 'Poppins', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	color: #555555;
+	font-size: 14px;
+	line-height: 26px;
+	overflow-x: hidden;
+}
