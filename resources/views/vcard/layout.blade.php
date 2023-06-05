@@ -50,7 +50,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Share_On"] ?? "Share On"}}</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Share_On"] ?? "Compartilhar"}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -85,7 +85,7 @@
                             <div class="action-btn">
                                 <a class="mail" href="mailto:?subject=Digital Card&body=Check out this digital card {{url()->current()}}."><i class="fas fa-at"></i></a>
                                 <br>
-                                <span>{{$keywords["Mail"] ?? "Mail"}}</span>
+                                <span>{{$keywords["Mail"] ?? "email"}}</span>
                             </div>
                         </div>
                     </div>
