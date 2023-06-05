@@ -223,6 +223,72 @@
                               <p id="errwebsite_url" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão telefone</label>
+                              <input type="color" class="form-control form-control-color" id="call_button_color" name="call_button_color" value="#{{$vcard->call_button_color}}" title="Choose your color">
+                           </div>
+                        </div> 
+                          <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão whatsapp </label>
+                              <input type="color" class="form-control form-control-color" id="whatsapp_button_color" name="whatsapp_button_color"value="#{{$vcard->whatsapp_button_color}}" title="Choose your color">
+                           </div>
+                        </div> 
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão email</label>
+                              <input type="color" class="form-control form-control-color" id="mail_button_color" name="mail_button_color"value="#{{$vcard->mail_button_color}}" title="Choose your color">
+                           </div>
+                        </div>
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão adicionar contato</label>
+                              <input type="color" class="form-control form-control-color" id="add_to_contact_button_color" name="add_to_contact_button_color"value="#{{$vcard->add_to_contact_button_color}}" title="Choose your color">
+                           </div>
+                        </div> 
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão compartinhar</label>
+                              <input type="color" class="form-control form-control-color" id="share_vcard_button_color" name="share_vcard_button_color"value="#{{$vcard->share_vcard_button_color}}" title="Choose your color">
+                           </div>
+                        </div> 
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão icone telefone</label>
+                              <input type="color" class="form-control form-control-color" id="phone_icon_color" name="phone_icon_color"value="#{{$vcard->phone_icon_color}}" title="Choose your color">
+                           </div>
+                        </div>
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão icone email</label>
+                              <input type="color" class="form-control form-control-color" id="email_icon_color" name="email_icon_color"value="#{{$vcard->email_icon_color}}" title="Choose your color">
+                           </div>
+                        </div> 
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão icone endereço</label>
+                              <input type="color" class="form-control form-control-color" id="address_icon_color" name="address_icon_color"value="#{{$vcard->address_icon_color}}" title="Choose your color">
+                           </div>
+                        </div> 
+                        <div class="col-lg-4">
+                           <div class="form-group">
+                              <label for="">Cor botão icone site</label>
+                              <input type="color" class="form-control form-control-color" id="website_url_icon_color" name="website_url_icon_color"value="#{{$vcard->website_url_icon_color}}" title="Choose your color">
+                           </div>
+                        </div>
+                        <div class="col-lg-6">
+                           <div class="form-group">
+                              <label for="">Cor base</label>
+                              <input type="color" class="form-control form-control-color" id="base_color" name="base_color" value="#{{$vcard->base_color}}" title="Choose your color">
+                           </div>
+                        </div> 
+                        <div class="col-lg-6">
+                           <div class="form-group">
+                              <label for="">Cor sumario </label>
+                              <input type="color" class="form-control form-control-color" id="summary_background_color" name="summary_background_color"value="#{{$vcard->summary_background_color}}" title="Choose your color">
+                           </div>
+                        </div>
                      </div>
 
 
@@ -252,7 +318,7 @@
                         <div class="row no-gutters" v-for="(information, index) in infromations" :key="information.uniqid">
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label for="">Iconee **</label>
+                                    <label for="">Icone **</label>
                                     <div class="btn-group d-block">
                                         <button type="button" class="btn btn-primary iconpicker-component"><i :id="'vcard-icp-icon' + index" :class="information.icon"></i></button>
                                         <button type="button" :id="'vcard-icp'+information.uniqid" class="vcard-icp vcard-icp-dd btn btn-primary dropdown-toggle" data-selected="fa-car" data-toggle="dropdown" :data-vue_index="index">
@@ -368,6 +434,7 @@
                setColor($event, index) {
                   let information = this.infromations[index];
                   information.color = $event.target.value;
+                  console.log(information)
                   this.$set(this.infromations, index, information);
                },
                addIcpEvent() {

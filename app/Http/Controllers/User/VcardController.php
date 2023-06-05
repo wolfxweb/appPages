@@ -296,7 +296,7 @@ class VcardController extends Controller
 
         $vcard->save();
 
-        $request->session()->flash('success', 'Vcard added successfully');
+        $request->session()->flash('success', 'Vcard cadastrado com sucesso');
         return 'success';
     }
 
@@ -317,11 +317,11 @@ class VcardController extends Controller
                     if (!empty($profileImg)) {
                         $ext = $profileImg->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                         $size = $profileImg->getSize();
                         if ($size > 200000) {
-                            return $fail("Image size cannot be greater than 200 KB");
+                            return $fail("O tamanho da imagem não pode ser maior que 200 KB");
                         }
                     }
                 },
@@ -331,7 +331,7 @@ class VcardController extends Controller
                     if (!empty($coverImg)) {
                         $ext = $coverImg->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -343,10 +343,10 @@ class VcardController extends Controller
         ];
 
         $messages = [
-            'icons.*.required' => 'The Icon field cannot be empty',
-            'colors.*.required' => 'The Color field cannot be empty',
-            'labels.*.required' => 'The Label field cannot be empty',
-            'values.*.required' => 'The Value field cannot be empty'
+            'icons.*.required' => 'O campo Ícone não pode estar vazio',
+            'colors.*.required' => 'O campo Cor não pode estar vazio',
+            'labels.*.required' => 'O campo Rótulo não pode estar vazio',
+            'values.*.required' => 'O campo Valor não pode estar vazio'
         ];
 
 
@@ -388,7 +388,22 @@ class VcardController extends Controller
         $vcard->address = $request->address;
         $vcard->website_url = $request->website_url;
         $vcard->introduction = $request->introduction;
-
+   
+        $vcard->call_button_color = $request->call_button_color? ltrim($request->call_button_color,'#')  :"ed2476";
+        $vcard->whatsapp_button_color = $request->whatsapp_button_color? ltrim($request->whatsapp_button_color,'#')  :"ed2476";
+        $vcard->mail_button_color = $request->mail_button_color? ltrim($request->mail_button_color,'#')  :"ed2476";
+        $vcard->add_to_contact_button_color = $request->add_to_contact_button_color? ltrim($request->add_to_contact_button_color,'#')  :"ed2476";
+        $vcard->share_vcard_button_color = $request->share_vcard_button_color? ltrim($request->share_vcard_button_color,'#')  :"ed2476";
+        $vcard->phone_icon_color = $request->phone_icon_color? ltrim($request->phone_icon_color,'#')  :"ed2476";
+        $vcard->email_icon_color = $request->email_icon_color? ltrim($request->email_icon_color,'#')  :"ed2476";
+        $vcard->address_icon_color = $request->address_icon_color? ltrim($request->address_icon_color,'#')  :"ed2476";
+        $vcard->website_url_icon_color = $request->website_url_icon_color? ltrim($request->website_url_icon_color,'#')  :"ed2476";
+        $vcard->base_color = $request->base_color? ltrim($request->base_color,'#')  :"ed2476";
+        $vcard->summary_background_color = $request->summary_background_color? ltrim($request->summary_background_color,'#')  :"ed2476";
+        
+        
+        
+        
         $infoArr = [];
         $labels = $request->labels ? $request->labels : [];
         $values = $request->values ? $request->values : [];
@@ -411,7 +426,7 @@ class VcardController extends Controller
 
         $vcard->save();
 
-        $request->session()->flash('success', 'Vcard updated successfully');
+        $request->session()->flash('success', 'Vcard atualizado com sucesso');
         return 'success';
     }
 
