@@ -151,8 +151,8 @@
                            <div class="col-lg-6">
                               <div class="form-group">
                                  <label for="">vCard Nome **</label>
-                                 <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="vcard_name" value="{{$vcard->vcard_name}}" placeholder="Enter vcard name">
-                                 <p class="text-warning mb-0">Use this name to identify sepcific vcard from your vcards list.</p>
+                                 <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="vcard_name" value="{{$vcard->vcard_name}}" placeholder="">
+                                 <p class="text-warning mb-0">Use este nome para identificar um cartão específico da sua lista de cartões.</p>
                                  <p id="errvcard_name" class="mb-0 text-danger em"></p>
                               </div>
                            </div>
@@ -173,21 +173,21 @@
                         <div class="col-lg-4">
                            <div class="form-group">
                               <label for="">Nome</label>
-                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="name" value="{{$vcard->name}}" placeholder="Enter name">
+                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="name" value="{{$vcard->name}}" placeholder="">
                               <p id="errname" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-4">
                            <div class="form-group">
                               <label for="">Empresa </label>
-                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="company" value="{{$vcard->company}}" placeholder="Enter company">
+                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="company" value="{{$vcard->company}}" placeholder="">
                               <p id="errcompany" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-4">
                            <div class="form-group">
                               <label for="">Ocupação</label>
-                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="occupation" value="{{$vcard->occupation}}" placeholder="Enter occupation">
+                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="occupation" value="{{$vcard->occupation}}" placeholder="">
                               <p id="erroccupation" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
@@ -197,29 +197,29 @@
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Email</label>
-                              <input type="text" class="form-control ltr" name="email" value="{{$vcard->email}}" placeholder="Enter email">
+                              <input type="text" class="form-control ltr" name="email" value="{{$vcard->email}}" placeholder="">
                               <p id="erremail" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Telefone</label>
-                              <input type="text" class="form-control ltr" name="phone" value="{{$vcard->phone}}" placeholder="Enter phone">
-                              <p class="text-warning mb-0">Enter Phone Number with <strong class="text-danger">Country Code</strong></p>
+                              <input type="text" class="form-control ltr" name="phone" value="{{$vcard->phone}}" placeholder="">
+                              <p class="text-warning mb-0">Digite o numero de telefone com <strong class="text-danger">Código DDD</strong></p>
                               <p id="errphone" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Endereço</label>
-                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="address" value="{{$vcard->address}}" placeholder="Enter address">
+                              <input type="text" class="form-control {{$vcard->direction == 2 ? 'rtl' : ''}}" name="address" value="{{$vcard->address}}" placeholder="">
                               <p id="erraddress" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Website URL</label>
-                              <input type="text" class="form-control ltr" name="website_url" value="{{$vcard->website_url}}" placeholder="Enter website_url">
+                              <input type="text" class="form-control ltr" name="website_url" value="{{$vcard->website_url}}" placeholder="">
                               <p id="errwebsite_url" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
