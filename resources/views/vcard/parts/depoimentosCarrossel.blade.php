@@ -2,7 +2,7 @@
     <div class="row align-items-center">
         <div class="col-8">
             <div class="section-title">
-                <h4>{{$keywords["Testimonial"] ?? "Testimonial"}}</h4>
+                <h4>{{$keywords["Depoimentos"] ?? "Depoimentos"}}</h4>
             </div>
         </div>
         <div class="col-4">

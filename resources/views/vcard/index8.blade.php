@@ -59,7 +59,7 @@
                             <p>{{$vcard->introduction}}</p>
                         </div>
                         @if (!empty($vcard->phone) && (is_array($prefs) && in_array('Add to Contact', $prefs)))
-                        <a style="background: #{{$vcard->add_to_contact_button_color}}" href="{{route('front.user.vcardImport', [getParam(), $vcard->id])}}" class="user-btn"><i class="fas fa-plus"></i>{{$keywords["Add_to_Contact"] ?? "Add to Contact"}}</a>
+                        <a style="background: #{{$vcard->add_to_contact_button_color}}" href="{{route('front.user.vcardImport', [getParam(), $vcard->id])}}" class="user-btn"><i class="fas fa-plus"></i>{{$keywords["Adicionar_contato"] ?? "Adicionar contato"}}</a>
                         @endif
                     </div>
                 </div><!--====== End Admin-box  ======-->
@@ -87,7 +87,7 @@
                             <i style="color: #{{$vcard->phone_icon_color}}" class="fas fa-phone"></i>
                         </div>
                         <div class="text">
-                            <h3>{{$keywords["Phone"] ?? "Phone"}}</h3>
+                            <h3>{{$keywords["Telefone"] ?? "Telefone"}}</h3>
                             <p><a href="tel:{{$vcard->phone}}">{{$vcard->phone}}</a></p>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                             <i class="fas fa-map-marker-alt" style="color: #{{$vcard->address_icon_color}}"></i>
                         </div>
                         <div class="text">
-                            <h3>{{$keywords["Address"] ?? "Address"}}</h3>
+                            <h3>{{$keywords["Endereço"] ?? "Endereço"}}</h3>
                             <p>{{$vcard->address}}</p>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                 @if (is_array($prefs) && in_array('About Us', $prefs))
                     <!--====== Start About  ======-->
                     <div class="section-widget about-area-four mb-30">
-                        <h3 class="widget-title">{{$keywords["About_us"] ?? "About us"}}</h3>
+                        <h3 class="widget-title">{{$keywords["Sobre_nós"] ?? "Sobre nós"}}</h3>
                         <div class="about-content">
                             {!! $vcard->about !!}
                         </div>
@@ -154,7 +154,7 @@
                 <div class="section-widget service-area-four mb-25">
                     <div class="row">
                         <div class="col-8">
-                            <h3 class="widget-title">{{$keywords["Our_Service"] ?? "Our Service"}}</h3>
+                            <h3 class="widget-title">{{$keywords["Serviços"] ?? "Nossos serviços"}}</h3>
                         </div>
                         <div class="col-4">
                             <div class="service-arrows"></div>
@@ -191,7 +191,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Details"] ?? "Details"}}</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Details"] ?? "Detalhes"}}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -207,7 +207,7 @@
                 <div class="section-widget project-area-four mb-25">
                     <div class="row">
                         <div class="col-8">
-                            <h3 class="widget-title">{{$keywords["Projects"] ?? "Projects"}}</h3>
+                            <h3 class="widget-title">{{$keywords["Projetos"] ?? "Nossos projetos"}}</h3>
                         </div>
                         <div class="col-4">
                             <div class="project-arrows"></div>
@@ -231,7 +231,7 @@
                                     @if ($project->external_link_status == 1 && !empty($project->external_link))
                                         <a href="{{$project->external_link}}" target="_blank" class="btn_link d-block text-center">{{$keywords["Details"] ?? "Details"}}</a>
                                     @elseif ($project->external_link_status == 0 && !empty($project->short_details))
-                                        <a href="#" data-toggle="modal" data-target="#projectDetails" class="btn_link d-block text-center" data-details="{{$project->short_details}}">{{$keywords["Details"] ?? "Details"}}</a>
+                                        <a href="#" data-toggle="modal" data-target="#projectDetails" class="btn_link d-block text-center" data-details="{{$project->short_details}}">{{$keywords["Details"] ?? "Detalhes"}}</a>
                                     @endif
                                 </div>
                             @endforeach
@@ -244,7 +244,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Details"] ?? "Details"}}</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Details"] ?? "Detalhes"}}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -258,11 +258,16 @@
 
                 @if (is_array($prefs) && in_array('Video', $prefs))
                 <!--====== Start Video  ======-->
-                <div class="section-widget intro-area-four mb-25">
+                <div class="section-widget project-area-four mb-25 ">
                     @if (!empty($vcard->video))
                         <div class="intro-item">
                             <div class="img-holder">
-                                <iframe class="embed-responsive-item" src="{{$vcard->video}}" allowfullscreen width="100%" height="280"></iframe>
+                                <div class="row d-flex justify-content-center">
+                                    @php
+                                        echo $vcard->video;
+                                    @endphp
+                                </div>
+                                
                             </div>
                         </div>
                     @endif
@@ -274,7 +279,7 @@
                 <div class="section-widget testimonial-area-four mb-25">
                     <div class="row">
                         <div class="col-8">
-                            <h3 class="widget-title">{{$keywords["Testimonial"] ?? "Testimonial"}}</h3>
+                            <h3 class="widget-title">{{$keywords["Depoimentos"] ?? "Testimonial"}}</h3>
                         </div>
                         <div class="col-4">
                             <div class="testimonial-arrows"></div>
@@ -318,7 +323,7 @@
                     <div class="section-widget contact-area-four">
                         <div class="row">
                             <div class="col-12">
-                                <h3 class="widget-title">{{$keywords["Enquiry_Form"] ?? "Enquiry_Form"}}</h3>
+                                <h3 class="widget-title">{{$keywords["Formulário"] ?? "Formulário"}}</h3>
                             </div>
                         </div>
                         <div class="contact-form">
@@ -331,7 +336,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="{{$keywords["Enter_Name"] ?? "Enter_Name"}}" name="fullname" required>
+                                            <input type="text" class="form_control" placeholder="{{$keywords["Nome"] ?? "Enter_Name"}}" name="fullname" required>
                                             @if ($errors->has('fullname'))
                                                 <p class="text-danger mb-0">{{$errors->first('fullname')}}</p>
                                             @endif
@@ -339,7 +344,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form_group">
-                                            <input type="email" class="form_control" placeholder="{{$keywords["Enter_Email_Address"] ?? "Enter_Email_Address"}}" name="email" required>
+                                            <input type="email" class="form_control" placeholder="{{$keywords["Email_formulário"] ?? "Enter_Email_Address"}}" name="email" required>
                                             @if ($errors->has('email'))
                                                 <p class="text-danger mb-0">{{$errors->first('email')}}</p>
                                             @endif
@@ -347,7 +352,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form_group">
-                                            <input type="text" class="form_control" placeholder="{{$keywords["Enter_Subject"] ?? "Enter_Subject"}}" name="subject" required>
+                                            <input type="text" class="form_control" placeholder="{{$keywords["Assunto"] ?? "Enter_Subject"}}" name="subject" required>
                                             @if ($errors->has('subject'))
                                                 <p class="text-danger mb-0">{{$errors->first('subject')}}</p>
                                             @endif
@@ -355,7 +360,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form_group">
-                                            <textarea class="form_control" placeholder="{{$keywords["Enter_Message"] ?? "Enter_Message"}}" name="message"></textarea>
+                                            <textarea class="form_control" placeholder="{{$keywords["Mensagem"] ?? "Enter_Message"}}" name="message"></textarea>
                                             @if ($errors->has('message'))
                                                 <p class="text-danger mb-0">{{$errors->first('message')}}</p>
                                             @endif
@@ -363,7 +368,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form_group">
-                                            <button class="form-btn" type="submit">{{$keywords["Send"] ?? "Send"}}</button>
+                                            <button class="form-btn" type="submit">{{$keywords["Enviar"] ?? "Send"}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -371,6 +376,7 @@
                         </div>
                     </div><!--====== End Contact  ======-->
                 @endif
+                <div class="mb-25"></div>
             </div><!--====== Page Area End ======-->
         </div>
     </div><!--====== End Page Wrapper ======-->

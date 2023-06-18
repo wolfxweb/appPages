@@ -7,7 +7,7 @@
         </div>
     </div>
     @if (!empty($vcard->video))
-    <div>
+    <div class="row d-flex justify-content-center">
         @php
             echo $vcard->video;
         @endphp

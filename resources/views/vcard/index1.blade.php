@@ -341,6 +341,7 @@
                 @if (is_array($prefs) && in_array('Enquiry Form', $prefs))
                 @include('vcard.parts.form',$keywords) 
                 @endif
+                <div class="mb-25"></div>
             </div>
         </div>
     </div><!--====== End Page Wrapper ======-->

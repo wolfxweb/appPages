@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <div class="section-title">
-                <h4>{{$keywords["Formulário"] ?? "Formulário"}}</h4>
+                <h3>{{$keywords["Formulário"] ?? "Formulário"}}</h3>
             </div>
         </div>
     </div>

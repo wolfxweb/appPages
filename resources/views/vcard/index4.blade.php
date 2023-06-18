@@ -44,7 +44,7 @@
                             <div class="action-btn">
                                 <a class="call" href="tel:{{$vcard->phone}}" style="background: #{{$vcard->call_button_color}}"><i class="fas fa-mobile-alt"></i></a>
                                 <br>
-                                <span>{{$keywords["Call"] ?? "Call"}}</span>
+                                <span>{{$keywords["Chamar"] ?? "Telefone"}}</span>
                             </div>
                             @endif
                             @if (!empty($vcard->phone) && (is_array($prefs) && in_array('Whatsapp', $prefs)))
@@ -58,7 +58,7 @@
                             <div class="action-btn">
                                 <a class="mail" href="mailto:{{$vcard->email}}" style="background: #{{$vcard->mail_button_color}}"><i class="far fa-envelope"></i></a>
                                 <br>
-                                <span>{{$keywords["Mail"] ?? "Mail"}}</span>
+                                <span>{{$keywords["Email"] ?? "Email"}}</span>
                             </div>
                             @endif
                         </div>
@@ -92,7 +92,7 @@
                         <i class="fas fa-mobile-alt"></i>
                     </a>
                     <div class="content">
-                        <span class="title">{{$keywords["Phone"] ?? "Phone"}}</span>
+                        <span class="title">{{$keywords["Call"] ?? "Telefone"}}</span>
                         <h5><a href="tel:{{$vcard->phone}}">{{$vcard->phone}}</a></h5>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h4>{{$keywords["About_us"] ?? "About us"}}</h4>
+                            <h4>{{$keywords["Sobre_nós"] ?? "Sobre nós"}}</h4>
                         </div>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h4>{{$keywords["Our_Service"] ?? "Our Service"}}</h4>
+                            <h4>{{$keywords["Serviços"] ?? "Serviços"}}</h4>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                 <div class="row align-items-center">
                     <div class="col-8">
                         <div class="section-title">
-                            <h4>{{$keywords["Projects"] ?? "Projects"}}</h4>
+                            <h4>{{$keywords["Projetos"] ?? "Projetos"}}</h4>
                         </div>
                     </div>
                     <div class="col-4">
@@ -305,6 +305,7 @@
             @if (is_array($prefs) && in_array('Enquiry Form', $prefs))
               @include('vcard.parts.form',$keywords)
             @endif
+            <div class="mb-25"></div>
         </div>
     </div>
 </div><!--====== End Page Wrapper ======-->

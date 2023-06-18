@@ -53,7 +53,7 @@
                                     <div class="action-btn">
                                         <a class="call" href="tel:{{$vcard->phone}}" style="background: #{{$vcard->call_button_color}}"><i class="fas fa-mobile-alt"></i></a>
                                         <br>
-                                        <span>{{$keywords["Call"] ?? "Call"}}</span>
+                                        <span>{{$keywords["Telefone"] ?? "Telefone"}}</span>
                                     </div>
                                     @endif
                                     @if (!empty($vcard->phone) && (is_array($prefs) && in_array('Whatsapp', $prefs)))
@@ -67,155 +67,26 @@
                                     <div class="action-btn">
                                         <a class="mail" href="mailto:{{$vcard->email}}" style="background: #{{$vcard->mail_button_color}}"><i class="far fa-envelope"></i></a>
                                         <br>
-                                        <span>{{$keywords["Mail"] ?? "Mail"}}</span>
+                                        <span>{{$keywords["Email"] ?? "Email"}}</span>
                                     </div>
                                     @endif
                                 </div>
                                 <div class="more-btns text-center mt-3">
                                     @if (!empty($vcard->phone) && (is_array($prefs) && in_array('Add to Contact', $prefs)))
-                                    <a href="{{route('front.user.vcardImport', [getParam(), $vcard->id])}}" class="add-contact" style="background: #{{$vcard->add_to_contact_button_color}}"><i class="fas fa-plus"></i> {{$keywords["Add_to_Contact"] ?? "Add to Contact"}}</a>
+                                    <a href="{{route('front.user.vcardImport', [getParam(), $vcard->id])}}" class="add-contact" style="background: #{{$vcard->add_to_contact_button_color}}"><i class="fas fa-plus"></i> {{$keywords["Adicionar_contato"] ?? "Adicionar contato"}}</a>
                                     @endif
                                     @if (is_array($prefs) && in_array('Share vCard', $prefs))
-                                    <a href="#" data-toggle="modal" data-target="#socialMediaModal" class="share" style="background: #{{$vcard->share_vcard_button_color}}"><i class="fas fa-share-square"></i> {{$keywords["Share_vCard"] ?? "Share vCard"}}</a>
+                                    <a href="#" data-toggle="modal" data-target="#socialMediaModal" class="share" style="background: #{{$vcard->share_vcard_button_color}}"><i class="fas fa-share-square"></i> {{$keywords["Compartilhar vCard"] ?? "Compartilhar"}}</a>
                                     @endif
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
-                    @if (is_array($prefs) && in_array('Information', $prefs))
-                    <div class="page-info-widget">
-                        @if (!empty($vcard->phone))
-                        <div class="info-widget d-flex align-items-center">
-                            <a href="tel:{{$vcard->phone}}" class="icon icon-1" style="background: #{{$vcard->phone_icon_color}}1a;">
-                                <i class="fas fa-mobile-alt" style="color: #{{$vcard->phone_icon_color}};"></i>
-                            </a>
-                            <div class="content">
-                                <span class="title">{{$keywords["Phone"] ?? "Phone"}}</span>
-                                <h5><a href="tel:{{$vcard->phone}}">{{$vcard->phone}}</a></h5>
-                            </div>
-                        </div>
-                        @endif
-                        @if (!empty($vcard->email))
-                        <div class="info-widget d-flex align-items-center">
-                            <a href="mailto:{{$vcard->email}}" class="icon icon-1" style="background: #{{$vcard->email_icon_color}}1a;">
-                                <i class="fas fa-at" style="color: #{{$vcard->email_icon_color}};"></i>
-                            </a>
-                            <div class="content">
-                                <span class="title">{{$keywords["Email"] ?? "Email"}}</span>
-                                <h5><a href="mailto:{{$vcard->email}}">{{$vcard->email}}</a></h5>
-                            </div>
-                        </div>
-                        @endif
-                        @if (!empty($vcard->address))
-                        <div class="info-widget d-flex align-items-center">
-                            <a href="https://www.google.com/maps?q={{$vcard->address}}" class="icon icon-1" style="background: #{{$vcard->address_icon_color}}1a;">
-                                <i class="fas fa-map-marker-alt" style="color: #{{$vcard->address_icon_color}};"></i>
-                            </a>
-                            <div class="content">
-                                <span class="title">{{$keywords["Address"] ?? "Address"}}</span>
-                                <h5><a href="https://www.google.com/maps?q={{$vcard->address}}">{{$vcard->address}}</a></h5>
-                            </div>
-                        </div>
-                        @endif
-                        @if (!empty($vcard->website_url))
-                        <div class="info-widget d-flex align-items-center">
-                            <a class="icon icon-1" href="{{$vcard->website_url}}" target="_blank" style="background: #{{$vcard->website_url_icon_color}}1a;">
-                                <i class="fas fa-link" style="color: #{{$vcard->website_url_icon_color}};"></i>
-                            </a>
-                            <div class="content">
-                                <span class="title">{{$keywords["Website_URL"] ?? "Website_URL"}}</span>
-                                <h5><a href="{{$vcard->website_url}}" target="_blank">{{$vcard->website_url}}</a></h5>
-                            </div>
-                        </div>
-                        @endif
-                        @foreach ($infos as $info)
-                            <div class="info-widget d-flex align-items-center">
-                                @if ($info['link'] == 1) 
-                                <a class="icon icon-1" href="{{$info['value']}}" target="_blank">
-                                    <i class="{{$info['icon']}}" style="color: #{{$info['color']}}"></i>
-                                </a>
-                                @else
-                                <div class="icon icon-1" style="background: #{{$info['color']}}1a">
-                                    <i class="{{$info['icon']}}" style="color: #{{$info['color']}}"></i>
-                                </div>
-                                @endif
-                                <div class="content">
-                                    <span class="title">{{$info['label']}}</span>
-                                    <h5><a @if ($info['link'] == 1) target="_blank" href="{{$info['value']}}" @endif>{{$info['value']}}</a></h5>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    @endif
-    
-    
-                    @if (is_array($prefs) && in_array('About Us', $prefs))
-                    <div class="about-section-widget about-section-four">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="section-title">
-                                    <h4>{{$keywords["About_us"] ?? "About us"}}</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            {!! $vcard->about !!}
-                        </div>
-                    </div>
-                    @endif
-    
-                    @if (is_array($prefs) && in_array('Services', $prefs))
-                    <div class="service-section-widget service-section-four">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="section-title">
-                                    <h4>{{$keywords["Our_Service"] ?? "Our Service"}}</h4>
-                                </div>
-                            </div>
-                        </div>
-                        @php
-                            $services = !empty($vcard->user_vcard_services) ? $vcard->user_vcard_services : [];
-                        @endphp
-                        @foreach ($services as $service)
-                            <div class="service-item mb-3">
-                                <div class="service-img">
-                                    <img class="w-100 lazy" data-src="{{asset('assets/front/img/user/services/' . $service->image)}}" alt="service img">
-                                </div>
-                                <div class="content">
-                                    <h4>{{$service->title}}</h4>
-                                    <div class="button text-center">
-                                        @if ($service->external_link_status == 1 && !empty($service->external_link))
-                                        <a href="{{$service->external_link}}" target="_blank" class="main-btn btn-color-three">{{$keywords["Details"] ?? "Details"}}</a>
-                                        @elseif ($service->external_link_status == 0 && !empty($service->short_details))
-                                        <a href="#" data-toggle="modal" data-target="#serviceDetails{{$service->id}}" class="main-btn btn-color-three">{{$keywords["Details"] ?? "Details"}}</a>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-    
-                            @if ($service->external_link_status == 0 && !empty($service->short_details))
-                            <!-- Modal -->
-                            <div class="modal fade" id="serviceDetails{{$service->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">{{$keywords["Details"] ?? "Details"}}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                        {{$service->short_details}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    @endif
+                 @if (is_array($prefs) && in_array('Information', $prefs))
+                   @include('vcard.parts.iconesInformacoes',$keywords)
+                 @endif
+                  
     
                     @if (is_array($prefs) && in_array('Projects', $prefs))
                     <div class="portfolio-section-widget portfolio-section-four">
@@ -285,6 +156,7 @@
                     @if (is_array($prefs) && in_array('Enquiry Form', $prefs))
                       @include('vcard.parts.form',$keywords)
                     @endif
+                    <div class="mb-25"></div>
                 </div>
             </div>
         </div><!--====== End Page Wrapper ======-->
