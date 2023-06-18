@@ -335,7 +335,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form_group">
-                                        <input type="email" class="form_control" placeholder="{{$keywords["Email_formulário"] ?? "Enter_Email_Address"}}" name="email" required>
+                                        <input type="email" class="form_control" placeholder="{{$keywords["Email_formulário"] ?? "Email_formulário"}}" name="email" required>
                                         @if ($errors->has('email'))
                                             <p class="text-danger mb-0">{{$errors->first('email')}}</p>
                                         @endif
