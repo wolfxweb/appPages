@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="form-group">
                                       <hr>
-                                    <span class="">Visibilidade do Conteúdo</span><br>
+                                    <span class="">Visibilidade do Conteúdo</span>
                                   
                                     <div class="selectgroup selectgroup-pills mt-2 justify-content-center">
                                         <label class="selectgroup-item">
