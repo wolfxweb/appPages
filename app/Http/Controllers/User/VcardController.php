@@ -53,9 +53,9 @@ class VcardController extends Controller
         $img = $request->file('image');
         $allowedExts = array('jpg', 'png', 'jpeg');
         $messages = [
-            'title.required' => 'The title field is required',
-            'serial_number.required' => 'The serial number field is required',
-            'image.required' => 'The image field is required',
+            'title.required' => 'O campo título é obrigatório',
+            'serial_number.required' => 'O campo do número de série é obrigatório',
+            'image.required' => 'O campo da imagem é obrigatório',
         ];
 
 
@@ -94,7 +94,7 @@ class VcardController extends Controller
         $service = new UserVcardService();
         $service->create($input);
 
-        Session::flash('success', 'Service added successfully!');
+        Session::flash('success', 'Serviço adicionado com sucesso!');
         return "success";
     }
 
@@ -400,7 +400,7 @@ class VcardController extends Controller
         $vcard->website_url_icon_color = $request->website_url_icon_color? ltrim($request->website_url_icon_color,'#')  :"ed2476";
         $vcard->base_color = $request->base_color? ltrim($request->base_color,'#')  :"ed2476";
         $vcard->summary_background_color = $request->summary_background_color? ltrim($request->summary_background_color,'#')  :"ed2476";
-        
+        $vcard->page_background_color = $request->page_background_color? ltrim($request->page_background_color,'#')  :"ed2476"; 
         
         
         
@@ -798,9 +798,11 @@ class VcardController extends Controller
         if (!empty($vcard->preferences)) {
             $preferences = json_decode($vcard->preferences, true);
         }
+        $pageOrder = json_decode($vcard->page_order,true);
 
         $data['vcard'] = $vcard;
         $data['preferences'] = $preferences;
+        $data['page_order'] = $pageOrder;
 
         return view('user.vcard.preferences', $data);
     }
@@ -814,6 +816,14 @@ class VcardController extends Controller
         }
 
         $preferences = $request->preferences;
+        $order['informacoes'] = $request->informacoes;
+        $order['video'] = $request->video;
+        $order['sobre_nos'] = $request->sobre_nos;
+        $order['servicos'] = $request->servicos;
+        $order['projetos'] = $request->projetos;
+        $order['depoimentos'] = $request->depoimentos;
+        $order['formulario'] = $request->formulario;
+        $vcard->page_order =  json_encode($order);
         if (empty($preferences)) {
             $vcard->preferences = NULL;
         } else {
@@ -821,7 +831,7 @@ class VcardController extends Controller
         }
         $vcard->save();
 
-        $request->session()->flash('success', 'Preferences updated successfully');
+        $request->session()->flash('success', 'Preferências atualizadas com sucesso!');
         return 'success';
     }
 
@@ -857,11 +867,14 @@ class VcardController extends Controller
             $vcard->email_icon_color = $request->email_icon_color;
             $vcard->address_icon_color = $request->address_icon_color;
             $vcard->website_url_icon_color = $request->website_url_icon_color;
+            $vcard->summary_background_color = $request->summary_background_color;
+            $vcard->page_background_color = $request->page_background_color;
+            
         }
 
         $vcard->save();
 
-        $request->session()->flash('success', 'Colors updated successfully');
+        $request->session()->flash('success', 'Cores atualizadas com sucesso');
         return 'success';
     }
 
@@ -899,7 +912,7 @@ class VcardController extends Controller
         $vcard->keywords = $upKeywords;
         $vcard->save();
 
-        $request->session()->flash('success', 'Colors updated successfully');
+        $request->session()->flash('success', 'Atualizado com sucesso!');
         return 'success';
     }
 }

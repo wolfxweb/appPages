@@ -50,10 +50,22 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="">Base Color **</label>
+                                            <label for="">Cor primária **</label>
                                             <input type="text" class="form-control jscolor" name="base_color" value="{{$vcard->base_color}}">
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                           <label for="">Cor secundária </label>
+                                           <input type="text" class="form-control jscolor" id="summary_background_color" name="summary_background_color"value="#{{$vcard->summary_background_color}}" title="Choose your color">
+                                        </div>
+                                     </div>
+                                     <div class="col-lg-6">
+                                        <div class="form-group">
+                                           <label for="">Cor Fundo página </label>
+                                           <input type="text" class="form-control jscolor" id="page_background_color" name="page_background_color"value="#{{$vcard->page_background_color}}" title="Choose your color">
+                                        </div>
+                                     </div>
 
                                     @if ($vcard->template == 6)    
                                     <div class="col-lg-6">
@@ -103,7 +115,7 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label for="">Email Iconer **</label>
+                                                <label for="">Email Icone **</label>
                                                 <input type="text" class="form-control jscolor" name="email_icon_color" value="{{$vcard->email_icon_color}}">
                                             </div>
                                         </div>
@@ -119,6 +131,7 @@
                                                 <input type="text" class="form-control jscolor" name="website_url_icon_color" value="{{$vcard->website_url_icon_color}}">
                                             </div>
                                         </div>
+                                                    
                                     @endif
                                 </div>
                             </form>

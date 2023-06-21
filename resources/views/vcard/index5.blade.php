@@ -381,7 +381,7 @@
                     </div>
                 </div><!--====== End Contact ======-->
             @endif
-            <div class="mb-25"></div>
+            <div class="mb-25 p-5"></div>
         </div><!--====== Page Area End ======-->
     </div>
 </div><!--====== End Page Wrapper ======-->
