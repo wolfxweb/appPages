@@ -272,7 +272,7 @@ class VcardController extends Controller
         $data = file_get_contents(resource_path('lang/') . 'vcard.json');
         $vcard->keywords = $data;
 
-        $vcard->preferences = '["Call","Whatsapp","Mail","Add to Contact","Share vCard","Information","About Us","Video","Services","Projects","Testimonials","Enquiry Form"]';
+        $vcard->preferences = '["Call","Whatsapp","Mail","Add to Contact","Share vCard","Information","About Us","Video","Services","Projects","Testimonials","Enquiry Form","Header"]';
 
         $infoArr = [];
         $labels = $request->labels ? $request->labels : [];
@@ -388,22 +388,22 @@ class VcardController extends Controller
         $vcard->address = $request->address;
         $vcard->website_url = $request->website_url;
         $vcard->introduction = $request->introduction;
-   
-        $vcard->call_button_color = $request->call_button_color? ltrim($request->call_button_color,'#')  :"ed2476";
-        $vcard->whatsapp_button_color = $request->whatsapp_button_color? ltrim($request->whatsapp_button_color,'#')  :"ed2476";
-        $vcard->mail_button_color = $request->mail_button_color? ltrim($request->mail_button_color,'#')  :"ed2476";
-        $vcard->add_to_contact_button_color = $request->add_to_contact_button_color? ltrim($request->add_to_contact_button_color,'#')  :"ed2476";
-        $vcard->share_vcard_button_color = $request->share_vcard_button_color? ltrim($request->share_vcard_button_color,'#')  :"ed2476";
-        $vcard->phone_icon_color = $request->phone_icon_color? ltrim($request->phone_icon_color,'#')  :"ed2476";
-        $vcard->email_icon_color = $request->email_icon_color? ltrim($request->email_icon_color,'#')  :"ed2476";
-        $vcard->address_icon_color = $request->address_icon_color? ltrim($request->address_icon_color,'#')  :"ed2476";
-        $vcard->website_url_icon_color = $request->website_url_icon_color? ltrim($request->website_url_icon_color,'#')  :"ed2476";
-        $vcard->base_color = $request->base_color? ltrim($request->base_color,'#')  :"ed2476";
-        $vcard->summary_background_color = $request->summary_background_color? ltrim($request->summary_background_color,'#')  :"ed2476";
-        $vcard->page_background_color = $request->page_background_color? ltrim($request->page_background_color,'#')  :"ed2476"; 
-        
-        
-        
+
+        $vcard->call_button_color = $request->call_button_color ? ltrim($request->call_button_color, '#')  : "ed2476";
+        $vcard->whatsapp_button_color = $request->whatsapp_button_color ? ltrim($request->whatsapp_button_color, '#')  : "ed2476";
+        $vcard->mail_button_color = $request->mail_button_color ? ltrim($request->mail_button_color, '#')  : "ed2476";
+        $vcard->add_to_contact_button_color = $request->add_to_contact_button_color ? ltrim($request->add_to_contact_button_color, '#')  : "ed2476";
+        $vcard->share_vcard_button_color = $request->share_vcard_button_color ? ltrim($request->share_vcard_button_color, '#')  : "ed2476";
+        $vcard->phone_icon_color = $request->phone_icon_color ? ltrim($request->phone_icon_color, '#')  : "ed2476";
+        $vcard->email_icon_color = $request->email_icon_color ? ltrim($request->email_icon_color, '#')  : "ed2476";
+        $vcard->address_icon_color = $request->address_icon_color ? ltrim($request->address_icon_color, '#')  : "ed2476";
+        $vcard->website_url_icon_color = $request->website_url_icon_color ? ltrim($request->website_url_icon_color, '#')  : "ed2476";
+        $vcard->base_color = $request->base_color ? ltrim($request->base_color, '#')  : "ed2476";
+        $vcard->summary_background_color = $request->summary_background_color ? ltrim($request->summary_background_color, '#')  : "ed2476";
+        $vcard->page_background_color = $request->page_background_color ? ltrim($request->page_background_color, '#')  : "ed2476";
+
+
+
         $infoArr = [];
         $labels = $request->labels ? $request->labels : [];
         $values = $request->values ? $request->values : [];
@@ -798,7 +798,9 @@ class VcardController extends Controller
         if (!empty($vcard->preferences)) {
             $preferences = json_decode($vcard->preferences, true);
         }
-        $pageOrder = json_decode($vcard->page_order,true);
+
+
+        $pageOrder = json_decode($vcard->page_order, true);
 
         $data['vcard'] = $vcard;
         $data['preferences'] = $preferences;
@@ -809,6 +811,7 @@ class VcardController extends Controller
 
     public function prefUpdate(Request $request, $vcId)
     {
+        $dat = $request;
         $vcard = UserVcard::findOrFail($vcId);
 
         if ($vcard->user_id != Auth::user()->id) {
@@ -816,13 +819,26 @@ class VcardController extends Controller
         }
 
         $preferences = $request->preferences;
-        $order['informacoes'] = $request->informacoes;
-        $order['video'] = $request->video;
-        $order['sobre_nos'] = $request->sobre_nos;
-        $order['servicos'] = $request->servicos;
-        $order['projetos'] = $request->projetos;
-        $order['depoimentos'] = $request->depoimentos;
-        $order['formulario'] = $request->formulario;
+
+
+        $vcard->session_page_order_1 = $this->getNameSession($request->session_page_order_1);
+        $vcard->session_page_order_2 = $this->getNameSession($request->session_page_order_2);
+        $vcard->session_page_order_3 = $this->getNameSession($request->session_page_order_3);
+        $vcard->session_page_order_4 = $this->getNameSession($request->session_page_order_4);
+        $vcard->session_page_order_5 = $this->getNameSession($request->session_page_order_5);
+        $vcard->session_page_order_6 = $this->getNameSession($request->session_page_order_6);
+        $vcard->session_page_order_7 = $this->getNameSession($request->session_page_order_7);
+        $vcard->session_page_order_8 = $this->getNameSession($request->session_page_order_8);
+
+        $order[0]['header'] = $request->session_page_order_1;
+        $order[1]['informacoes'] = $request->session_page_order_2;
+        $order[2]['sobre_nos'] = $request->session_page_order_3;
+        $order[3]['servicos'] = $request->session_page_order_4;
+        $order[4]['projetos'] = $request->session_page_order_5;
+        $order[5]['video'] = $request->session_page_order_6;
+        $order[6]['depoimentos'] = $request->session_page_order_7;
+        $order[7]['formulario'] = $request->session_page_order_8;
+        // $order[6]['formulario'] = $request->session_page_order_8 ;
         $vcard->page_order =  json_encode($order);
         if (empty($preferences)) {
             $vcard->preferences = NULL;
@@ -834,7 +850,39 @@ class VcardController extends Controller
         $request->session()->flash('success', 'Preferências atualizadas com sucesso!');
         return 'success';
     }
-
+    public function getNameSession($id)
+    {
+        $nameSession = '';
+        switch ($id) {
+            case "1":
+                $nameSession = 'header';
+                break;
+            case "2":
+                $nameSession = 'informacoes';
+                break;
+            case "3":
+                $nameSession = 'sobre_nos';
+                break;
+            case "4":
+                $nameSession = 'servicos';
+                break;
+            case "5":
+                $nameSession = 'projetos';
+                break;
+            case "6":
+                $nameSession = 'video';
+                break;
+            case "7":
+                $nameSession = 'depoimentos';
+                break;
+            case "8":
+                $nameSession = 'formularios';
+                break;
+            default:
+                $nameSession = 'informacoes';
+        }
+        return $nameSession;
+    }
     public function color($id)
     {
         $vcard = UserVcard::where('user_id', Auth::user()->id)->where('id', $id)->firstOrFail();
@@ -869,7 +917,6 @@ class VcardController extends Controller
             $vcard->website_url_icon_color = $request->website_url_icon_color;
             $vcard->summary_background_color = $request->summary_background_color;
             $vcard->page_background_color = $request->page_background_color;
-            
         }
 
         $vcard->save();

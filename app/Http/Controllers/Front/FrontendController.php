@@ -40,6 +40,7 @@ use Validator;
 
 class FrontendController extends Controller
 {
+
     public function __construct()
     {
         $bs = BS::first();
@@ -52,7 +53,6 @@ class FrontendController extends Controller
         Config::set('mail.username', $be->smtp_username);
         Config::set('mail.password', $be->smtp_password);
         Config::set('mail.encryption', $be->encryption);
-
     }
 
     public function index()
@@ -70,11 +70,11 @@ class FrontendController extends Controller
             ['featured', 1],
             ['status', 1]
         ])
-        ->whereHas('memberships', function($q){
-            $q->where('status','=',1)
-            ->where('start_date','<=', Carbon::now()->format('Y-m-d'))
-            ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'));
-        })->orderBy('feature_time', 'DESC')->get();
+            ->whereHas('memberships', function ($q) {
+                $q->where('status', '=', 1)
+                    ->where('start_date', '<=', Carbon::now()->format('Y-m-d'))
+                    ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'));
+            })->orderBy('feature_time', 'DESC')->get();
 
 
         $data['templates'] = User::where([
@@ -82,11 +82,11 @@ class FrontendController extends Controller
             ['status', 1],
             ['online_status', 1]
         ])
-        ->whereHas('memberships', function ($q) {
-            $q->where('status', '=', 1)
-                ->where('start_date', '<=', Carbon::now()->format('Y-m-d'))
-                ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'));
-        })->orderBy('template_serial_number', 'ASC')->get();
+            ->whereHas('memberships', function ($q) {
+                $q->where('status', '=', 1)
+                    ->where('start_date', '<=', Carbon::now()->format('Y-m-d'))
+                    ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'));
+            })->orderBy('template_serial_number', 'ASC')->get();
 
 
         $data['testimonials'] = Testimonial::where('language_id', $lang_id)
@@ -103,10 +103,10 @@ class FrontendController extends Controller
         $terms = [];
         if (Package::query()->where('status', '1')->where('featured', '1')->where('term', 'monthly')->count() > 0) {
             $terms[] = 'Monthly';
-        } 
+        }
         if (Package::query()->where('status', '1')->where('featured', '1')->where('term', 'yearly')->count() > 0) {
             $terms[] = 'Yearly';
-        } 
+        }
         if (Package::query()->where('status', '1')->where('featured', '1')->where('term', 'lifetime')->count() > 0) {
             $terms[] = 'Lifetime';
         }
@@ -117,8 +117,8 @@ class FrontendController extends Controller
         $data['allPfeatures'] = json_decode($allPfeatures, true);
 
         return view('front.index', $data);
-    }    
-    
+    }
+
     public function subscribe(Request $request)
     {
         $rules = [
@@ -144,7 +144,8 @@ class FrontendController extends Controller
         return view('front.login');
     }
 
-    public function checkUsername($username) {
+    public function checkUsername($username)
+    {
         $count = User::where('username', $username)->count();
         $status = $count > 0 ? true : false;
         return response()->json($status);
@@ -227,10 +228,10 @@ class FrontendController extends Controller
         $terms = [];
         if (Package::query()->where('status', '1')->where('term', 'monthly')->count() > 0) {
             $terms[] = 'Monthly';
-        } 
+        }
         if (Package::query()->where('status', '1')->where('term', 'yearly')->count() > 0) {
             $terms[] = 'Yearly';
-        } 
+        }
         if (Package::query()->where('status', '1')->where('term', 'lifetime')->count() > 0) {
             $terms[] = 'Lifetime';
         }
@@ -314,7 +315,7 @@ class FrontendController extends Controller
             $currentLang = Language::where('is_default', 1)->first();
         }
         $data['seo'] = Seo::where('language_id', $currentLang->id)->first();
-        
+
         $lang_id = $currentLang->id;
         $data['faqs'] = Faq::where('language_id', $lang_id)
             ->orderBy('serial_number', 'DESC')
@@ -354,26 +355,26 @@ class FrontendController extends Controller
         }
 
         $data['users'] = null;
-        $users = User::where('online_status',1)
-            ->whereHas('memberships', function($q){
-                $q->where('status','=',1)
-                ->where('start_date','<=', Carbon::now()->format('Y-m-d'))
-                ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'));
+        $users = User::where('online_status', 1)
+            ->whereHas('memberships', function ($q) {
+                $q->where('status', '=', 1)
+                    ->where('start_date', '<=', Carbon::now()->format('Y-m-d'))
+                    ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'));
             })
-            ->whereHas('permissions', function($q){
-                $q->where('permissions','LIKE','%"Profile Listing"%');
+            ->whereHas('permissions', function ($q) {
+                $q->where('permissions', 'LIKE', '%"Profile Listing"%');
             })
             ->when($request->search, function ($q) use ($request) {
                 return $q->where(function ($query) use ($request) {
-                        $query->where('first_name', 'like', '%' . $request->search . '%')
+                    $query->where('first_name', 'like', '%' . $request->search . '%')
                         ->orWhere('last_name', 'like', '%' . $request->search . '%')
                         ->orWhere('username', 'like', '%' . $request->search . '%');
-                    });
+                });
             })
             ->when($request->location, function ($q) use ($request) {
                 return $q->where(function ($query) use ($request) {
                     $query->where('city', 'like', '%' . $request->location . '%')
-                    ->orWhere('country', 'like', '%' . $request->location . '%');
+                        ->orWhere('country', 'like', '%' . $request->location . '%');
                 });
             })
             ->when($request->designation, function ($q) use ($userIds) {
@@ -381,7 +382,7 @@ class FrontendController extends Controller
                     $query->whereIn('id', $userIds);
                 });
             })
-            
+
             ->orderBy('id', 'DESC')
             ->paginate(9);
 
@@ -400,11 +401,11 @@ class FrontendController extends Controller
         }
 
         $package = UserPermissionHelper::userPackage($user->id);
-        if(is_null($package)){
+        if (is_null($package)) {
             Session::flash('warning', 'User membership is expired');
-            if(Auth::check()){
-                return redirect()->route('user-dashboard')->with('error','User membership is expired');
-            }else{
+            if (Auth::check()) {
+                return redirect()->route('user-dashboard')->with('error', 'User membership is expired');
+            } else {
                 return redirect()->route('front.index');
             }
         }
@@ -425,40 +426,40 @@ class FrontendController extends Controller
                 ['user_id', $user->id],
                 ['language_id', $userCurrentLang->id]
             ])->first();
-        $data['portfolios'] = $user->portfolios()->where('language_id', $userCurrentLang->id)->where('featured', 1)->orderBy('serial_number','ASC')->get() ?? collect([]);
+        $data['portfolios'] = $user->portfolios()->where('language_id', $userCurrentLang->id)->where('featured', 1)->orderBy('serial_number', 'ASC')->get() ?? collect([]);
         $data['portfolio_categories'] = $user->portfolioCategories()
-        ->whereHas('portfolios', function($q){
-            $q->where('featured',1);
-        })->where('language_id', $userCurrentLang->id)->where('status', 1)->orderBy('serial_number','ASC')->get() ?? collect([]);
-        $data['skills'] = $user->skills()->where('language_id', $userCurrentLang->id)->orderBy('serial_number','ASC')->get() ?? collect([]);
-        $data['achievements'] = $user->achievements()->where('language_id', $userCurrentLang->id)->orderBy('serial_number','ASC')->get() ?? collect([]);
+            ->whereHas('portfolios', function ($q) {
+                $q->where('featured', 1);
+            })->where('language_id', $userCurrentLang->id)->where('status', 1)->orderBy('serial_number', 'ASC')->get() ?? collect([]);
+        $data['skills'] = $user->skills()->where('language_id', $userCurrentLang->id)->orderBy('serial_number', 'ASC')->get() ?? collect([]);
+        $data['achievements'] = $user->achievements()->where('language_id', $userCurrentLang->id)->orderBy('serial_number', 'ASC')->get() ?? collect([]);
         $data['services'] = $user->services()->where([
             ['lang_id', $userCurrentLang->id],
-            ['featured',1]
+            ['featured', 1]
         ])
-        ->orderBy('serial_number','ASC')
-        ->get() ?? collect([]);
-        $data['testimonials'] = $user->testimonials()->where('lang_id', $userCurrentLang->id)->orderBy('serial_number','ASC')->get() ?? collect([]);
+            ->orderBy('serial_number', 'ASC')
+            ->get() ?? collect([]);
+        $data['testimonials'] = $user->testimonials()->where('lang_id', $userCurrentLang->id)->orderBy('serial_number', 'ASC')->get() ?? collect([]);
         $data['blogs'] = $user->blogs()
-                ->where('language_id', $userCurrentLang->id)
-                ->latest()
-                ->take(3)
-                ->get() ?? collect([]);
+            ->where('language_id', $userCurrentLang->id)
+            ->latest()
+            ->take(3)
+            ->get() ?? collect([]);
 
         $data['job_experiences'] = $user->job_experiences()
-                ->where('lang_id', $userCurrentLang->id)
-                ->orderBy('serial_number','ASC')
-                ->get() ?? collect([]);
+            ->where('lang_id', $userCurrentLang->id)
+            ->orderBy('serial_number', 'ASC')
+            ->get() ?? collect([]);
         $data['educations'] = $user->educations()
-                ->where('lang_id', $userCurrentLang->id)
-                ->orderBy('serial_number','ASC')
-                ->get() ?? collect([]);
+            ->where('lang_id', $userCurrentLang->id)
+            ->orderBy('serial_number', 'ASC')
+            ->get() ?? collect([]);
 
 
         $data['user'] = $user;
 
         $ubs = User\BasicSetting::select('theme')->where('user_id', $user->id)->firstOrFail();
-        
+
         if ($ubs->theme == 1) {
             return view('user.profile1.index', $data);
         } elseif ($ubs->theme == 2) {
@@ -474,7 +475,8 @@ class FrontendController extends Controller
         }
     }
 
-    public function userAbout($domain) {
+    public function userAbout($domain)
+    {
         $user = getUser();
         $id = $user->id;
 
@@ -499,8 +501,8 @@ class FrontendController extends Controller
                 ['language_id', $userCurrentLang->id]
             ])->first();
 
-        $data['achievements'] = $user->achievements()->where('language_id', $userCurrentLang->id)->orderBy('serial_number','ASC')->get() ?? collect([]);
-            
+        $data['achievements'] = $user->achievements()->where('language_id', $userCurrentLang->id)->orderBy('serial_number', 'ASC')->get() ?? collect([]);
+
         return view('user.profile1.theme3.about', $data);
     }
 
@@ -509,8 +511,10 @@ class FrontendController extends Controller
         $offline = OfflineGateway::where('name', $request->name)
             ->select('short_description', 'instructions', 'is_receipt')
             ->first();
-        return response()->json(['description' => $offline->short_description,
-            'instructions' => $offline->instructions, 'is_receipt' => $offline->is_receipt]);
+        return response()->json([
+            'description' => $offline->short_description,
+            'instructions' => $offline->instructions, 'is_receipt' => $offline->is_receipt
+        ]);
     }
 
     public function contactMessage($domain, Request $request)
@@ -522,10 +526,10 @@ class FrontendController extends Controller
             'message' => 'required'
         ];
 
-    
+
         $request->validate($rules);
 
-        
+
         if (!empty($request->type) && $request->type == 'vcard') {
             $data['toMail'] = $request->to_mail;
             $data['toName'] = $request->to_name;
@@ -544,7 +548,6 @@ class FrontendController extends Controller
         $mailer->mailContactMessage($data);
         Session::flash('success', 'Mail sent successfully');
         return back();
-
     }
 
     public function adminContactMessage(Request $request)
@@ -555,9 +558,9 @@ class FrontendController extends Controller
             'subject' => 'required',
             'message' => 'required'
         ];
-    
+
         $bs = BS::select('is_recaptcha')->first();
-    
+
         if ($bs->is_recaptcha == 1) {
             $rules['g-recaptcha-response'] = 'required|captcha';
         }
@@ -565,7 +568,7 @@ class FrontendController extends Controller
             'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
             'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
         ];
-    
+
         $request->validate($rules, $messages);
 
 
@@ -595,7 +598,8 @@ class FrontendController extends Controller
         return back();
     }
 
-    public function userServices($domain){
+    public function userServices($domain)
+    {
         $user = getUser();
         $id = $user->id;
 
@@ -616,10 +620,10 @@ class FrontendController extends Controller
             ])->first();
 
         $data['services'] = User\UserService::query()
-                ->where('user_id', $id)
-                ->where('lang_id', $userCurrentLang->id)
-                ->orderBy('serial_number', 'ASC')
-                ->get();
+            ->where('user_id', $id)
+            ->where('lang_id', $userCurrentLang->id)
+            ->orderBy('serial_number', 'ASC')
+            ->get();
 
         $ubs = User\BasicSetting::select('theme')->where('user_id', $user->id)->firstOrFail();
         if ($ubs->theme == 1) {
@@ -637,7 +641,8 @@ class FrontendController extends Controller
         }
     }
 
-    public function userServiceDetail($domain, $slug, $id){
+    public function userServiceDetail($domain, $slug, $id)
+    {
         $data['service'] = User\UserService::query()->findOrFail($id);
         $userId = $data['service']->user_id;
 
@@ -657,7 +662,8 @@ class FrontendController extends Controller
         return view('user.profile-common.service-details', $data);
     }
 
-    public function userExperience($domain){
+    public function userExperience($domain)
+    {
         $user = getUser();
         $id = $user->id;
 
@@ -683,18 +689,19 @@ class FrontendController extends Controller
             ])->first();
 
         $data['job_experiences'] = $user->job_experiences()
-                ->where('lang_id', $userCurrentLang->id)
-                ->orderBy('serial_number','ASC')
-                ->get() ?? collect([]);
+            ->where('lang_id', $userCurrentLang->id)
+            ->orderBy('serial_number', 'ASC')
+            ->get() ?? collect([]);
         $data['educations'] = $user->educations()
-                ->where('lang_id', $userCurrentLang->id)
-                ->orderBy('serial_number','ASC')
-                ->get() ?? collect([]);
+            ->where('lang_id', $userCurrentLang->id)
+            ->orderBy('serial_number', 'ASC')
+            ->get() ?? collect([]);
 
         return view('user.profile1.theme3.experience', $data);
     }
 
-    public function userTestimonial($domain){
+    public function userTestimonial($domain)
+    {
         $user = getUser();
         $id = $user->id;
 
@@ -719,12 +726,13 @@ class FrontendController extends Controller
                 ['language_id', $userCurrentLang->id]
             ])->first();
 
-        $data['testimonials'] = $user->testimonials()->where('lang_id', $userCurrentLang->id)->orderBy('serial_number','ASC')->get() ?? collect([]);
+        $data['testimonials'] = $user->testimonials()->where('lang_id', $userCurrentLang->id)->orderBy('serial_number', 'ASC')->get() ?? collect([]);
 
         return view('user.profile1.theme3.testimonial', $data);
     }
 
-    public function userBlogs(Request $request, $domain){
+    public function userBlogs(Request $request, $domain)
+    {
         $user = getUser();
         $id = $user->id;
         $data['user'] = $user;
@@ -757,28 +765,28 @@ class FrontendController extends Controller
             })
             ->where('user_id', $id)
             ->where('language_id', $userCurrentLang->id)
-            ->orderBy('serial_number','ASC')
+            ->orderBy('serial_number', 'ASC')
             ->paginate(6);
 
 
         $data['latestBlogs'] = User\Blog::query()
-        ->where('user_id', $id)
-        ->where('language_id', $userCurrentLang->id)
-        ->orderBy('id','DESC')
-        ->limit(3)->get();
+            ->where('user_id', $id)
+            ->where('language_id', $userCurrentLang->id)
+            ->orderBy('id', 'DESC')
+            ->limit(3)->get();
 
         $data['blog_categories'] = User\BlogCategory::query()
-        ->where('status',1)
-        ->orderBy('serial_number','ASC')
-        ->where('language_id', $userCurrentLang->id)
-        ->where('user_id', $id)
-        ->get();
+            ->where('status', 1)
+            ->orderBy('serial_number', 'ASC')
+            ->where('language_id', $userCurrentLang->id)
+            ->where('user_id', $id)
+            ->get();
 
         $data['allCount'] = User\Blog::query()
-        ->where('user_id', $id)
-        ->where('language_id', $userCurrentLang->id)
-        ->count();
-    
+            ->where('user_id', $id)
+            ->where('language_id', $userCurrentLang->id)
+            ->count();
+
         $ubs = User\BasicSetting::select('theme')->where('user_id', $user->id)->firstOrFail();
         if ($ubs->theme == 1) {
             return view('user.profile1.blogs', $data);
@@ -795,7 +803,8 @@ class FrontendController extends Controller
         }
     }
 
-    public function userBlogDetail($domain, $slug, $id){
+    public function userBlogDetail($domain, $slug, $id)
+    {
         $user = getUser();
         $userId = $user->id;
         if (session()->has('user_lang')) {
@@ -811,22 +820,22 @@ class FrontendController extends Controller
         $data['blog'] = User\Blog::query()->findOrFail($id);
 
         $data['latestBlogs'] = User\Blog::query()
-        ->where('user_id', $userId)
-        ->where('language_id', $userCurrentLang->id)
-        ->orderBy('id','DESC')
-        ->limit(3)->get();
+            ->where('user_id', $userId)
+            ->where('language_id', $userCurrentLang->id)
+            ->orderBy('id', 'DESC')
+            ->limit(3)->get();
 
         $data['blog_categories'] = User\BlogCategory::query()
-        ->where('status',1)
-        ->orderBy('serial_number','ASC')
-        ->where('language_id', $userCurrentLang->id)
-        ->where('user_id', $userId)
-        ->get();
+            ->where('status', 1)
+            ->orderBy('serial_number', 'ASC')
+            ->where('language_id', $userCurrentLang->id)
+            ->where('user_id', $userId)
+            ->get();
 
         $data['allCount'] = User\Blog::query()
-        ->where('user_id', $userId)
-        ->where('language_id', $userCurrentLang->id)
-        ->count();
+            ->where('user_id', $userId)
+            ->where('language_id', $userCurrentLang->id)
+            ->count();
 
         $userId = $data['blog']->user_id;
 
@@ -846,7 +855,8 @@ class FrontendController extends Controller
         return view('user.profile-common.blog-details', $data);
     }
 
-    public function userPortfolios(Request $request, $domain){
+    public function userPortfolios(Request $request, $domain)
+    {
         $user = getUser();
         $id = $user->id;
         if (session()->has('user_lang')) {
@@ -865,8 +875,8 @@ class FrontendController extends Controller
                 ['language_id', $userCurrentLang->id]
             ])->first();
         $data['portfolio_categories'] = User\PortfolioCategory::query()
-            ->where('status',1)
-            ->orderBy('serial_number','ASC')
+            ->where('status', 1)
+            ->orderBy('serial_number', 'ASC')
             ->where('language_id', $userCurrentLang->id)
             ->where('user_id', $id)
             ->get();
@@ -876,11 +886,11 @@ class FrontendController extends Controller
         $data['portfolios'] = User\Portfolio::query()
             ->where('user_id', $id)
             ->latest()
-            ->orderBy('serial_number','ASC')
+            ->orderBy('serial_number', 'ASC')
             ->where('language_id', $userCurrentLang->id)
             ->get();
 
-    
+
         $ubs = User\BasicSetting::select('theme')->where('user_id', $user->id)->firstOrFail();
         if ($ubs->theme == 1) {
             return view('user.profile1.portfolios', $data);
@@ -897,7 +907,8 @@ class FrontendController extends Controller
         }
     }
 
-    public function userPortfolioDetail($domain, $slug, $id){
+    public function userPortfolioDetail($domain, $slug, $id)
+    {
         $user = getUser();
         $userId = $user->id;
         if (session()->has('user_lang')) {
@@ -915,10 +926,10 @@ class FrontendController extends Controller
         $data['relatedPortfolios'] = User\Portfolio::where('category_id', $catId)->where('id', '<>', $portfolio->id)->where('user_id', $userId)->orderBy('id', 'DESC')->limit(5);
         $data['portfolio'] = $portfolio;
         $data['portfolio_categories'] = User\PortfolioCategory::query()
-            ->where('status',1)
+            ->where('status', 1)
             ->where('language_id', $userCurrentLang->id)
             ->where('user_id', $userId)
-            ->orderBy('serial_number','ASC')
+            ->orderBy('serial_number', 'ASC')
             ->get();
         $data['allCount'] = User\Portfolio::where('language_id', $userCurrentLang->id)->where('user_id', $userId)->count();
 
@@ -938,7 +949,8 @@ class FrontendController extends Controller
         return view('user.profile-common.portfolio-details', $data);
     }
 
-    public function userContact($domain) {
+    public function userContact($domain)
+    {
         $user = getUser();
         $id = $user->id;
 
@@ -963,7 +975,7 @@ class FrontendController extends Controller
                 ['language_id', $userCurrentLang->id]
             ])->first();
 
-            
+
         return view('user.profile1.theme3.contact', $data);
     }
 
@@ -979,11 +991,14 @@ class FrontendController extends Controller
         return redirect()->route('front.user.detail.view', $domain);
     }
 
-    public function vcard($domain, $id) {
+    public function vcard($domain, $id)
+    {
         $vcard = UserVcard::findOrFail($id);
 
-        $count = $vcard->user->memberships()->where('status','=',1)
-            ->where('start_date','<=', Carbon::now()->format('Y-m-d'))
+        // dd($vcard);
+
+        $count = $vcard->user->memberships()->where('status', '=', 1)
+            ->where('start_date', '<=', Carbon::now()->format('Y-m-d'))
             ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'))
             ->count();
 
@@ -1002,7 +1017,7 @@ class FrontendController extends Controller
         $host = $parsedUrl['host'];
         // if the current host contains the website domain
         if (strpos($host, env('WEBSITE_HOST')) !== false) {
-            $host = str_replace("www.","",$host);
+            $host = str_replace("www.", "", $host);
             // if the current URL is subdomain
             if ($host != env('WEBSITE_HOST')) {
                 $hostArr = explode('.', $host);
@@ -1017,7 +1032,7 @@ class FrontendController extends Controller
                     return view('errors.404');
                 }
             }
-        } 
+        }
         // if the current host doesn't contain the website domain (meaning, custom domain)
         else {
             // Always include 'www.' at the begining of host
@@ -1027,7 +1042,7 @@ class FrontendController extends Controller
                 $host = 'www.' . $host;
             }
             // if the current package doesn't have 'custom domain' feature || the custom domain is not connected
-            $cdomain = UserCustomDomain::where('requested_domain','=',$host)->orWhere('requested_domain','=',str_replace("www.","",$host))->where('status', 1)->firstOrFail();
+            $cdomain = UserCustomDomain::where('requested_domain', '=', $host)->orWhere('requested_domain', '=', str_replace("www.", "", $host))->where('status', 1)->firstOrFail();
             $username = $cdomain->user->username;
             if (!cPackageHasCdomain($vcard->user) || ($username != $vcard->user->username)) {
                 return view('errors.404');
@@ -1047,6 +1062,22 @@ class FrontendController extends Controller
         $data['infos'] = $infos;
         $data['prefs'] = $prefs;
         $data['keywords'] = $keywords;
+        $page_order = json_decode($vcard->page_order,  true);
+       // dd($vcard);
+       
+        $this->orderPage($page_order[0]['header'],'header');
+        $this->orderPage($page_order[1]['informacoes'],'informacoes');
+        $this->orderPage($page_order[2]['sobre_nos'],'sobre_nos');
+        $this->orderPage($page_order[3]['servicos'],'servicos');
+        $this->orderPage($page_order[4]['projetos'],'projetos');
+        $this->orderPage($page_order[5]['video'],'video');
+        $this->orderPage($page_order[6]['depoimentos'],'depoimentos');
+        $this->orderPage($page_order[7]['formulario'],'formulario');
+       
+
+
+        $data['page_order'] =$this->dataOrder;
+        return view('vcard.index', $data);
         if ($vcard->template == 1) {
             return view('vcard.index1', $data);
         } elseif ($vcard->template == 2) {
@@ -1067,10 +1098,45 @@ class FrontendController extends Controller
             return view('vcard.index9', $data);
         } elseif ($vcard->template == 10) {
             return view('vcard.index10', $data);
+        }else{
+            return view('vcard.index', $data);
         }
     }
 
-    public function vcardImport($domain, $id) {
+     public function orderPage($orderPage, $name){
+        switch ($orderPage) {
+            case '0':
+                $this->dataOrder[0] = $name;
+                break;
+            case '1':
+                $this->dataOrder[1] = $name;
+                break;
+            case '2':
+                $this->dataOrder[2] =$name;
+                break;
+            case '3':
+                $this->dataOrder[3] =$name;
+                break;
+            case '4':
+                $this->dataOrder[4] =$name;
+                break;
+            case '5':
+                $this->dataOrder[5] =$name;
+                break;
+            case '6':
+                $this->dataOrder[6] =$name;
+                break;
+            case '7':
+                $this->dataOrder[7] = $name;
+                break;
+            case '8':
+                    $this->dataOrder[8] = $name;
+                    break;
+            }
+      
+    }
+    public function vcardImport($domain, $id)
+    {
         $vcard = UserVcard::findOrFail($id);
 
         // define vcard
@@ -1101,7 +1167,7 @@ class FrontendController extends Controller
         }
 
         $vcardObj->addPhoto(public_path('assets/front/img/user/vcard/') . $vcard->profile_image);
-        
+
         return \Response::make(
             $vcardObj->getOutput(),
             200,
@@ -1109,13 +1175,14 @@ class FrontendController extends Controller
         );
     }
 
-    public function cv($domain, $id) {
+    public function cv($domain, $id)
+    {
         $cv = UserCv::findOrFail($id);
 
-        
-        $count = $cv->user->memberships()->where('status','=',1)
-                ->where('start_date','<=', Carbon::now()->format('Y-m-d'))
-                ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'))->count();
+
+        $count = $cv->user->memberships()->where('status', '=', 1)
+            ->where('start_date', '<=', Carbon::now()->format('Y-m-d'))
+            ->where('expire_date', '>=', Carbon::now()->format('Y-m-d'))->count();
         // check if the cv owner does not have membership
         if ($count == 0) {
             return view('errors.404');
@@ -1127,12 +1194,12 @@ class FrontendController extends Controller
         if (empty($cFeatures) || !is_array($cFeatures) || !in_array('Online CV & Export', $cFeatures)) {
             return view('errors.404');
         }
-        
+
         $parsedUrl = parse_url(url()->current());
         $host = $parsedUrl['host'];
         // if the current host contains the website domain
         if (strpos($host, env('WEBSITE_HOST')) !== false) {
-            $host = str_replace("www.","",$host);
+            $host = str_replace("www.", "", $host);
             // if the current URL is subdomain
             if ($host != env('WEBSITE_HOST')) {
                 $hostArr = explode('.', $host);
@@ -1147,7 +1214,7 @@ class FrontendController extends Controller
                     return view('errors.404');
                 }
             }
-        } 
+        }
         // if the current host doesn't contain the website domain (meaning, custom domain)
         else {
             // Always include 'www.' at the begining of host
@@ -1157,7 +1224,7 @@ class FrontendController extends Controller
                 $host = 'www.' . $host;
             }
             // if the current package doesn't have 'custom domain' feature || the custom domain is not connected
-            $cdomain = UserCustomDomain::where('requested_domain','=',$host)->orWhere('requested_domain','=',str_replace("www.","",$host))->where('status', 1)->firstOrFail();
+            $cdomain = UserCustomDomain::where('requested_domain', '=', $host)->orWhere('requested_domain', '=', str_replace("www.", "", $host))->where('status', 1)->firstOrFail();
             $username = $cdomain->user->username;
             if (!cPackageHasCdomain($cv->user) || ($username != $cv->user->username)) {
                 return view('errors.404');
@@ -1165,7 +1232,7 @@ class FrontendController extends Controller
         }
 
         $infos = json_decode($cv->cv_information, true);
-        
+
         $data['cv'] = $cv;
         $data['infos'] = $infos;
 
@@ -1179,8 +1246,8 @@ class FrontendController extends Controller
             } else {
                 $lsections = [];
             }
-    
-    
+
+
             $rsections = $cv->user_cv_sections()->where('column', 2);
             if ($rsections->count() > 0) {
                 $rsections = $rsections->orderBy('order', 'ASC')->get();

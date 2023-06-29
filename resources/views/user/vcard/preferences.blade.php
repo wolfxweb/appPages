@@ -92,6 +92,11 @@
                                   
                                     <div class="selectgroup selectgroup-pills mt-2 justify-content-center">
                                         <label class="selectgroup-item">
+                                            <input type="checkbox" name="preferences[]" value="Header"
+                                                class="selectgroup-input" @if (is_array($preferences) && in_array('Header', $preferences)) checked @endif>
+                                            <span class="selectgroup-button">Cabeçalho</span>
+                                        </label>
+                                        <label class="selectgroup-item">
                                             <input type="checkbox" name="preferences[]" value="Information"
                                                 class="selectgroup-input" @if (is_array($preferences) && in_array('Information', $preferences)) checked @endif>
                                             <span class="selectgroup-button">Informações</span>
@@ -136,25 +141,28 @@
                                    
                                     <div class="row">
                                         <div class="col-3">
-                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Informaçãoes","possicao"=>$page_order['informacoes']?$page_order['informacoes']:"1","nome"=>"informacoes"])
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Cabeçalho","possicao"=>$page_order[0]['header']?$page_order[0]['header']:"1","nome"=>"session_page_order_1"])
                                         </div>
                                         <div class="col-3">
-                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Vídeo","possicao"=>$page_order['video']?$page_order['video']:"2","nome"=>"video"])
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Informaçãoes","possicao"=>$page_order[1]['informacoes']?$page_order[1]['informacoes']:"2","nome"=>"session_page_order_2"])
                                         </div>
                                         <div class="col-3">
-                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Sobre nós","possicao"=>$page_order['sobre_nos']?$page_order['sobre_nos']:"3","nome"=>"sobre_nos"])
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Sobre nós","possicao"=>$page_order[2]['sobre_nos']?$page_order[2]['sobre_nos']:"3","nome"=>"session_page_order_3"])
                                         </div>
                                         <div class="col-3">
-                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Serviços","possicao"=>$page_order['servicos']?$page_order['servicos']:"4","nome"=>"servicos"])
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Serviços","possicao"=>$page_order[3]['servicos']?$page_order[3]['servicos']:"4","nome"=>"session_page_order_4"])
                                         </div>
-                                        <div class="col-4">
-                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Projetos","possicao"=>$page_order['projetos']?$page_order['projetos']:"5","nome"=>"projetos"])
+                                        <div class="col-3">
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Projetos","possicao"=>$page_order[4]['projetos']?$page_order[4]['projetos']:"5","nome"=>"session_page_order_5"])
                                         </div>
-                                        <div class="col-4">
-                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Depoimentos","possicao"=>$page_order['depoimentos']?$page_order['depoimentos']:"6","nome"=>"depoimentos"])
+                                        <div class="col-3">
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Vídeo","possicao"=>$page_order[5]['video']?$page_order[5]['video']:"6","nome"=>"session_page_order_6"])
                                         </div>
-                                        <div class="col-4">
-                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Formulário contato","possicao"=>$page_order['formulario']?$page_order['formulario']:"7","nome"=>"formulario"])
+                                        <div class="col-3">
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Depoimentos","possicao"=>$page_order[6]['depoimentos']?$page_order[6]['depoimentos']:"7","nome"=>"session_page_order_7"])
+                                        </div>
+                                        <div class="col-3">
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Formulário contato","possicao"=>$page_order[7]['formulario']?$page_order[7]['formulario']:"8","nome"=>"session_page_order_8"])
                                         </div>
                                     </div>
                                </div>
