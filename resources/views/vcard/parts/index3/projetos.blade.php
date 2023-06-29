@@ -1,10 +1,9 @@
-
 @if (is_array($prefs) && in_array('Projects', $prefs))
-<div class="portfolio-section-widget portfolio-section-four">
+<div class="portfolio-section-widget portfolio-section-three">
     <div class="row align-items-center">
         <div class="col-8">
             <div class="section-title">
-                <h4>{{$keywords["Projects"] ?? "Projects"}}</h4>
+                <h4>{{$keywords["Projetos"] ?? "Projetos"}}</h4>
             </div>
         </div>
         <div class="col-4">
@@ -12,7 +11,7 @@
         </div>
     </div>
     @php
-        $projects = !empty($vcard->user_vcard_projects) ? $vcard->user_vcard_projects : [];
+        $projects = !empty($vcard->user_vcard_projects) ? $vcard->user_vcard_projects()->orderBy('serial_number', 'ASC')->get() : [];
     @endphp
     @if (!empty($projects))
     <div class="portfolio-slider-one">

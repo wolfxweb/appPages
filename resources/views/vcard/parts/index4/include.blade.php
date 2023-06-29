@@ -1,4 +1,3 @@
-
 @if ($vcard->direction == 2)
     @section('rtl', 'dir=rtl')
 @endif
@@ -20,5 +19,3 @@
 @section('og-description')
     {{$vcard->introduction}}
 @endsection
-
-@section('body', 'dark-body')

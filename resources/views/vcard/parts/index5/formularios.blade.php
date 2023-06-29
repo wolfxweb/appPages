@@ -1,10 +1,10 @@
+
 @if (is_array($prefs) && in_array('Enquiry Form', $prefs))
-<div class="mb-25 contact-section-widget contact-section-three">
+<!--====== Start Contact ======-->
+<div class="section-widget contact-area-one">
     <div class="row">
         <div class="col-12">
-            <div class="section-title">
-                <h3>{{$keywords["Formulário"] ?? "Formulário"}}</h3>
-            </div>
+            <h3 class="widget-title">{{$keywords["Formulário"] ?? "Formulário"}}</h3>
         </div>
     </div>
     <div class="contact-form">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-12">
                     <div class="form_group">
-                        <textarea class="form_control" placeholder="{{$keywords["Mensagem"] ?? "Digite sua mensagem"}}" name="message"></textarea>
+                        <input type="text" class="form_control" placeholder="{{$keywords["Assunto"] ?? "Assunto"}}" name="subject" required>
                         @if ($errors->has('message'))
                             <p class="text-danger mb-0">{{$errors->first('message')}}</p>
                         @endif
@@ -49,12 +49,11 @@
                 </div>
                 <div class="col-12">
                     <div class="form_group">
-                        <button class="main-btn btn-color-three" type="submit">{{$keywords["Enviar"] ?? "Enviar"}}</button>
+                        <button class="form-btn" type="submit">{{$keywords["Enviar"] ?? "Enviar"}}</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <div class="mb-25"></div>
-</div>
+</div><!--====== End Contact ======-->
 @endif
