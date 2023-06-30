@@ -11,13 +11,13 @@
         $services = !empty($vcard->user_vcard_services) ? $vcard->user_vcard_services()->orderBy('serial_number', 'ASC')->get() : [];
     @endphp
     @foreach ($services as $service)
-        <div class="service-item mb-3">
-            <div class="service-img">
-                <img class="w-100 lazy" data-src="{{asset('assets/front/img/user/services/' . $service->image)}}" alt="service img">
+        <div class="mb-3 border shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="service-img m-3">
+                <img class="w-100  lazy" data-src="{{asset('assets/front/img/user/services/' . $service->image)}}" alt="service img">
             </div>
             <div class="content">
                 <h4>{{$service->title}}</h4>
-                <div class="button text-center">
+                <div class="p-2 button text-center">
                     @if ($service->external_link_status == 1 && !empty($service->external_link))
                     <a href="{{$service->external_link}}" target="_blank" class="main-btn btn-color-three">{{$keywords["Details"] ?? "Details"}}</a>
                     @elseif ($service->external_link_status == 0 && !empty($service->short_details))
