@@ -1,3 +1,4 @@
+@if (is_array($prefs) && in_array('Header', $prefs))
 <div class="admin-box-five">
     <div class="admin-info-box text-center">
         <div class="user-thumb">
@@ -40,3 +41,4 @@
         </div>
     </div>
 </div>
+@endif

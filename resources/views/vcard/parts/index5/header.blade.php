@@ -1,3 +1,4 @@
+@if (is_array($prefs) && in_array('Header', $prefs))
 <div class="admin-box admin-box-one bg_cover lazy" data-bg="{{!empty($vcard->cover_image) ? asset('assets/front/img/user/vcard/' . $vcard->cover_image) : asset('assets/front/img/user/vcard/vcard_cover.jpg')}}">
     <div class="admin-info-box d-flex">
         <div class="user-thumb">
@@ -42,3 +43,4 @@
         @endif
     </div>
 </div>
+@endif

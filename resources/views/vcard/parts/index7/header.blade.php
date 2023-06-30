@@ -1,3 +1,4 @@
+@if (is_array($prefs) && in_array('Header', $prefs))
 <div class="admin-box-three bg_cover lazy" data-bg="{{!empty($vcard->cover_image) ? asset('assets/front/img/user/vcard/' . $vcard->cover_image) : asset('assets/front/img/user/vcard/vcard_cover.jpg')}}">
     <div class="admin-info-box text-center">
         <div class="user-info">
@@ -38,4 +39,5 @@
     @if (!empty($vcard->phone) && (is_array($prefs) && in_array('Add to Contact', $prefs)))
     <a style="background: #{{$vcard->add_to_contact_button_color}}" href="{{route('front.user.vcardImport', [getParam(), $vcard->id])}}" class="user-btn"><i class="fas fa-plus"></i>{{$keywords["Adicionar_contato"] ?? "Adicionar_contato"}}</a>
     @endif
-</div><!--====== End User Social ======-->
+</div>
+@endif

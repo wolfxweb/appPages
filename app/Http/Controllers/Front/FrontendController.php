@@ -995,7 +995,7 @@ class FrontendController extends Controller
     {
         $vcard = UserVcard::findOrFail($id);
 
-        // dd($vcard);
+      //  dd($vcard);
 
         $count = $vcard->user->memberships()->where('status', '=', 1)
             ->where('start_date', '<=', Carbon::now()->format('Y-m-d'))

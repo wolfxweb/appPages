@@ -1,3 +1,4 @@
+@if (is_array($prefs) && in_array('Header', $prefs))
 <div class="admin-box-two">
     <div class="admin-info-box text-center" style="background-color: #{{$vcard->summary_background_color}};">
         <div class="user-thumb">
@@ -39,4 +40,5 @@
             </div>
         </div>
     </div>
-</div><!--====== End Admin ======-->
+</div>
+@endif

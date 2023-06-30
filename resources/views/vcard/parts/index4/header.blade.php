@@ -1,3 +1,4 @@
+@if (is_array($prefs) && in_array('Header', $prefs))
 <div class="page-banner bg_cover" style="background-image: url({{!empty($vcard->cover_image) ? asset('assets/front/img/user/vcard/' . $vcard->cover_image) : asset('assets/front/img/user/vcard/vcard_cover.jpg')}});"></div>
 <div class="admin-wrapper">
     <div class="admin-card text-center">
@@ -43,4 +44,6 @@
             </div>
         </div>
     </div>
-</div>     
+</div>
+
+@endif
