@@ -62,21 +62,19 @@
                                      </div>
                                      <div class="col-lg-6">
                                         <div class="form-group">
-                                           <label for="">Cor Fundo página </label>
+                                           <label for="">Cor Fundo página {{$vcard->page_background_color}} </label>
                                            <input type="text" class="form-control jscolor" id="page_background_color" name="page_background_color"value="#{{$vcard->page_background_color}}" title="Choose your color">
                                         </div>
                                      </div>
 
-                                    @if ($vcard->template == 6)    
+                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="">Cor do fundo seção de resumo **</label>
                                             <input type="text" class="form-control jscolor" name="summary_background_color" value="{{$vcard->summary_background_color}}">
                                         </div>
                                     </div>
-                                    @endif
-
-                                    @if ($vcard->template != 5 && $vcard->template != 6 && $vcard->template != 9 && $vcard->template != 10)    
+                                 
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="">Botão de chamada **</label>
@@ -132,7 +130,7 @@
                                             </div>
                                         </div>
                                                     
-                                    @endif
+                              
                                 </div>
                             </form>
                         </div>

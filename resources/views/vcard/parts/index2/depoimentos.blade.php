@@ -1,6 +1,6 @@
 
 @if (is_array($prefs) && in_array('Testimonials', $prefs))
-<div class="testimonial-section-widget testimonial-section-three">
+<div class="testimonial-section-widget " >
     <div class="row align-items-center">
         <div class="col-8">
             <div class="section-title">

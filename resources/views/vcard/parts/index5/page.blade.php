@@ -1,4 +1,4 @@
-<div class="page-wrapper red-light-bg">
+<div class="page-wrapper ">
     <div class="container p-0">
         <div class="page-area page-area-one">
             @include('vcard.includes.session',[$vcard,$prefs]) 

@@ -91,6 +91,7 @@
                                     $permissions = $package->features;
                                     if (!empty($package->features)) {
                                       $permissions = json_decode($permissions, true);
+                                    var_dump($permissions);
                                     }
                                 @endphp
 

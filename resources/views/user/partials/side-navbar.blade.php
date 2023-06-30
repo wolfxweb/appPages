@@ -5,6 +5,8 @@ $package = \App\Http\Helpers\UserPermissionHelper::currentPackagePermission($use
 if (!empty($user)) {
 $permissions = \App\Http\Helpers\UserPermissionHelper::packagePermission($user->id);
 $permissions = json_decode($permissions, true);
+
+var_dump($permissions);
 }
 @endphp
 <div class="sidebar sidebar-style-2" @if(request()->cookie('user-theme') == 'dark') data-background-color="dark2" @endif>
@@ -52,6 +54,7 @@ $permissions = json_decode($permissions, true);
                     </div>
                 </div>
             </div>
+            
             <ul class="nav nav-primary">
                 <div class="row mb-2">
                     <div class="col-12">
@@ -79,7 +82,7 @@ $permissions = json_decode($permissions, true);
                 </a>
                 </li>
                 
-                @if(!is_null($package) && in_array('Dominios', $permissions))
+                @if(!is_null($package) && in_array('Custom Domain', $permissions))
                 <li class="nav-item
                     @if(request()->path() == "user/domains") active
                     @elseif(request()->path() == 'user/subdomain') active
@@ -552,7 +555,7 @@ $permissions = json_decode($permissions, true);
                         <p>Histórico pagamentos</p>
                     </a>
                 </li>
-                @if(!is_null($package))
+                @if (!empty($permissions) && in_array('Online CV & Export', $permissions))
                 <li class="nav-item
                     @if(request()->path() == 'user/cv-upload') active
                     @endif">

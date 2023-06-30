@@ -41,7 +41,7 @@
         <!--====== Base color ======-->
         @yield('base-color')
     </head>
-    <body class="@yield('body')">
+    <body class="@yield('body')" style="background: #{{$vcard->page_background_color}}">
 
         @yield('content')
 

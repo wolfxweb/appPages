@@ -389,7 +389,7 @@ class VcardController extends Controller
         $vcard->website_url = $request->website_url;
         $vcard->introduction = $request->introduction;
 
-        $vcard->call_button_color = $request->call_button_color ? ltrim($request->call_button_color, '#')  : "ed2476";
+      /*  $vcard->call_button_color = $request->call_button_color ? ltrim($request->call_button_color, '#')  : "ed2476";
         $vcard->whatsapp_button_color = $request->whatsapp_button_color ? ltrim($request->whatsapp_button_color, '#')  : "ed2476";
         $vcard->mail_button_color = $request->mail_button_color ? ltrim($request->mail_button_color, '#')  : "ed2476";
         $vcard->add_to_contact_button_color = $request->add_to_contact_button_color ? ltrim($request->add_to_contact_button_color, '#')  : "ed2476";
@@ -401,7 +401,7 @@ class VcardController extends Controller
         $vcard->base_color = $request->base_color ? ltrim($request->base_color, '#')  : "ed2476";
         $vcard->summary_background_color = $request->summary_background_color ? ltrim($request->summary_background_color, '#')  : "ed2476";
         $vcard->page_background_color = $request->page_background_color ? ltrim($request->page_background_color, '#')  : "ed2476";
-
+*/
 
 
         $infoArr = [];

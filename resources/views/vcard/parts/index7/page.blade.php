@@ -1,4 +1,4 @@
-<div class="page-wrapper dark-page">
+<div class="page-wrapper ">
     <div class="container p-0">
        
         <div class="page-area page-area-three">
