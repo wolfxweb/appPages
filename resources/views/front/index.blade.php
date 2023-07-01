@@ -80,9 +80,11 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-title-one section-title-two">
+                
                         @if (!empty($bs->feature_title))
                         <span class="span">{{$bs->feature_title}}</span>
                         @endif
+                        <h2>Listar as funcionalidae e caracteristicas</h2>
                     </div>
                 </div>
             </div>
@@ -242,10 +244,10 @@
                 <div class="col-lg-6">
                     <div class="section-title-one text-center mb-50">
                         @if (!empty($bs->pricing_title))
-                        <span class="span">{{$bs->pricing_title}}</span>
+                        <span class="span">Preços</span>
                         @endif
                         @if (!empty($bs->pricing_subtitle))
-                        <h2>{{$bs->pricing_subtitle}}</h2>
+                        <h2>Escolha seu plano</h2>
                         @endif
                     </div>
                 </div>
@@ -326,10 +328,10 @@
                 <div class="col-lg-6">
                     <div class="section-title-one section-title-two mb-50">
                         @if (!empty($bs->testimonial_title))
-                        <span class="span">{{$bs->testimonial_title}}</span>
+                        <span class="span">Depoimentos</span>
                         @endif
                         @if (!empty($bs->testimonial_subtitle))
-                        <h2>{{$bs->testimonial_subtitle}}</h2>
+                        <h2>O que nossos clientes dizem</h2>
                         @endif
                     </div>
                 </div>
@@ -354,6 +356,18 @@
     </section><!--====== End saas-testimonial section ======-->
     @endif
 
+    <section class="saas-blog pb-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title-one text-center mb-50">
+                        <h2>Perguntas frequentes</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     @if ($bs->news_section == 1)
     <!--====== Start saas-blog section ======-->
     <section class="saas-blog pb-80">
@@ -365,7 +379,7 @@
                         <span class="span">{{$bs->blog_title}}</span>
                         @endif
                         @if (!empty($bs->blog_subtitle))
-                        <h2>{{$bs->blog_subtitle}}</h2>
+                        <h2>Últimas postagens</h2>
                         @endif
                     </div>
                 </div>

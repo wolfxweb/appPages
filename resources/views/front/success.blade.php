@@ -34,7 +34,8 @@
                         <p class="paragraph-text">
                             {{__('payment_success_msg')}}
                         </p>
-                        <a href="{{route('front.index')}}">{{__('Go to Home')}}</a>
+                        <p>Verifique sua caixa de email, enviamos um e-mail para confrimação do cadastro.</p>
+                        <a href="{{route('front.index')}}">{{__('Ir para home')}}</a>
                     @endguest
 
                 </div>
