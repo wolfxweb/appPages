@@ -30,6 +30,7 @@
     <!-- base color change -->
     <link href="{{asset('assets/front/css/style-base-color.php').'?color='.$bs->base_color}}" rel="stylesheet">
 
+    
     @yield('styles')
 
     @if ($bs->is_whatsapp == 0 && $bs->is_tawkto == 0)
@@ -160,7 +161,8 @@
         });
     </script>
     @endif
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
     @if ($bs->is_tawkto == 1)
         {!! $bs->tawk_to_script !!}
     @endif

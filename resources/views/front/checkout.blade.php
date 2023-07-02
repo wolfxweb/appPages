@@ -69,7 +69,7 @@
                                         <div class="form_group">
                                             <label for="first_name">{{__('First Name')}}*</label>
                                             <input id="first_name" type="text" class="form_control" name="first_name"
-                                                placeholder="{{__('First Name')}}" value="{{old('first_name')}}"
+                                                placeholder="{{__('Nome')}}" value="{{old('first_name')}}"
                                                 required>
                                             @if($errors->has('first_name'))
                                                 <span class="error">
@@ -82,7 +82,7 @@
                                         <div class="form_group">
                                             <label for="last_name">{{__('Last Name')}}*</label>
                                             <input id="last_name" type="text" class="form_control" name="last_name"
-                                                placeholder="{{__('Last Name')}}" value="{{old('last_name')}}" required>
+                                                placeholder="{{__('Sobre nome')}}" value="{{old('last_name')}}" required>
                                             @if($errors->has('last_name'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('last_name') }}</strong>
@@ -93,8 +93,9 @@
                                     <div class="col-lg-12">
                                         <div class="form_group">
                                             <label for="phone">{{__('Phone Number')}}*</label>
-                                            <input id="phone" type="text" class="form_control" name="phone"
-                                                placeholder="{{__('Phone Number')}}" value="{{old('phone')}}" required>
+                                          
+                                            <input id="phone" type="text" class="form_control" name="phone" maxlength="15"
+                                                placeholder="{{__('Telefone celular')}}" value="{{old('phone')}}" required>
                                             @if($errors->has('phone'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('phone') }}</strong>
@@ -104,9 +105,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <label for="email">{{__('Email Address')}}*</label>
-                                            <input id="email" type="email" class="form_control" name="email"
-                                                value="{{$email}}" disabled>
+                                            <label for="email">{{__('Email')}}*</label>
+                                            <input id="email" type="email" class="form_control" name="email" value="{{$email}}" disabled>
                                             @if($errors->has('email'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('email') }}</strong>
@@ -116,9 +116,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <label for="company_name">{{__('Company Name')}}</label>
+                                            <label for="company_name">{{__('Empresa')}}</label>
                                             <input id="company_name" type="text" class="form_control" name="company_name"
-                                                placeholder="{{__('Company Name')}}" value="{{old('company_name')}}">
+                                                placeholder="{{__('Empresa')}}" value="{{old('company_name')}}">
                                             @if($errors->has('company_name'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('company_name') }}</strong>
@@ -129,9 +129,9 @@
 
                                     <div class="col-lg-12">
                                         <div class="form_group">
-                                            <label for="address">{{__('Street Address')}}</label>
+                                            <label for="address">{{__('Rua')}}</label>
                                             <input id="address" type="text" class="form_control" name="address"
-                                                placeholder="{{__('Street Address')}}" value="{{old('address')}}">
+                                                placeholder="{{__('Rua')}}" value="{{old('address')}}">
                                             @if($errors->has('address'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('address') }}</strong>
@@ -142,8 +142,8 @@
 
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <label for="city">{{__('City')}} *</label>
-                                            <input id="city" type="text" class="form_control" name="city" placeholder="{{__('City')}}" value="{{old('city')}}" required>
+                                            <label for="city">{{__('Bairro')}} *</label>
+                                            <input id="city" type="text" class="form_control" name="city" placeholder="{{__('Bairro')}}" value="{{old('city')}}" required>
                                             @if($errors->has('city'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('city') }}</strong>
@@ -154,9 +154,9 @@
 
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <label for="district">{{__('State')}}</label>
+                                            <label for="district">{{__('Cidade')}}</label>
                                             <input id="district" type="text" class="form_control" name="district"
-                                                placeholder="{{__('State')}}" value="{{old('district')}}">
+                                                placeholder="{{__('Cidade')}}" value="{{old('district')}}">
                                             @if($errors->has('district'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('district') }}</strong>
@@ -166,9 +166,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <label for="post_code">{{__('Postcode/Zip')}}</label>
-                                            <input id="post_code" type="text" class="form_control" name="post_code"
-                                                placeholder="{{__('Post Code')}}" value="{{old('post_code')}}">
+                                            <label for="post_code">{{__('Cep')}}</label>
+                                            <input id="post_code" type="text" class="form_control" name="post_code" maxlength="9"
+                                                placeholder="{{__('Cep')}}" value="{{old('post_code')}}">
                                             @if($errors->has('post_code'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('post_code') }}</strong>
@@ -178,9 +178,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form_group">
-                                            <label for="country">{{__('Country')}} *</label>
+                                            <label for="country">{{__('Estado')}} *</label>
                                             <input id="country" type="text" class="form_control" name="country"
-                                                placeholder="{{__('Country')}}" value="{{old('country')}}" required>
+                                                placeholder="{{__('Estado')}}" value="{{old('country')}}" required>
                                             @if($errors->has('country'))
                                                 <span class="error">
                                                 <strong>{{ $errors->first('country') }}</strong>
@@ -373,7 +373,22 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function () {
+
+     document.getElementById("phone").addEventListener("keyup", function(event){
+            var v = this.value;
+            if (v.length == 1) this.value = '('+v;
+            if (v.length == 3) this.value = v+') 9';
+            if (v.length == 10) this.value = v+'-';
+    });  
+    document.getElementById("post_code").addEventListener("keyup", function(event){
+            var v = this.value;
+           // if (v.length == 1) this.value = '('+v;
+           // if (v.length == 3) this.value = v+') 9';
+            if (v.length == 5) this.value = v+'-';
+    });  
+      
+
+    $(document).ready(function () {
             "use strict";
             $("#payment-gateway").on('change', function () {
                 let offline = @php echo json_encode($offline) @endphp;
@@ -440,6 +455,7 @@
                 }
             });
         });
+        
     </script>
 
     {{-- START: Authorize.net Scripts --}}

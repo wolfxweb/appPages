@@ -29,7 +29,7 @@
                                 placeholder="{{ __('Username') }}"  required>
                                 @if ($hasSubdomain)
                                     <p class="mb-0">
-                                        Your subdomain based profile URL will be:
+                                        O URL do seu perfil baseado em subdomínio será:
                                         <strong class="text-primary"><span id="username">{username}</span>.{{env('WEBSITE_HOST')}}</strong>
                                     </p>
                                 @endif
