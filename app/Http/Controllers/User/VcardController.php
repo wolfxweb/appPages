@@ -295,7 +295,8 @@ class VcardController extends Controller
         $vcard->information = json_encode($infoArr);
 
         $vcard->save();
-
+     
+        $this->preferences($vcard->id);
         $request->session()->flash('success', 'Vcard cadastrado com sucesso');
         return 'success';
     }
