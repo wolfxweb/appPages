@@ -1064,7 +1064,16 @@ class FrontendController extends Controller
         $data['keywords'] = $keywords;
         $page_order = json_decode($vcard->page_order,  true);
        // dd($vcard);
-       
+       if(empty($page_order)){
+        $page_order[0]['header']=0;
+        $page_order[1]['informacoes']=1;
+        $page_order[2]['sobre_nos']=2;
+        $page_order[3]['servicos']=3;
+        $page_order[4]['projetos']=4;
+        $page_order[5]['video']=5;
+        $page_order[6]['depoimentos']=6;
+        $page_order[7]['formulario']=7;
+       }
         $this->orderPage($page_order[0]['header'],'header');
         $this->orderPage($page_order[1]['informacoes'],'informacoes');
         $this->orderPage($page_order[2]['sobre_nos'],'sobre_nos');
@@ -1073,6 +1082,7 @@ class FrontendController extends Controller
         $this->orderPage($page_order[5]['video'],'video');
         $this->orderPage($page_order[6]['depoimentos'],'depoimentos');
         $this->orderPage($page_order[7]['formulario'],'formulario');
+       
        
 
 

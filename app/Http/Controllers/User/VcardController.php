@@ -800,11 +800,20 @@ class VcardController extends Controller
         }
 
 
-        $pageOrder = json_decode($vcard->page_order, true);
-
+        $page_order = json_decode($vcard->page_order, true);
+        if(empty($page_order)){
+            $page_order[0]['header']=0;
+            $page_order[1]['informacoes']=1;
+            $page_order[2]['sobre_nos']=2;
+            $page_order[3]['servicos']=3;
+            $page_order[4]['projetos']=4;
+            $page_order[5]['video']=5;
+            $page_order[6]['depoimentos']=6;
+            $page_order[7]['formulario']=7;
+           }
         $data['vcard'] = $vcard;
         $data['preferences'] = $preferences;
-        $data['page_order'] = $pageOrder;
+        $data['page_order'] = $page_order;
 
         return view('user.vcard.preferences', $data);
     }
