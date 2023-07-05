@@ -1083,9 +1083,6 @@ class FrontendController extends Controller
         $this->orderPage($page_order[6]['depoimentos'],'depoimentos');
         $this->orderPage($page_order[7]['formulario'],'formulario');
        
-       
-
-
         $data['page_order'] =$this->dataOrder;
         return view('vcard.index', $data);
         if ($vcard->template == 1) {
