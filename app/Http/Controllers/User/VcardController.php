@@ -302,16 +302,17 @@ class VcardController extends Controller
         $vcard->session_page_order_6 = $this->getNameSession(5);
         $vcard->session_page_order_7 = $this->getNameSession(6);
         $vcard->session_page_order_8 = $this->getNameSession(7);
-        $order[0]['header'] = 0;
-        $order[1]['informacoes'] = 1;
-        $order[2]['sobre_nos'] = 2;
-        $order[3]['servicos'] = 3;
-        $order[4]['projetos'] = 4;
-        $order[5]['video'] = 5;
-        $order[6]['depoimentos'] = 6;
-        $order[7]['formulario'] = 7;
+     /*   $order[0]['header'] = "0";
+        $order[1]['informacoes'] = "1";
+        $order[2]['sobre_nos'] = "2";
+        $order[3]['servicos'] = "3";
+        $order[4]['projetos'] = "4";
+        $order[5]['video'] = "5";
+        $order[6]['depoimentos'] = "6";
+        $order[7]['formulario'] = "7";
         // $order[6]['formulario'] = $request->session_page_order_8 ;
         $vcard->page_order =  json_encode($order);
+        */
         $vcard->save();
      
         $this->preferences($vcard->id);
