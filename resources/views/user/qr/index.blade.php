@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h4 class="page-title">Saved QR Codes</h4>
+        <h4 class="page-title">QR Codes</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="{{route('admin.dashboard')}}">
@@ -18,9 +18,7 @@
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
-            <li class="nav-item">
-                <a href="#">Saved QR Codes</a>
-            </li>
+            
         </ul>
     </div>
     <div class="row">
@@ -35,7 +33,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             @if (count($qrcodes) == 0)
-                                <h3 class="text-center">NO QR CODE FOUND</h3>
+                                <h3 class="text-center">NENHUM QR CODE CADASTRADO.</h3>
                             @else
                                 <div class="table-responsive">
                                     <table class="table table-striped mt-3" id="basic-datatables">
@@ -47,7 +45,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">URL</th>
                                             <th scope="col">Qr Code</th>
-                                            <th scope="col">Actions</th>
+                                            <th scope="col">Ações</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -65,7 +63,7 @@
                                                 <td>
                                                     <button class="btn btn-primary" data-toggle="modal" data-target="#qrModal{{$qrcode->id}}">
                                                         <i class="far fa-eye"></i>
-                                                        Show
+                                                       Visualizar
                                                     </button>
                                                 </td>
                                                 <td>
@@ -79,7 +77,7 @@
                                                             <span class="btn-label">
                                                             <i class="fas fa-trash"></i>
                                                             </span>
-                                                            Delete
+                                                           Excluir
                                                         </button>
                                                     </form>
                                                 </td>

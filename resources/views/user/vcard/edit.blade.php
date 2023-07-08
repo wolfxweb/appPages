@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title d-inline-block">Edição vCard</div>
+                    <div class="card-title d-inline-block">Edição página </div>
                     <a class="btn btn-info btn-sm float-right d-inline-block" href="{{ route('user.vcard') }}">
                         <span class="btn-label">
                             <i class="fas fa-backward"></i>
@@ -186,7 +186,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="">vCard Nome **</label>
+                                            <label for="">Nome página**</label>
                                             <input type="text"
                                                 class="form-control {{ $vcard->direction == 2 ? 'rtl' : '' }}"
                                                 name="vcard_name" value="{{ $vcard->vcard_name }}" placeholder="">
@@ -285,7 +285,14 @@
                                         <div class="form-group">
                                             <label for="summary">Introdução</label>
                                             <textarea name="introduction" id="introduction" class="form-control {{ $vcard->direction == 2 ? 'rtl' : '' }}"
-                                                rows="4" placeholder="Enter Introduction">{{ $vcard->introduction }}</textarea>
+                                                rows="4" placeholder="">{{ $vcard->introduction }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="summary">Incorporação Google Maps</label>
+                                            <textarea name="google_maps" id="google_maps" class="form-control {{ $vcard->direction == 2 ? 'rtl' : '' }}"
+                                                rows="4" placeholder="">{{ $vcard->google_maps }}</textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -69,7 +69,7 @@ class VcardController extends Controller
                     if (!empty($img)) {
                         $ext = $img->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -111,8 +111,8 @@ class VcardController extends Controller
         $allowedExts = array('jpg', 'png', 'jpeg');
 
         $messages = [
-            'title.required' => 'The title field is required',
-            'serial_number.required' => 'The serial number field is required',
+            'title.required' => 'O campo título é obrigatório',
+            'serial_number.required' => 'O campo do número de série é obrigatório',
         ];
 
         $rules = [
@@ -123,7 +123,7 @@ class VcardController extends Controller
                     if (!empty($img)) {
                         $ext = $img->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -152,7 +152,7 @@ class VcardController extends Controller
         }
         $service->update($input);
 
-        Session::flash('success', 'Service updated successfully!');
+        Session::flash('success', 'Serviço atualizado com sucesso!');
         return "success";
     }
 
@@ -167,7 +167,7 @@ class VcardController extends Controller
         $service = UserVcardService::findOrFail($request->service_id);
         @unlink(public_path('assets/front/img/user/services/' . $service->image));
         $service->delete();
-        Session::flash('success', 'Service deleted successfully!');
+        Session::flash('success', 'Serviço excluído com sucesso!');
         return back();
     }
 
@@ -179,7 +179,7 @@ class VcardController extends Controller
             @unlink(public_path('assets/front/img/user/services/' . $service->image));
             $service->delete();
         }
-        Session::flash('success', 'Services deleted successfully!');
+        Session::flash('success', 'Serviços excluídos com sucesso!');
         return "success";
     }
 
@@ -196,16 +196,16 @@ class VcardController extends Controller
             'name' => 'nullable|max:255',
             'occupation' => 'nullable|max:255',
             'profile_image' => [
-                'required',
+                
                 function ($attribute, $value, $fail) use ($profileImg, $allowedExts) {
                     if (!empty($profileImg)) {
                         $ext = $profileImg->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                         $size = $profileImg->getSize();
                         if ($size > 200000) {
-                            return $fail("Image size cannot be greater than 200 KB");
+                            return $fail("O tamanho da imagem não pode ser maior que 200 KB");
                         }
                     }
                 },
@@ -215,7 +215,7 @@ class VcardController extends Controller
                     if (!empty($coverImg)) {
                         $ext = $coverImg->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -227,10 +227,12 @@ class VcardController extends Controller
         ];
 
         $messages = [
-            'icons.*.required' => 'The Icon field cannot be empty',
-            'colors.*.required' => 'The Color field cannot be empty',
-            'labels.*.required' => 'The Label field cannot be empty',
-            'values.*.required' => 'The Value field cannot be empty'
+            'icons.*.required' => 'O campo Ícone não pode estar vazio',
+            'colors.*.required' => 'O campo cor não pode estar vazio',
+            'labels.*.required' => 'O campo lables não pode estar vazio',
+            'values.*.required' => 'O campo valores não pode estar vazio',
+            'vcard_name'=>'O campo nome da página não pode estar vazio '
+            
         ];
 
 
@@ -302,6 +304,13 @@ class VcardController extends Controller
         $vcard->session_page_order_6 = 'video';
         $vcard->session_page_order_7 = 'depoimentos';
         $vcard->session_page_order_8 = 'formulario';
+        $vcard->session_page_order_9 = 'mapa';
+
+        $vcard->google_maps = $request->google_maps;
+
+
+
+
      /*   $order[0]['header'] = "0";
         $order[1]['informacoes'] = "1";
         $order[2]['sobre_nos'] = "2";
@@ -310,13 +319,12 @@ class VcardController extends Controller
         $order[5]['video'] = "5";
         $order[6]['depoimentos'] = "6";
         $order[7]['formulario'] = "7";
-        // $order[6]['formulario'] = $request->session_page_order_8 ;
-        $vcard->page_order =  json_encode($order);
-        */
-        $vcard->save();
+        $order[6]['formulario'] = $request->session_page_order_8 ;
+        $vcard->page_order =  json_encode($order);*/
+                $vcard->save();
      
         $this->preferences($vcard->id);
-        $request->session()->flash('success', 'Vcard cadastrado com sucesso');
+        $request->session()->flash('success', 'Página cadastrada com sucesso');
         return 'success';
     }
 
@@ -408,6 +416,7 @@ class VcardController extends Controller
         $vcard->address = $request->address;
         $vcard->website_url = $request->website_url;
         $vcard->introduction = $request->introduction;
+        $vcard->google_maps = $request->google_maps;
 
       /*  $vcard->call_button_color = $request->call_button_color ? ltrim($request->call_button_color, '#')  : "ed2476";
         $vcard->whatsapp_button_color = $request->whatsapp_button_color ? ltrim($request->whatsapp_button_color, '#')  : "ed2476";
@@ -446,7 +455,7 @@ class VcardController extends Controller
 
         $vcard->save();
 
-        $request->session()->flash('success', 'Vcard atualizado com sucesso');
+        $request->session()->flash('success', 'Página atualizada com sucesso');
         return 'success';
     }
 
@@ -462,7 +471,7 @@ class VcardController extends Controller
         @unlink(public_path('assets/front/img/user/vcard/' . $vcard->profile_image));
         @unlink(public_path('assets/front/img/user/vcard/' . $vcard->cover_image));
         $vcard->delete();
-        Session::flash('success', 'Vcard deleted successfully!');
+        Session::flash('success', 'Página excluida com sucesso!');
         return back();
     }
 
@@ -475,7 +484,7 @@ class VcardController extends Controller
             @unlink(public_path('assets/front/img/user/vcard/' . $vcard->cover_image));
             $vcard->delete();
         }
-        Session::flash('success', 'Vcards deleted successfully!');
+        Session::flash('success', 'Página excluida com sucesso!');
         return "success";
     }
 
@@ -508,9 +517,9 @@ class VcardController extends Controller
         $img = $request->file('image');
         $allowedExts = array('jpg', 'png', 'jpeg');
         $messages = [
-            'title.required' => 'The title field is required',
-            'serial_number.required' => 'The serial number field is required',
-            'image.required' => 'The image field is required',
+            'title.required' => 'O campo título é obrigatório',
+            'serial_number.required' => 'O campo do número de série é obrigatório',
+            'image.required' => 'O campo da imagem é obrigatório',
         ];
 
 
@@ -524,7 +533,7 @@ class VcardController extends Controller
                     if (!empty($img)) {
                         $ext = $img->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -549,7 +558,7 @@ class VcardController extends Controller
         $project = new UserVcardProject();
         $project->create($input);
 
-        Session::flash('success', 'Project added successfully!');
+        Session::flash('success', 'Projeto adicionado com sucesso!');
         return "success";
     }
 
@@ -566,8 +575,8 @@ class VcardController extends Controller
         $allowedExts = array('jpg', 'png', 'jpeg');
 
         $messages = [
-            'title.required' => 'The title field is required',
-            'serial_number.required' => 'The serial number field is required',
+            'title.required' => 'O campo título é obrigatório',
+            'serial_number.required' => 'O campo do número de série é obrigatório',
         ];
 
         $rules = [
@@ -578,7 +587,7 @@ class VcardController extends Controller
                     if (!empty($img)) {
                         $ext = $img->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -607,7 +616,7 @@ class VcardController extends Controller
         }
         $project->update($input);
 
-        Session::flash('success', 'Project updated successfully!');
+        Session::flash('success', 'Projeto atualizado com sucesso!');
         return "success";
     }
 
@@ -622,7 +631,7 @@ class VcardController extends Controller
         $project = UserVcardProject::findOrFail($request->project_id);
         @unlink(public_path('assets/front/img/user/projects/' . $project->image));
         $project->delete();
-        Session::flash('success', 'Project deleted successfully!');
+        Session::flash('success', 'Projeto excluído com sucesso!');
         return back();
     }
 
@@ -634,7 +643,7 @@ class VcardController extends Controller
             @unlink(public_path('assets/front/img/user/projects/' . $project->image));
             $project->delete();
         }
-        Session::flash('success', 'Projects deleted successfully!');
+        Session::flash('success', 'Projeto excluído com sucesso!');
         return "success";
     }
 
@@ -660,9 +669,9 @@ class VcardController extends Controller
         $img = $request->file('image');
         $allowedExts = array('jpg', 'png', 'jpeg');
         $messages = [
-            'name.required' => 'The name field is required',
-            'serial_number.required' => 'The serial number field is required',
-            'image.required' => 'The image field is required',
+            'name.required' => 'O campo nome é obrigatório',
+            'serial_number.required' => 'O campo do número de série é obrigatório',
+            'image.required' => 'O campo da imagem é obrigatório',
         ];
 
 
@@ -678,7 +687,7 @@ class VcardController extends Controller
                     if (!empty($img)) {
                         $ext = $img->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -703,7 +712,7 @@ class VcardController extends Controller
         $testimonial = new UserVcardTestimonial();
         $testimonial->create($input);
 
-        Session::flash('success', 'Testimonial added successfully!');
+        Session::flash('success', 'Testemunho adicionado com sucesso!');
         return "success";
     }
 
@@ -729,7 +738,7 @@ class VcardController extends Controller
                     if (!empty($img)) {
                         $ext = $img->getClientOriginalExtension();
                         if (!in_array($ext, $allowedExts)) {
-                            return $fail("Only png, jpg, jpeg image is allowed");
+                            return $fail("Somente imagens png, jpg, jpeg são permitidas");
                         }
                     }
                 },
@@ -758,7 +767,7 @@ class VcardController extends Controller
         }
         $testimonial->update($input);
 
-        Session::flash('success', 'Testimonial updated successfully!');
+        Session::flash('success', 'Depoimento atualizado com sucesso!');
         return "success";
     }
 
@@ -773,7 +782,7 @@ class VcardController extends Controller
         $testimonial = UserVcardTestimonial::findOrFail($request->testimonial_id);
         @unlink(public_path('assets/front/img/user/testimonials/' . $testimonial->image));
         $testimonial->delete();
-        Session::flash('success', 'Testimonial deleted successfully!');
+        Session::flash('success', 'Depoimento atualizado com sucesso!');
         return back();
     }
 
@@ -785,7 +794,7 @@ class VcardController extends Controller
             @unlink(public_path('assets/front/img/user/testimonials/' . $testimonial->image));
             $testimonial->delete();
         }
-        Session::flash('success', 'Testimonials deleted successfully!');
+        Session::flash('success', 'Depoimentos excluídos com sucesso!');
         return "success";
     }
 
@@ -806,7 +815,7 @@ class VcardController extends Controller
         $vcard->about = clean($request->about);
         $vcard->save();
 
-        $request->session()->flash('success', 'About & video updated successfully');
+        $request->session()->flash('success', 'Sobre e vídeo atualizado com sucesso');
         return 'success';
     }
 
@@ -822,14 +831,15 @@ class VcardController extends Controller
 
         $page_order = json_decode($vcard->page_order, true);
         if(empty($page_order)){
-            $page_order[0]['header']=0;
-            $page_order[1]['informacoes']=1;
-            $page_order[2]['sobre_nos']=2;
-            $page_order[3]['servicos']=3;
-            $page_order[4]['projetos']=4;
-            $page_order[5]['video']=5;
-            $page_order[6]['depoimentos']=6;
-            $page_order[7]['formulario']=7;
+            $page_order[0]['header']=1;
+            $page_order[1]['informacoes']=2;
+            $page_order[2]['sobre_nos']=3;
+            $page_order[3]['servicos']=4;
+            $page_order[4]['projetos']=5;
+            $page_order[5]['video']=6;
+            $page_order[6]['depoimentos']=7;
+            $page_order[7]['formulario']=8;
+            $page_order[8]['mapa']=9;
            }
         $data['vcard'] = $vcard;
         $data['preferences'] = $preferences;
@@ -858,6 +868,7 @@ class VcardController extends Controller
         $vcard->session_page_order_6 = $this->getNameSession($request->session_page_order_6);
         $vcard->session_page_order_7 = $this->getNameSession($request->session_page_order_7);
         $vcard->session_page_order_8 = $this->getNameSession($request->session_page_order_8);
+        $vcard->session_page_order_9 = $this->getNameSession($request->session_page_order_9);
 
         $order[0]['header'] = $request->session_page_order_1;
         $order[1]['informacoes'] = $request->session_page_order_2;
@@ -867,6 +878,12 @@ class VcardController extends Controller
         $order[5]['video'] = $request->session_page_order_6;
         $order[6]['depoimentos'] = $request->session_page_order_7;
         $order[7]['formulario'] = $request->session_page_order_8;
+        $order[8]['mapa'] = $request->session_page_order_9;
+        $vcard->google_analitics =htmlspecialchars($request->google_analitics);
+        $vcard->pixel_facebook =htmlspecialchars($request->pixel_facebook);
+       // $vcard->google_maps =$request->google_maps;
+       
+       // dd($request);
         // $order[6]['formulario'] = $request->session_page_order_8 ;
         $vcard->page_order =  json_encode($order);
         if (empty($preferences)) {
@@ -907,6 +924,9 @@ class VcardController extends Controller
             case "8":
                 $nameSession = 'formulario';
                 break;
+           case "9":
+                    $nameSession = 'mapa';
+                    break;
             default:
                 $nameSession = 'informacoes';
         }

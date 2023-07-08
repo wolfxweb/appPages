@@ -9,5 +9,6 @@
         <option value='6' {{$possicao=='6'?'selected':""}}>6</option>
         <option value='7' {{$possicao=='7'?'selected':""}}>7</option>
         <option value='8' {{$possicao=='8'?'selected':""}}>8</option>
+        <option value='9' {{$possicao=='9'?'selected':""}}>9</option>
     </select>
 </div>

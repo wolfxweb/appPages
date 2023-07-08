@@ -29,7 +29,7 @@
                             @csrf
                             <input type="hidden" name="token" value="{{ $token }}">
                             <div class="form_group">
-                                <span>{{__('Email Address')}}*</span>
+                                <span>{{__('Email ')}}*</span>
                                 <input type="email" name="email" class="form_control" placeholder="{{__('email')}}"
                                        value="{{$email}}">
                                 @error('email')

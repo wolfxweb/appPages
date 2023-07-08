@@ -36,7 +36,7 @@
                               enctype="multipart/form-data">
                             @csrf
                                 <div class="form_group">
-                                    <span>{{__('Email Address')}}*</span>
+                                    <span>{{__('Email')}}*</span>
                                     <input type="email" name="{{__('email')}}" class="form_control" value="{{Request::old('email')}}">
                                     @error('email')
                                     <p class="text-danger mb-2 mt-2">{{ $message }}</p>

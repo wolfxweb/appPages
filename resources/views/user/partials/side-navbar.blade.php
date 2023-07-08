@@ -432,7 +432,7 @@ var_dump($permissions);
                     @endif">
                     <a data-toggle="collapse" href="#vcard">
                         <i class="far fa-address-card"></i>
-                        <p>Gerenciametos vCards</p>
+                        <p>Gerenciameto páginas</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse
@@ -459,12 +459,12 @@ var_dump($permissions);
                             @elseif(request()->routeIs('user.vcard.keywords')) active
                             @endif">
                                 <a href="{{route('user.vcard')}}">
-                                    <span class="sub-item">vCards</span>
+                                    <span class="sub-item">Minhas páginas</span>
                                 </a>
                             </li>
                             <li class="@if(request()->path() == 'user/vcard/create') active @endif">
                                 <a href="{{route('user.vcard.create')}}">
-                                <span class="sub-item">Adicioanr vCard</span>
+                                <span class="sub-item">Adicionar página</span>
                                 </a>
                             </li>
                         </ul>

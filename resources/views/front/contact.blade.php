@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form_group mb-5">
-                                        <input type="email" class="form_control" placeholder="{{__('Email Address')}}" name="email" required>
+                                        <input type="email" class="form_control" placeholder="{{__('Email')}}" name="email" required>
                                         @if ($errors->has('email'))
                                             <p class="text-danger mb-0">{{$errors->first('email')}}</p>
                                         @endif

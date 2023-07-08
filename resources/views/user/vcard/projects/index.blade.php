@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="page-header">
-   <h4 class="page-title">vCard Projetos</h4>
+   <h4 class="page-title">Projetos</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="{{route('user.vcard')}}">
@@ -13,7 +13,7 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">vCards</a>
+         <a href="#">Página</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
@@ -30,7 +30,7 @@
          <div class="card-header">
             <div class="row">
                <div class="col-lg-4">
-                  <div class="card-title d-inline-block">vCard Projetos</div>
+                  <div class="card-title d-inline-block">Projetos</div>
                </div>
                <div class="col-lg-4 offset-lg-4 mt-2 mt-lg-0">
                     <a href="{{route('user.vcard')}}" class="btn btn-secondary float-right btn-sm ml-2"><i class="fas fa-chevron-left"></i> Voltar</a>

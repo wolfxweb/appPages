@@ -12,7 +12,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">vCards</a>
+                <a href="#">Página</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>

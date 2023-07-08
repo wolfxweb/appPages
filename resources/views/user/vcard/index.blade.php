@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title d-inline-block">vCards</div>
+                    <div class="card-title d-inline-block">Minhas páginas</div>
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('user.vcard.bulk.delete')}}"><i class="flaticon-interface-5"></i> Excluir</button>
                     <a href="{{route('user.vcard.create')}}" class="btn btn-sm btn-primary float-right">Adicionar</a>
                 </div>
@@ -24,7 +24,7 @@
                                             <th scope="col">
                                                 <input type="checkbox" class="bulk-check" data-val="all">
                                             </th>
-                                            <th scope="col">vCard Nome</th>
+                                            <th scope="col">Nome</th>
                                             <th scope="col">Visualização</th>
                                             <th scope="col">Direção</th>
                                             <th scope="col">Ações</th>

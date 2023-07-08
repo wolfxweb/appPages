@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h4 class="page-title">vCard Gerenciamento</h4>
+    <h4 class="page-title">Gerenciamento páginas</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('admin.dashboard')}}">
@@ -16,7 +16,7 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">vCards</a>
+            <a href="#">Páginas</a>
         </li>
     </ul>
 </div>

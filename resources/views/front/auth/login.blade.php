@@ -26,7 +26,7 @@
                         <form action="{{route('user.login')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form_group">
-                                <span>{{__('Email Address')}}*</span>
+                                <span>{{__('Email')}}*</span>
                                 <input type="email" name="email" class="form_control" value="{{Request::old('email')}}">
                                 @if(Session::has('err'))
                                     <p class="text-danger mb-2 mt-2">{{Session::get('err')}}</p>

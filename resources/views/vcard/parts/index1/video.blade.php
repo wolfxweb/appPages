@@ -13,6 +13,7 @@
             echo $vcard->video;
         @endphp
     </div>
+
     @endif
 </div>
 @endif

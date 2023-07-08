@@ -5,12 +5,12 @@
    <div class="col-md-12">
       <div class="card">
          <div class="card-header">
-            <div class="card-title d-inline-block">Cadastro vCard</div>
+            <div class="card-title d-inline-block">Cadastro página</div>
             <a class="btn btn-info btn-sm float-right d-inline-block" href="{{route('user.vcard')}}">
             <span class="btn-label">
             <i class="fas fa-backward"></i>
             </span>
-            Voltar
+                Voltar
             </a>
          </div>
          <div class="card-body pt-5 pb-5">
@@ -141,17 +141,16 @@
                       <div class="row">
                            <div class="col-lg-6">
                               <div class="form-group">
-                                 <label for="">vCard Name **</label>
-                                 <input type="text" class="form-control" name="vcard_name" value="" placeholder="Enter vcard name">
-                                 <p class="text-warning mb-0">Use this name to identify sepcific vcard from your vcards list.</p>
-                                 <p id="errvcard_name" class="mb-0 text-danger em"></p>
+                                 <label for="">Nome página **</label>
+                                 <input type="text" class="form-control" name="vcard_name" value="" placeholder="">
+                                 <p class="text-warning mb-0">Use este nome para identificar um cartão específico da sua lista de páginas.</p>
+                                 <p id="errvcard_name" class="mb-0 text-danger "></p>
                               </div>
                            </div>
                           <div class="col-lg-6">
                               <div class="form-group">
                                   <label for="">Direção **</label>
-                                  <select name="direction" class="form-control" id="direction">
-                                      <option value="" selected disabled>Selecione a Direção</option>
+                                  <select name="direction" class="form-control" id="direction">  
                                       <option value="1">LTR (Da esquerda para direita)</option>
                                       <option value="2">RTL (Da direita para esquerda)</option>
                                   </select>
@@ -164,21 +163,21 @@
                         <div class="col-lg-4">
                            <div class="form-group">
                               <label for="">Nome</label>
-                              <input type="text" class="form-control" name="name" value="" placeholder="Enter name">
+                              <input type="text" class="form-control" name="name" value="" placeholder="">
                               <p id="errname" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-4">
                            <div class="form-group">
                               <label for="">Nome empresa</label>
-                              <input type="text" class="form-control" name="company" value="" placeholder="Enter company">
+                              <input type="text" class="form-control" name="company" value="" placeholder="">
                               <p id="errcompany" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-4">
                            <div class="form-group">
                               <label for="">Ocupação</label>
-                              <input type="text" class="form-control" name="occupation" value="" placeholder="Enter occupation">
+                              <input type="text" class="form-control" name="occupation" value="" placeholder="">
                               <p id="erroccupation" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
@@ -188,14 +187,14 @@
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Email</label>
-                              <input type="text" class="form-control ltr" name="email" value="" placeholder="Enter email">
+                              <input type="text" class="form-control ltr" name="email" value="" placeholder="">
                               <p id="erremail" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Telefone</label>
-                              <input type="text" class="form-control ltr" name="phone" value="" placeholder="Enter phone">
+                              <input type="text" class="form-control ltr" name="phone" value="" placeholder="">
                               <p class="text-warning mb-0">Digite o numero de telefone <strong class="text-danger">código do país.</strong></p>
                               <p id="errphone" class="mb-0 text-danger em"></p>
                            </div>
@@ -203,14 +202,14 @@
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Endereço</label>
-                              <input type="text" class="form-control" name="address" value="" placeholder="Enter address">
+                              <input type="text" class="form-control" name="address" value="" placeholder="">
                               <p id="erraddress" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
                         <div class="col-lg-6">
                            <div class="form-group">
                               <label for="">Website URL</label>
-                              <input type="text" class="form-control ltr" name="website_url" value="" placeholder="Enter website url">
+                              <input type="text" class="form-control ltr" name="website_url" value="" placeholder="">
                               <p id="errwebsite_url" class="mb-0 text-danger em"></p>
                            </div>
                         </div>
@@ -222,7 +221,7 @@
                         <div class="col-lg-12">
                            <div class="form-group">
                               <label for="summary">Introdução</label>
-                              <textarea name="introduction" id="introduction" class="form-control" rows="4" placeholder="Enter Introduction"></textarea>
+                              <textarea name="introduction" id="introduction" class="form-control" rows="4" placeholder=""></textarea>
                            </div>
                         </div>
                      </div>
@@ -290,7 +289,7 @@
                                 </button>
                             </div>
                         </div>
-                        {{-- Infromation End --}}
+                     
                      </div>
                   </form>
                </div>

@@ -22,11 +22,12 @@
                     </div>
                 </div>
                 <div class="content">
-                        <h1>{{__('trial_success')}}</h1>
-                        <p class="paragraph-text">
-                            {{__('trial_success_msg')}}
+                        <h1>{{__('Cadastro realizado com sucesso')}}</h1>
+                        <p class="paragraph-text">            
+                            {{ __('Enviamos um e-mail com o link de verificação')}} <br>
+                            {{ __('Verifique sua caixa de entrada e spam')}}
                         </p>
-                        <a href="{{route('front.index')}}">Go to Home</a>
+                        <a href="{{route('front.index')}}">Ir para home</a>
                 </div>
             </div>
         </div>

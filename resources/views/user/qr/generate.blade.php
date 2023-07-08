@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="page-header">
-    <h4 class="page-title">QR Code Builder</h4>
+    <h4 class="page-title">Cadastro QR CODE</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('user-dashboard')}}">
@@ -22,7 +22,7 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">QR Code Builder</a>
+            <a href="#">QR Code</a>
         </li>
     </ul>
 </div>
@@ -30,7 +30,7 @@
     <div class="col-lg-7">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Qr Code Generator</h4>
+                <h4 class="card-title">Gerador de QR code</h4>
             </div>
             <div class="card-body">
                 <form id="qrGeneratorForm" method="POST" enctype="multipart/form-data">
@@ -43,7 +43,7 @@
                           @endphp
                           <label for="">URL **</label>
                           <input type="text" class="form-control" name="url" value="{{$qrUrl}}" onchange="generateQr()">
-                          <p class="text-warning mb-0">QR Code will be generated for this URL</p>
+                          <p class="text-warning mb-0">Código QR será gerado para este URL</p>
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -57,21 +57,21 @@
                             }
                             @endphp
                             <input type="text" class="form-control jscolor" name="color" value="{{$qrColor}}" onchange="generateQr()">
-                            <p class="mb-0 text-warning">If the QR Code cannnot be scanned, then choose a darker color</p>
+                            <p class="mb-0 text-warning">Se o QR Code não puder ser digitalizado, escolha uma cor mais escura</p>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="">Size</label>
+                            <label for="">Tamanho</label>
                             <input class="form-control p-0 range-slider" name="size" type="range" min="200" max="350" value="{{$abs->qr_size}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right">{{$abs->qr_size}}</span>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="">White Space</label>
+                            <label for="">Espaço em Branco</label>
                             <input class="form-control p-0 range-slider" name="margin" type="range" min="0" max="5" value="{{$abs->qr_margin}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right">{{$abs->qr_margin}}</span>
                         </div>
@@ -81,36 +81,36 @@
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="">Style</label>
+                            <label for="">Estilo</label>
                             <select name="style" class="form-control" onchange="generateQr()">
-                            <option value="square" {{$abs->qr_style == 'square' ? 'selected' : ''}}>Square</option>
-                            <option value="round" {{$abs->qr_style == 'round' ? 'selected' : ''}}>Round</option>
+                            <option value="square" {{$abs->qr_style == 'square' ? 'selected' : ''}}>Quadrado</option>
+                            <option value="round" {{$abs->qr_style == 'round' ? 'selected' : ''}}>Redondo</option>
                             </select>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="">Eye Style</label>
+                            <label for="">Estilo de Olho</label>
                             <select name="eye_style" class="form-control" onchange="generateQr()">
-                            <option value="square" {{$abs->qr_eye_style == 'square' ? 'selected' : ''}}>Square</option>
-                            <option value="circle" {{$abs->qr_eye_style == 'circle' ? 'selected' : ''}}>Circle</option>
+                            <option value="square" {{$abs->qr_eye_style == 'square' ? 'selected' : ''}}>Quadrado</option>
+                            <option value="circle" {{$abs->qr_eye_style == 'circle' ? 'selected' : ''}}>Circulo</option>
                             </select>
                         </div>
                       </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="">Type</label>
+                        <label for="">Tipo</label>
                         <select name="type" class="form-control" onchange="generateQr()">
-                        <option value="default" {{$abs->qr_type == 'default' ? 'selected' : ''}}>Default</option>
-                        <option value="image" {{$abs->qr_type == 'image' ? 'selected' : ''}}>Image</option>
-                        <option value="text" {{$abs->qr_type == 'text' ? 'selected' : ''}}>Text</option>
+                        <option value="default" {{$abs->qr_type == 'default' ? 'selected' : ''}}>Padrão</option>
+                        <option value="image" {{$abs->qr_type == 'image' ? 'selected' : ''}}>Imagem</option>
+                        <option value="text" {{$abs->qr_type == 'text' ? 'selected' : ''}}>Texto</option>
                         </select>
                     </div>
                     <div id="type-image" class="types">
                         <div class="form-group">
                             <div class="col-12 mb-2">
-                                <label for="image"><strong> Image</strong></label>
+                                <label for="image"><strong> Imagem</strong></label>
                             </div>
                             <div class="col-md-12 showImage mb-3">
                                 <img src="{{$abs->qr_inserted_image ? asset('assets/front/img/user/qr/'.$abs->qr_inserted_image) :  asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail qr">
@@ -121,15 +121,15 @@
                             <label for="">Image Size</label>
                             <input class="form-control p-0 range-slider" name="image_size" type="range" min="1" max="20" value="{{$abs->qr_inserted_image_size}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right d-block">{{$abs->qr_inserted_image_size}}</span>
-                            <p class="mb-0 text-warning">If the QR Code cannnot be scanned, then reduce this size</p>
+                            <p class="mb-0 text-warning">Se o QR Code não puder ser digitalizado, reduza o tamanho</p>
                         </div>
                         <div class="form-group">
-                            <label for="">Image Horizontal Poistion</label>
+                            <label for="">Imagem Horizontal </label>
                             <input class="form-control p-0 range-slider" name="image_x" type="range" min="0" max="100" value="{{$abs->qr_inserted_image_x}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right">{{$abs->qr_inserted_image_x}}</span>
                         </div>
                         <div class="form-group">
-                            <label for="">Image Vertical Position</label>
+                            <label for="">Imagem Vertical </label>
                             <input class="form-control p-0 range-slider" name="image_y" type="range" min="0" max="100" value="{{$abs->qr_inserted_image_y}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right">{{$abs->qr_inserted_image_y}}</span>
                         </div>
@@ -140,7 +140,7 @@
                             <input type="text" name="text" value="{{$abs->qr_text}}" class="form-control" onchange="generateQr()">
                         </div>
                         <div class="form-group">
-                            <label>Text Color</label>
+                            <label>Cor Texto</label>
                             @php
                             if (empty($abs->qr_text_color)) {
                             $qrTextColor = '000000';
@@ -151,18 +151,18 @@
                             <input type="text" name="text_color" value="{{$qrTextColor}}" class="form-control jscolor" onchange="generateQr()">
                         </div>
                         <div class="form-group">
-                            <label for="">Text Size</label>
+                            <label for="">Tamanho texto</label>
                             <input class="form-control p-0 range-slider" name="text_size" type="range" min="1" max="15" value="{{$abs->qr_text_size}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right d-block">{{$abs->qr_text_size}}</span>
-                            <p class="mb-0 text-warning">If the QR Code cannnot be scanned, then reduce this size</p>
+                            <p class="mb-0 text-warning">Se o QR Code não puder ser digitalizado, reduza o tamanho</p>
                         </div>
                         <div class="form-group">
-                            <label for="">Text Horizontal Poistion</label>
+                            <label for="">Texto Horizontal</label>
                             <input class="form-control p-0 range-slider" name="text_x" type="range" min="0" max="100" value="{{$abs->qr_text_x}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right">{{$abs->qr_text_x}}</span>
                         </div>
                         <div class="form-group">
-                            <label for="">Text Vertical Position</label>
+                            <label for="">Texto Vertical</label>
                             <input class="form-control p-0 range-slider" name="text_y" type="range" min="0" max="100" value="{{$abs->qr_text_y}}" onchange="generateQr()">
                             <span class="text-dark size-text float-right">{{$abs->qr_text_y}}</span>
                         </div>
@@ -174,10 +174,10 @@
     <div class="col-lg-5">
         <div class="card bg-white">
             <div class="card-header" style="border-bottom: 1px solid #ebecec!important;">
-                <h4 class="card-title d-inline-block" style="color: #575962;">Preview</h4>
-                <button class="btn btn-success float-right" data-toggle="modal" data-target="#saveModal">Save</button>
+                <h4 class="card-title d-inline-block" style="color: #575962;">Visualização</h4>
+                <button class="btn btn-success float-right" data-toggle="modal" data-target="#saveModal">Salvar</button>
                 <form action="{{route('user.qrcode.clear')}}" class="d-inline-block float-right mr-2">
-                  <button class="btn btn-danger" type="submit">Clear</button>
+                  <button class="btn btn-danger" type="submit">Limpar</button>
                 </form>
             </div>
             <div class="card-body text-center py-5">
@@ -186,7 +186,7 @@
                 </div>
             </div>
             <div class="card-footer text-center" style="border-top: 1px solid #ebecec!important;">
-                <a id="downloadBtn" class="btn btn-success" download="qr-image.png" href="{{asset('assets/front/img/user/qr/' . $abs->qr_image)}}">Download Image</a>
+                <a id="downloadBtn" class="btn btn-success" download="qr-image.png" href="{{asset('assets/front/img/user/qr/' . $abs->qr_image)}}">Baixar imagem</a>
             </div>
         </div>
         <span id="text-size" style="visibility: hidden;">{{$abs->text}}</span>
@@ -206,14 +206,14 @@
       <div class="modal-body">
         <form action="{{route('user.qrcode.save')}}" method="POST" id="qrSaveForm">
           @csrf
-          <label for="">Name **</label>
+          <label for="">Nome **</label>
           <input name="name" type="text" class="form-control" required>
-          <p class="text-warning mb-0">This name will be used to identify this specific QR Code from the QR Codes List</p>
+          <p class="text-warning mb-0">Este nome será usado para identificar este código QR específico da lista de códigos QR</p>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" form="qrSaveForm" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" form="qrSaveForm" class="btn btn-success">Salvar</button>
       </div>
     </div>
   </div>

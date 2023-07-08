@@ -3,7 +3,7 @@
 
 
     <div class="page-header">
-        <h4 class="page-title">Preferências vCard </h4>
+        <h4 class="page-title">Preferências </h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="{{ route('user-dashboard') }}">
@@ -14,7 +14,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">vCards</a>
+                <a href="#">Página</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
@@ -26,7 +26,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Preferências</a>
+                <a href="#">Configurações</a>
             </li>
         </ul>
     </div>
@@ -37,7 +37,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">
-                            <div class="card-title d-inline-block">Preferências</div>
+                            <div class="card-title d-inline-block">Configurações</div>
                         </div>
                         <div class="col-6 text-right">
                             <a href="{{ route('user.vcard') }}" class="btn btn-primary btn-sm"><i
@@ -135,6 +135,12 @@
                                                 @if (is_array($preferences) && in_array('Enquiry Form', $preferences)) checked @endif>
                                             <span class="selectgroup-button">Formulário de contato</span>
                                         </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="preferences[]" value="Google Maps"
+                                                class="selectgroup-input"
+                                                @if (is_array($preferences) && in_array('Google Maps', $preferences)) checked @endif>
+                                            <span class="selectgroup-button">Google Maps</span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -166,7 +172,22 @@
                                         <div class="col-3">
                                             @include("user.vcard.parts.selectPreferences",["titulo"=>"Formulário contato","possicao"=>$page_order[7]['formulario']?$page_order[7]['formulario']:"8","nome"=>"session_page_order_8"])
                                         </div>
+                                        <div class="col-3">
+                                            @include("user.vcard.parts.selectPreferences",["titulo"=>"Google Maps","possicao"=>$page_order[8]['mapa']?$page_order[8]['mapa']:"9","nome"=>"session_page_order_9"])
+                                        </div>
                                     </div>
+                                    <div class="form-group">
+                                        <hr>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Pixel facebook</label>
+                                            <textarea class="form-control" id="pixel_facebook" name="pixel_facebook" rows="3">{{htmlspecialchars_decode($vcard->pixel_facebook)}}</textarea>
+                                          </div>
+                                          <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Google analytics</label>
+                                            <textarea class="form-control" id="google_analitics" name="google_analitics" rows="3">{{htmlspecialchars_decode($vcard->google_analitics)}}</textarea>
+                                          </div>
+                                    </div>
+                                   
                                </div>
                             </form>
                         </div>

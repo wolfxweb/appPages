@@ -102,7 +102,7 @@
   var content = {};
 
   content.message = '{{session('success')}}';
-  content.title = 'Success';
+  content.title = 'Sucesso';
   content.icon = 'fa fa-bell';
 
   $.notify(content,{
@@ -129,7 +129,7 @@
   content.icon = 'fa fa-bell';
 
   $.notify(content,{
-    type: 'warning',
+    type: 'Atenção',
     placement: {
       from: 'top',
       align: 'right'

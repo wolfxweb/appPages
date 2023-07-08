@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="section-title">
-                <h4>{{$keywords["Sobre_nós"] ?? "Sobre_nós"}}</h4>
+                <h4>{{$keywords["Sobre nós"] ?? "Sobre"}}</h4>
             </div>
         </div>
     </div>
