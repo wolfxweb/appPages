@@ -3,7 +3,13 @@
     <div class="row align-items-center">
         <div class="col-8">
             <div class="section-title">
-                <h4>{{$keywords["Projetos"] ?? "Projetos"}}</h4>
+                @include('vcard.includes.titulo', [
+                    'titulo' => $keywords["Projetos"] ?? "Projetos",
+                    'fonte' => $vcard->font_title,
+                    'size' => $vcard->font_title_size,
+                    'cor' => $vcard->font_color,
+                ])
+
             </div>
         </div>
         <div class="col-4">
@@ -21,7 +27,9 @@
                 <img data-src="{{asset('assets/front/img/user/projects/' . $project->image)}}" alt="portfolio" class="w-100 lazy">
                 <a href="{{asset('assets/front/img/user/projects/' . $project->image)}}" class="portfolio-overlay img-popup">
                     <div class="info">
-                        <h4 class="title">{{$project->title}}</h4>
+                        <h4 class="title">
+                            @include('vcard.includes.text',['vcard'=>$vcard,'titulo'=>$project->title])
+                         </h4>
                     </div>
                 </a>
             </div>

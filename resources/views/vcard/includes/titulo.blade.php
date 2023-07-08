@@ -1,0 +1,1 @@
+<h3><font face="{{$fonte}}" size="{{$size}}" color="{{$cor}}">{{$titulo}}</font></h3>

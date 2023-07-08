@@ -3,7 +3,13 @@
     <div class="row">
         <div class="col-12">
             <div class="section-title">
-                <h4>{{$keywords["Serviços"] ?? "Serviços"}}</h4>
+                @include('vcard.includes.titulo', [
+                    'titulo' => $keywords["Serviços"] ?? "Serviços",
+                    'fonte' => $vcard->font_title,
+                    'size' => $vcard->font_title_size,
+                    'cor' => $vcard->font_color,
+                ])
+              
             </div>
         </div>
     </div>
@@ -16,7 +22,9 @@
                 <img class="w-100  lazy" data-src="{{asset('assets/front/img/user/services/' . $service->image)}}" alt="service img">
             </div>
             <div class="content">
-                <h4>{{$service->title}}</h4>
+                <h4>
+                    @include('vcard.includes.text',['vcard'=>$vcard,'titulo'=>$service->title])
+                </h4>
                 <div class="p-2 button text-center">
                     @if ($service->external_link_status == 1 && !empty($service->external_link))
                     <a href="{{$service->external_link}}" target="_blank" class="main-btn btn-color-three">{{$keywords["Details"] ?? "Details"}}</a>
@@ -39,7 +47,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    {{$service->short_details}}
+                        @include('vcard.includes.text',['vcard'=>$vcard,'titulo'=>$service->short_details])
+
+                 
                     </div>
                 </div>
             </div>

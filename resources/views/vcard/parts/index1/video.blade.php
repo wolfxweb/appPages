@@ -3,7 +3,12 @@
     <div class="row">
         <div class="col-12">
             <div class="section-title">
-                <h4>{{$keywords["Video"] ?? "Video"}}</h4>
+                @include('vcard.includes.titulo', [
+                    'titulo' => $keywords["Video"] ?? "Video",
+                    'fonte' => $vcard->font_title,
+                    'size' => $vcard->font_title_size,
+                    'cor' => $vcard->font_color,
+                ])
             </div>
         </div>
     </div>

@@ -1,0 +1,1 @@
+<option value="{{$nome_fonte}}"  {{$nome_fonte==$fonte_select?'selected':""}}>{{$titulo}}</option>

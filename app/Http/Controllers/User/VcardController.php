@@ -881,7 +881,12 @@ class VcardController extends Controller
         $order[8]['mapa'] = $request->session_page_order_9;
         $vcard->google_analitics =htmlspecialchars($request->google_analitics);
         $vcard->pixel_facebook =htmlspecialchars($request->pixel_facebook);
-       // $vcard->google_maps =$request->google_maps;
+        $vcard->font_title =$request->font_title;
+        $vcard->font_color =$request->font_color;
+        $vcard->font_title_size =$request->font_title_size;
+        $vcard->font_color_content =$request->font_color_content;
+        $vcard->font_content =$request->font_content;
+        $vcard->font_content_size =$request->font_content_size;
        
        // dd($request);
         // $order[6]['formulario'] = $request->session_page_order_8 ;
